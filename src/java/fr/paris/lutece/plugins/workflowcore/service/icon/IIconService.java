@@ -45,6 +45,10 @@ import java.util.List;
  */
 public interface IIconService
 {
+    /**
+     * Create an icon
+     * @param icon the icon
+     */
     void create( Icon icon );
 
     /**

@@ -109,7 +109,7 @@ public interface ITaskType
     boolean isTaskForAutomaticAction(  );
 
     /**
-     * @param bIsTaskFroAutomaticAction true if the task may be use by automatic action
+     * @param bIsTaskForAutomaticAction true if the task may be use by automatic action
      */
     void setTaskForAutomaticAction( boolean bIsTaskForAutomaticAction );
 }
