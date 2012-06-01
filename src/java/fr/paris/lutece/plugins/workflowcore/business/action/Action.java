@@ -39,6 +39,8 @@ import fr.paris.lutece.plugins.workflowcore.business.state.State;
 import fr.paris.lutece.plugins.workflowcore.business.workflow.Workflow;
 import fr.paris.lutece.portal.service.rbac.RBACResource;
 
+import java.util.Collection;
+
 
 /**
  * Action Object
@@ -57,6 +59,7 @@ public class Action implements RBACResource, IReferenceItem
     private Workflow _workflow;
     private boolean _bAutomaticState;
     private boolean _bIsMassAction;
+    private Collection<Integer> _listIdsLinkedAction;
 
     /**
      *
@@ -242,5 +245,21 @@ public class Action implements RBACResource, IReferenceItem
     public boolean isMassAction(  )
     {
         return _bIsMassAction;
+    }
+
+    /**
+     * @param listIdsLinkedAction the _listIdsLinkedAction to set
+     */
+    public void setListIdsLinkedAction( Collection<Integer> listIdsLinkedAction )
+    {
+        _listIdsLinkedAction = listIdsLinkedAction;
+    }
+
+    /**
+     * @return the _listIdsLinkedAction
+     */
+    public Collection<Integer> getListIdsLinkedAction(  )
+    {
+        return _listIdsLinkedAction;
     }
 }

@@ -62,11 +62,11 @@ public class ActionFilter
 
     /**
      * set the id of workflow in the filter
-     * @param idWorkflow the id of workflow to insert in the filter
+     * @param nIdWorkflow the id of workflow to insert in the filter
      */
-    public void setIdWorkflow( int idWorkflow )
+    public void setIdWorkflow( int nIdWorkflow )
     {
-        _nIdWorkFlow = idWorkflow;
+        _nIdWorkFlow = nIdWorkflow;
     }
 
     /**
@@ -90,11 +90,11 @@ public class ActionFilter
 
     /**
      * set the id of the initial state in the filter
-     * @param idStateBefore the id of state to insert in the filter
+     * @param nIdStateBefore the id of state to insert in the filter
      */
-    public void setIdStateBefore( int idStateBefore )
+    public void setIdStateBefore( int nIdStateBefore )
     {
-        _nIdStateBefore = idStateBefore;
+        _nIdStateBefore = nIdStateBefore;
     }
 
     /**
@@ -118,11 +118,11 @@ public class ActionFilter
 
     /**
      * set the id of the  state after doing the action insert in the filter
-     * @param idStateAfter the id of the state to insert in the filter
+     * @param nIdStateAfter the id of the state to insert in the filter
      */
-    public void setIdStateAfter( int idStateAfter )
+    public void setIdStateAfter( int nIdStateAfter )
     {
-        _nIdStateAfter = idStateAfter;
+        _nIdStateAfter = nIdStateAfter;
     }
 
     /**
@@ -146,11 +146,11 @@ public class ActionFilter
 
     /**
      * set the id of the icon insert in the filter
-     * @param idIcon the id of the icon insert in the filter
+     * @param nIdIcon the id of the icon insert in the filter
      */
-    public void setIdIcon( int idIcon )
+    public void setIdIcon( int nIdIcon )
     {
-        _nIdIcon = idIcon;
+        _nIdIcon = nIdIcon;
     }
 
     /**

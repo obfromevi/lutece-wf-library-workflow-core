@@ -41,6 +41,7 @@ import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistorySer
 import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -69,6 +70,7 @@ public class ActionService implements IActionService
     public void create( Action action )
     {
         _actionDAO.insert( action );
+        createLinkedActions( action );
     }
 
     /**
@@ -78,6 +80,8 @@ public class ActionService implements IActionService
     public void update( Action action )
     {
         _actionDAO.store( action );
+        removeLinkedActions( action.getId(  ) );
+        createLinkedActions( action );
     }
 
     /**
@@ -108,6 +112,8 @@ public class ActionService implements IActionService
             _taskService.remove( task.getId(  ) );
         }
 
+        removeLinkedActions( nIdAction );
+
         _actionDAO.delete( nIdAction );
     }
 
@@ -119,7 +125,10 @@ public class ActionService implements IActionService
     @Override
     public Action findByPrimaryKey( int nIdAction )
     {
-        return _actionDAO.loadWithIcon( nIdAction );
+        Action action = _actionDAO.loadWithIcon( nIdAction );
+        action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+
+        return action;
     }
 
     /**
@@ -128,6 +137,50 @@ public class ActionService implements IActionService
     @Override
     public List<Action> getListActionByFilter( ActionFilter filter )
     {
-        return _actionDAO.selectActionsByFilter( filter );
+        List<Action> listActions = _actionDAO.selectActionsByFilter( filter );
+
+        if ( ( listActions != null ) && !listActions.isEmpty(  ) )
+        {
+            for ( Action action : listActions )
+            {
+                action.setListIdsLinkedAction( getListIdsLinkedAction( action.getId(  ) ) );
+            }
+        }
+
+        return listActions;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void createLinkedActions( Action action )
+    {
+        if ( ( action != null ) && ( action.getListIdsLinkedAction(  ) != null ) &&
+                !action.getListIdsLinkedAction(  ).isEmpty(  ) )
+        {
+            for ( int nIdLinkedAction : action.getListIdsLinkedAction(  ) )
+            {
+                _actionDAO.insertLinkedActions( action.getId(  ), nIdLinkedAction );
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Collection<Integer> getListIdsLinkedAction( int nIdAction )
+    {
+        return _actionDAO.selectListIdsLinkedAction( nIdAction );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void removeLinkedActions( int nIdAction )
+    {
+        _actionDAO.removeLinkedActions( nIdAction );
     }
 }

@@ -36,6 +36,7 @@ package fr.paris.lutece.plugins.workflowcore.service.action;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.action.ActionFilter;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -64,6 +65,18 @@ public interface IActionService
      */
     void remove( int nIdAction );
 
+    /**
+     * Create the links between actions
+     * @param action the action
+     */
+    void createLinkedActions( Action action );
+
+    /**
+     * Remove the links between actions
+     * @param nIdAction the ID action
+     */
+    void removeLinkedActions( int nIdAction );
+
     ///////////////////////////////////////////////////////////////////////////
     // Finders
 
@@ -80,4 +93,11 @@ public interface IActionService
      * @return Action List
      */
     List<Action> getListActionByFilter( ActionFilter filter );
+
+    /**
+     * Load the list of IDs linked to the given ID action.
+     * @param nIdAction the ID action
+     * @return a list of IDs
+     */
+    Collection<Integer> getListIdsLinkedAction( int nIdAction );
 }

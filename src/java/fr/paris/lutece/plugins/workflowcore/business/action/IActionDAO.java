@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.action;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -81,4 +82,23 @@ public interface IActionDAO
      * @return a list of action
      */
     List<Action> selectActionsByFilter( ActionFilter filter );
+
+    /**
+     * Create the links between actions
+     * @param nIdAction the id action
+     */
+    void insertLinkedActions( int nIdAction, int nIdLinkedAction );
+
+    /**
+     * Remove the links between actions
+     * @param nIdAction the ID action
+     */
+    void removeLinkedActions( int nIdAction );
+
+    /**
+     * Load the list of IDs linked to the given ID action.
+     * @param nIdAction the ID action
+     * @return a list of IDs
+     */
+    Collection<Integer> selectListIdsLinkedAction( int nIdAction );
 }
