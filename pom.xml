@@ -45,12 +45,14 @@
     	<dependency>
 			<groupId>fr.paris.lutece.plugins</groupId>
 			<artifactId>library-rbac-api</artifactId>
-			<version>[0.0.1,)</version>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>fr.paris.lutece.plugins</groupId>
 			<artifactId>library-workgroup-api</artifactId>
-			<version>[0.0.1,)</version>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>jar</type>
 		</dependency>
 		<!-- Commons -->
 		<dependency>
@@ -232,7 +234,7 @@
 		    <plugin>
 				<groupId>org.codehaus.sonar-plugins</groupId>
 				<artifactId>maven-report</artifactId>
-			</plugin>		    
+			</plugin>
         </plugins>
     </reporting>
     
