@@ -44,6 +44,8 @@ import org.apache.commons.lang.StringUtils;
 
 import org.apache.log4j.Logger;
 
+import org.springframework.util.Assert;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Locale;
@@ -180,10 +182,7 @@ public abstract class TaskComponent implements ITaskComponent
     @Override
     public void afterPropertiesSet(  ) throws Exception
     {
-        if ( _taskType == null )
-        {
-            throw new IllegalArgumentException( "Property 'taskType' is required" );
-        }
+        Assert.notNull( _taskType, "The property 'taskType' is required" );
     }
 
     /**
