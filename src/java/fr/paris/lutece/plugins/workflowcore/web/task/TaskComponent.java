@@ -182,7 +182,12 @@ public abstract class TaskComponent implements ITaskComponent
     @Override
     public void afterPropertiesSet(  ) throws Exception
     {
-        Assert.notNull( _taskType, "The property 'taskType' is required" );
+        Assert.notNull( _taskType, "The property 'taskType' is required." );
+
+        if ( _taskType.isConfigRequired(  ) )
+        {
+            Assert.notNull( _taskConfigService, "The property 'taskConfigService' is required." );
+        }
     }
 
     /**
