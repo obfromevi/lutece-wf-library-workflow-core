@@ -86,6 +86,7 @@ public interface IActionDAO
     /**
      * Create the links between actions
      * @param nIdAction the id action
+     * @param nIdLinkedAction the id linked action
      */
     void insertLinkedActions( int nIdAction, int nIdLinkedAction );
 

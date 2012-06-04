@@ -31,47 +31,33 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.workflowcore.service.task;
-
-import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
-import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
-
-import java.util.Collection;
-import java.util.Locale;
+package fr.paris.lutece.plugins.workflowcore.business.config;
 
 
 /**
  *
- * ITaskFactory
+ * TaskConfig
  *
  */
-public interface ITaskFactory
+public abstract class TaskConfig implements ITaskConfig
 {
-    /**
-     * return an instance of Task Object depending on the task type
-     * @param strKey the type task key
-     * @param locale the Locale
-     * @return an instance of Task  Object
-     */
-    ITask newTask( String strKey, Locale locale );
+    private int _nIdTask;
 
     /**
-     * Return an instance of a {@link ITaskConfig}
-     * @param strKey the task type key
-     * @return a {@link ITaskConfig}
+     * {@inheritDoc}
      */
-    ITaskConfig newTaskConfig( String strKey );
+    @Override
+    public int getIdTask(  )
+    {
+        return _nIdTask;
+    }
 
     /**
-     * Get all task types
-     * @return a collection of {@link ITaskType}
+     * {@inheritDoc}
      */
-    Collection<ITaskType> getAllTaskTypes(  );
-
-    /**
-     * Get all task types
-     * @param locale the locale
-     * @return a collection of {@link ITaskType}
-     */
-    Collection<ITaskType> getAllTaskTypes( Locale locale );
+    @Override
+    public void setIdTask( int idTask )
+    {
+        _nIdTask = idTask;
+    }
 }

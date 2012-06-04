@@ -44,6 +44,7 @@ public class TaskType implements ITaskType
     private String _strTitleI18nKey;
     private String _strTitle;
     private String _strBeanName;
+    private String _strConfigBeanName;
     private String _strKey;
     private boolean _bIsConfigureRequire;
     private boolean _bIsFormTaskRequire;
@@ -101,6 +102,24 @@ public class TaskType implements ITaskType
     public void setBeanName( String strBeanName )
     {
         _strBeanName = strBeanName;
+    }
+
+    /**
+         * {@inheritDoc}
+         */
+    @Override
+    public String getConfigBeanName(  )
+    {
+        return _strConfigBeanName;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setConfigBeanName( String strConfigBeanName )
+    {
+        _strConfigBeanName = strConfigBeanName;
     }
 
     /**

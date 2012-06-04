@@ -31,47 +31,39 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.workflowcore.service.task;
-
-import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
-import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
-
-import java.util.Collection;
-import java.util.Locale;
+package fr.paris.lutece.plugins.workflowcore.business.config;
 
 
 /**
  *
- * ITaskFactory
+ * ITaskConfigDAO
+ * @param <GTaskConfig> the generic class of {@link ITaskConfig}
  *
  */
-public interface ITaskFactory
+public interface ITaskConfigDAO<GTaskConfig extends ITaskConfig>
 {
     /**
-     * return an instance of Task Object depending on the task type
-     * @param strKey the type task key
-     * @param locale the Locale
-     * @return an instance of Task  Object
+     * Insert a new task config
+     * @param config the task config
      */
-    ITask newTask( String strKey, Locale locale );
+    void insert( GTaskConfig config );
 
     /**
-     * Return an instance of a {@link ITaskConfig}
-     * @param strKey the task type key
-     * @return a {@link ITaskConfig}
+     * Update a task config
+     * @param config the task config
      */
-    ITaskConfig newTaskConfig( String strKey );
+    void store( GTaskConfig config );
 
     /**
-     * Get all task types
-     * @return a collection of {@link ITaskType}
+     * Load a task config
+     * @param nIdTask the task id
+     * @return the task config
      */
-    Collection<ITaskType> getAllTaskTypes(  );
+    GTaskConfig load( int nIdTask );
 
     /**
-     * Get all task types
-     * @param locale the locale
-     * @return a collection of {@link ITaskType}
+     * Delete the task config
+     * @param nIdTask the id of the task
      */
-    Collection<ITaskType> getAllTaskTypes( Locale locale );
+    void delete( int nIdTask );
 }

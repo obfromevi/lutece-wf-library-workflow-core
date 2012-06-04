@@ -31,40 +31,35 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.workflowcore.web.task;
+package fr.paris.lutece.plugins.workflowcore.service.config;
 
-import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
-
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
+import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
 
 
 /**
  *
- * This component implements task that does not require
- * any task form.
+ * ITaskConfigService
  *
  */
-public abstract class NoFormTaskComponent extends TaskComponent
+public interface ITaskConfigService
 {
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String doValidateTask( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale,
-        ITask task )
-    {
-        return null;
-    }
+    * Create a new config
+    * @param config the config
+    */
+    void create( ITaskConfig config );
 
     /**
-     * {@inheritDoc}
+     * Update a config
+     * @param config the config
      */
-    @Override
-    public String getDisplayTaskForm( int nIdResource, String strResourceType, HttpServletRequest request,
-        Locale locale, ITask task )
-    {
-        return null;
-    }
+    void update( ITaskConfig config );
+
+    /**
+     * Remove a config
+     * @param nIdTask the task id
+     */
+    void remove( int nIdTask );
+
+    <T> T findByPrimaryKey( int nIdTask );
 }

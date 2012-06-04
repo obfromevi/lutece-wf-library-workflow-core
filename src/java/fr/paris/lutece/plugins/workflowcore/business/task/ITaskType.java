@@ -62,15 +62,24 @@ public interface ITaskType
     void setTitleI18nKey( String title );
 
     /**
-     * @return the path for acces to the Classe task
+     * @return the bean name of the task
      */
     String getBeanName(  );
 
     /**
-     * set the path for acces to the Class task
-     * @param className the path for acces to the Class task
+     * @param strBeanName the bean name of the task
      */
-    void setBeanName( String className );
+    void setBeanName( String strBeanName );
+
+    /**
+     * @return the task config bean name
+     */
+    String getConfigBeanName(  );
+
+    /**
+     * @param strConfigBeanName the task config bean name
+     */
+    void setConfigBeanName( String strConfigBeanName );
 
     /**
      * @return the title of the task type

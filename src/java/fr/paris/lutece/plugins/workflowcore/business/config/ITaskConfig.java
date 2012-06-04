@@ -31,38 +31,25 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.workflowcore.web.task;
-
-import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
-
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
+package fr.paris.lutece.plugins.workflowcore.business.config;
 
 
 /**
  *
- * This component implements the task that does not require
- * any configuration.
+ * ITaskConfig
  *
  */
-public abstract class NoConfigTaskComponent extends TaskComponent
+public interface ITaskConfig
 {
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String doSaveConfig( HttpServletRequest request, Locale locale, ITask task )
-    {
-        return null;
-    }
+    * Get the ID task
+    * @return id Task
+    */
+    int getIdTask(  );
 
     /**
-     * {@inheritDoc}
+     * Set id Task
+     * @param idTask id task
      */
-    @Override
-    public String getDisplayConfigForm( HttpServletRequest request, Locale locale, ITask task )
-    {
-        return null;
-    }
+    void setIdTask( int idTask );
 }

@@ -33,9 +33,24 @@
  */
 package fr.paris.lutece.plugins.workflowcore.web.task;
 
+import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
 import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
+import fr.paris.lutece.plugins.workflowcore.service.config.ITaskConfigService;
+import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
+import fr.paris.lutece.plugins.workflowcore.service.task.ITaskFactory;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
+
+import org.apache.log4j.Logger;
+
+import java.lang.reflect.InvocationTargetException;
+
+import java.util.Locale;
+
+import javax.inject.Inject;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -45,7 +60,86 @@ import org.apache.commons.lang.StringUtils;
  */
 public abstract class TaskComponent implements ITaskComponent
 {
+    private static final String PARAMETER_APPLY = "apply";
+    private static Logger _logger = Logger.getLogger( "lutece.workflow" );
     private ITaskType _taskType;
+    private ITaskConfigService _taskConfigService;
+    @Inject
+    private ITaskFactory _taskFactory;
+
+    /**
+     * Validate the config
+     * @param config the config to validate
+     * @param request the HTTP request
+     * @return the JSP error if the config is not validated, an empty String otherwise
+     */
+    public abstract String validateConfig( ITaskConfig config, HttpServletRequest request );
+
+    /**
+    * {@inheritDoc}
+    */
+    @Override
+    public String doSaveConfig( HttpServletRequest request, Locale locale, ITask task )
+    {
+        // In case there are no errors, then the config is created/updated
+        boolean bCreate = false;
+        ITaskConfig config = _taskConfigService.findByPrimaryKey( task.getId(  ) );
+
+        if ( config == null )
+        {
+            config = _taskFactory.newTaskConfig( _taskType.getKey(  ) );
+
+            if ( config != null )
+            {
+                config.setIdTask( task.getId(  ) );
+                bCreate = true;
+            }
+        }
+
+        if ( config != null )
+        {
+            try
+            {
+                BeanUtils.populate( config, request.getParameterMap(  ) );
+
+                String strApply = request.getParameter( PARAMETER_APPLY );
+
+                // Check if the AdminUser clicked on "Apply" or on "Save"
+                if ( StringUtils.isEmpty( strApply ) )
+                {
+                    String strJspError = this.validateConfig( config, request );
+
+                    if ( StringUtils.isNotBlank( strJspError ) )
+                    {
+                        return strJspError;
+                    }
+                }
+
+                if ( bCreate )
+                {
+                    _taskConfigService.create( config );
+                }
+                else
+                {
+                    _taskConfigService.update( config );
+                }
+            }
+            catch ( IllegalAccessException e )
+            {
+                _logger.error( e.getMessage(  ), e );
+            }
+            catch ( InvocationTargetException e )
+            {
+                _logger.error( e.getMessage(  ), e );
+            }
+        }
+        else
+        {
+            _logger.error( "TaskComponent - could not instanciate a new TaskConfig for type " + _taskType.getKey(  ) );
+        }
+
+        return null;
+    }
 
     /**
      * {@inheritDoc}
@@ -54,6 +148,15 @@ public abstract class TaskComponent implements ITaskComponent
     public void setTaskType( ITaskType taskType )
     {
         _taskType = taskType;
+    }
+
+    /**
+         * Set the task config service
+         * @param taskConfigService the task config service
+         */
+    public void setTaskConfigService( ITaskConfigService taskConfigService )
+    {
+        _taskConfigService = taskConfigService;
     }
 
     /**
@@ -81,5 +184,14 @@ public abstract class TaskComponent implements ITaskComponent
         {
             throw new IllegalArgumentException( "Property 'taskType' is required" );
         }
+    }
+
+    /**
+     * Get the task config service
+     * @return the task config service
+     */
+    protected ITaskConfigService getTaskConfigService(  )
+    {
+        return _taskConfigService;
     }
 }
