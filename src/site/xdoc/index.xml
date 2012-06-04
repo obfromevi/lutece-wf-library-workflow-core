@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Library Workflow Core</title>
+	</properties>
+	<body>
+		<section name="Library Workflow Core">
+			<subsection name="Introduction">
+				<p>
+					This library provides the DAO interfaces to access to the data of the workflow.
+					It also provides the workflow services.
+				</p>
+			</subsection>
+		</section>
+	</body>
+</document>
