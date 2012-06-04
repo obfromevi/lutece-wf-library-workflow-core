@@ -44,7 +44,7 @@ import org.apache.log4j.Logger;
  * TaskConfigService
  *
  */
-public abstract class TaskConfigService implements ITaskConfigService
+public class TaskConfigService implements ITaskConfigService
 {
     private static Logger _logger = Logger.getLogger( "lutece.workflow" );
     private ITaskConfigDAO<ITaskConfig> _taskConfigDAO;
