@@ -52,6 +52,8 @@ import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskFactory;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -492,7 +494,25 @@ public abstract class AbstractWorkflowService implements IWorkflowService
             for ( ITask task : listActionTasks )
             {
                 task.setAction( action );
-                task.processTask( resourceHistory.getId(  ), request, locale );
+
+                try
+                {
+                    task.processTask( resourceHistory.getId(  ), request, locale );
+                }
+                catch ( Exception e )
+                {
+                    this.debug( "WorkflowService - Error when executing task ID " + task.getId(  ) );
+                    this.debug( "WorkflowService - Reverting the resource history ID " + resourceHistory.getId(  ) );
+                    // Revert the creation of the resource history
+                    _resourceHistoryService.remove( resourceHistory.getId(  ) );
+
+                    if ( StringUtils.isNotBlank( e.getMessage(  ) ) )
+                    {
+                        throw new RuntimeException( e.getMessage(  ), e );
+                    }
+
+                    throw new RuntimeException( e );
+                }
             }
 
             // Reload the resource workflow in case a task had modified it
