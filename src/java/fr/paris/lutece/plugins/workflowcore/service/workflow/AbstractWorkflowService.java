@@ -493,6 +493,7 @@ public abstract class AbstractWorkflowService implements IWorkflowService
 
             for ( ITask task : listActionTasks )
             {
+                this.debug( "WorkflowService - Executing task ID " + task.getId(  ) );
                 task.setAction( action );
 
                 try
@@ -501,17 +502,11 @@ public abstract class AbstractWorkflowService implements IWorkflowService
                 }
                 catch ( Exception e )
                 {
-                    this.debug( "WorkflowService - Error when executing task ID " + task.getId(  ) );
                     this.debug( "WorkflowService - Reverting the resource history ID " + resourceHistory.getId(  ) );
                     // Revert the creation of the resource history
                     _resourceHistoryService.remove( resourceHistory.getId(  ) );
 
-                    if ( StringUtils.isNotBlank( e.getMessage(  ) ) )
-                    {
-                        throw new RuntimeException( e.getMessage(  ), e );
-                    }
-
-                    throw new RuntimeException( e );
+                    throw new RuntimeException( "WorkflowService - Error when executing task ID " + task.getId(  ), e );
                 }
             }
 
@@ -567,6 +562,9 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     */
     public void doRemoveWorkFlowResource( int nIdResource, String strResourceType, int nIdWorkflow )
     {
+        this.debug( "WorkflowService - Removing workflow resource for resource ID " + nIdResource +
+            ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
+
         List<ResourceHistory> listResourceHistoryToRemove;
         List<ITask> listTask = new ArrayList<ITask>(  );
         List<Action> listWorkflowAction;
@@ -618,6 +616,8 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     public void doRemoveWorkFlowResourceByListId( List<Integer> lListIdResource, String strResourceType,
         Integer nIdWorflow )
     {
+        this.debug( "WorkflowService - Removing the workflow resource by a list of IDs resource." );
+
         List<Integer> listIdHistory = _resourceHistoryService.getListHistoryIdByListIdResourceId( lListIdResource,
                 strResourceType, nIdWorflow );
 
