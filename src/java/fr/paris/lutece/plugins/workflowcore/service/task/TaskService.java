@@ -98,4 +98,31 @@ public class TaskService implements ITaskService
     {
         return _taskDAO.selectTaskByIdAction( nIdAction, locale );
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int findMaximumOrderByWorkflowId( int nIdAction )
+    {
+        return _taskDAO.findMaximumOrderByWorkflowId( nIdAction );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ITask findByOrderAndActionId( int nOrder, int nIdAction, Locale locale )
+    {
+        return _taskDAO.findByOrderAndActionId( nOrder, nIdAction, locale );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void decrementOrderByOne( int nOrder, int nIdAction )
+    {
+        _taskDAO.decrementOrderByOne( nOrder, nIdAction );
+    }
 }

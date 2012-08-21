@@ -95,4 +95,27 @@ public interface IStateService
      * @return the initial state of the workflow
      */
     State getInitialState( int nIdWorkflow );
+
+    /**
+     * return the maximum order number of that states in a given workflow
+     * @param nWorkflowId the workflow id
+     * @return the maximum order of the states in the workflow
+     */
+    int findMaximumOrderByWorkflowId( int nWorkflowId );
+
+    /**
+     * return a state with an order and a given workflow id
+     * @param nOrder the order
+     * @param nIdWorkflow the workflow id
+     * @return the state with info
+     */
+    State findByOrderAndWorkflowId( int nOrder, int nIdWorkflow );
+
+    /**
+     * decrements the order of all the next states after the one which will be
+     * removed
+     * @param nOrder the order
+     * @param nIdWorkflow the workflow id
+     */
+    void decrementOrderByOne( int nOrder, int nIdWorkflow );
 }

@@ -183,4 +183,31 @@ public class ActionService implements IActionService
     {
         _actionDAO.removeLinkedActions( nIdAction );
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Action findByOrderAndWorkflowId( int nOrder, int nIdWorkflow )
+    {
+        return _actionDAO.findByOrderAndWorkflowId( nOrder, nIdWorkflow );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int findMaximumOrderByWorkflowId( int nWorkflowId )
+    {
+        return _actionDAO.findMaximumOrderByWorkflowId( nWorkflowId );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void decrementOrderByOne( int nOrder, int nIdWorkflow )
+    {
+        _actionDAO.decrementOrderByOne( nOrder, nIdWorkflow );
+    }
 }

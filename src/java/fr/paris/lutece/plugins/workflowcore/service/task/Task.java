@@ -47,6 +47,7 @@ public abstract class Task implements ITask
     private int _nId;
     private ITaskType _taskType;
     private Action _action;
+    private int _nOrder;
 
     /**
      * {@inheritDoc}
@@ -100,5 +101,23 @@ public abstract class Task implements ITask
     public void setAction( Action action )
     {
         _action = action;
+    }
+
+    /**
+     * get the order of a task
+     * @return the order of the task(to display in lists)
+     */
+    public int getOrder(  )
+    {
+        return _nOrder;
+    }
+
+    /**
+     * set the order of an task
+     * @param nOrder the order
+     */
+    public void setOrder( int nOrder )
+    {
+        this._nOrder = nOrder;
     }
 }

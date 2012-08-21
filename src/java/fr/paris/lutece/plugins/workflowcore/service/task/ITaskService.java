@@ -80,4 +80,28 @@ public interface ITaskService
      * @return Task list
      */
     List<ITask> getListTaskByIdAction( int nIdAction, Locale locale );
+
+    /**
+     * return the maximum order number of the tasks in a given workflow
+     * @param nIdAction the action id
+     * @return the maximum order of the tasks in the given action
+     */
+    int findMaximumOrderByWorkflowId( int nIdAction );
+
+    /**
+     * return a task with an order and a given action id
+     * @param nIdAction the action id
+     * @param nOrder the given id
+     * @param locale the locale
+     * @return the task with info
+     */
+    ITask findByOrderAndActionId( int nOrder, int nIdAction, Locale locale );
+
+    /**
+     * decrements the order of all the next tasks after the one which will be
+     * removed
+     * @param nOrder the order id
+     * @param nIdAction the action id
+     */
+    void decrementOrderByOne( int nOrder, int nIdAction );
 }

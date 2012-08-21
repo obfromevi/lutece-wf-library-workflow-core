@@ -59,6 +59,7 @@ public class State implements IReferenceItem, RBACResource
     private List<Action> _listActions;
     private Boolean _bInitialState;
     private Boolean _bRequiredWorkgroupAssigned;
+    private int _nOrder;
 
     /**
      *
@@ -226,5 +227,23 @@ public class State implements IReferenceItem, RBACResource
     public void setRequiredWorkgroupAssigned( Boolean requireUserAssociated )
     {
         _bRequiredWorkgroupAssigned = requireUserAssociated;
+    }
+
+    /**
+     * get the order of a state
+     * @return the order of the state (to display in lists)
+     */
+    public int getOrder(  )
+    {
+        return _nOrder;
+    }
+
+    /**
+     * set the order of a state
+     * @param nOrder the order
+     */
+    public void setOrder( int nOrder )
+    {
+        this._nOrder = nOrder;
     }
 }

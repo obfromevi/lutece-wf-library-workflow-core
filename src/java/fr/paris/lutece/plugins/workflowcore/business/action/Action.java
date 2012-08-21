@@ -60,6 +60,7 @@ public class Action implements RBACResource, IReferenceItem
     private boolean _bAutomaticState;
     private boolean _bIsMassAction;
     private Collection<Integer> _listIdsLinkedAction;
+    private int _nOrder;
 
     /**
      *
@@ -261,5 +262,23 @@ public class Action implements RBACResource, IReferenceItem
     public Collection<Integer> getListIdsLinkedAction(  )
     {
         return _listIdsLinkedAction;
+    }
+
+    /**
+     * get the order of an action
+     * @return the order of the action (to display in lists)
+     */
+    public int getOrder(  )
+    {
+        return _nOrder;
+    }
+
+    /**
+     * set the order of an action
+     * @param nOrder the order to set
+     */
+    public void setOrder( int nOrder )
+    {
+        this._nOrder = nOrder;
     }
 }

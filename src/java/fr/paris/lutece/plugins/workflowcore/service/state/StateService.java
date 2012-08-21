@@ -146,4 +146,31 @@ public class StateService implements IStateService
 
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int findMaximumOrderByWorkflowId( int nWorkflowId )
+    {
+        return _stateDAO.findMaximumOrderByWorkflowId( nWorkflowId );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public State findByOrderAndWorkflowId( int nOrder, int nIdWorkflow )
+    {
+        return _stateDAO.findByOrderAndWorkflowId( nOrder, nIdWorkflow );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void decrementOrderByOne( int nOrder, int nIdWorkflow )
+    {
+        _stateDAO.decrementOrderByOne( nOrder, nIdWorkflow );
+    }
 }

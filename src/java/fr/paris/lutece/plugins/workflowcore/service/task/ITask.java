@@ -116,4 +116,16 @@ public interface ITask
      * Remove the task configuration
      */
     void doRemoveConfig(  );
+
+    /**
+     * get the order of a task
+     * @return the order of the task(to display in lists)
+     */
+    int getOrder(  );
+
+    /**
+     * set the order of an task
+     * @param nOrder the order
+     */
+    void setOrder( int nOrder );
 }
