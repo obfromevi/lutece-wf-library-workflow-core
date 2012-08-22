@@ -188,15 +188,6 @@ public class ActionService implements IActionService
      * {@inheritDoc}
      */
     @Override
-    public Action findByOrderAndWorkflowId( int nOrder, int nIdWorkflow )
-    {
-        return _actionDAO.findByOrderAndWorkflowId( nOrder, nIdWorkflow );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public int findMaximumOrderByWorkflowId( int nWorkflowId )
     {
         return _actionDAO.findMaximumOrderByWorkflowId( nWorkflowId );
@@ -209,5 +200,23 @@ public class ActionService implements IActionService
     public void decrementOrderByOne( int nOrder, int nIdWorkflow )
     {
         _actionDAO.decrementOrderByOne( nOrder, nIdWorkflow );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow )
+    {
+        return _actionDAO.findStatesBetweenOrders( nOrder1, nOrder2, nIdWorkflow );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow )
+    {
+        return _actionDAO.findStatesAfterOrder( nOrder, nIdWorkflow );
     }
 }

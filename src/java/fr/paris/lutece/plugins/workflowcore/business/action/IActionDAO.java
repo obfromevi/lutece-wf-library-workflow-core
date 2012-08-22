@@ -104,14 +104,6 @@ public interface IActionDAO
     Collection<Integer> selectListIdsLinkedAction( int nIdAction );
 
     /**
-     * return an action with an order and a given workflow id
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
-     * @return the action with info
-     */
-    Action findByOrderAndWorkflowId( int nOrder, int nIdWorkflow );
-
-    /**
      * return the maximum order number of that states in a given workflow
      * @param nWorkflowId the workflow id
      * @return the maximum order of the states in the workflow
@@ -125,4 +117,21 @@ public interface IActionDAO
      * @param nIdWorkflow the workflow id
      */
     void decrementOrderByOne( int nOrder, int nIdWorkflow );
+
+    /**
+     * Finds all the actions which have an order lower to a given order
+     * @param nOrder1 the order 1
+     * @param nOrder2 the order 2
+     * @param nIdWorkflow the workflow id
+     * @return List<State> the list of all the actions
+     */
+    List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
+
+    /**
+     * Finds all the actions which have an order greater to a given order
+     * @param nOrder the order
+     * @param nIdWorkflow the workflow id
+     * @return List<Action> the list of all the actions
+     */
+    List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 }

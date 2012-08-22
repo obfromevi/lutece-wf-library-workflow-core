@@ -89,19 +89,29 @@ public interface ITaskService
     int findMaximumOrderByWorkflowId( int nIdAction );
 
     /**
-     * return a task with an order and a given action id
-     * @param nIdAction the action id
-     * @param nOrder the given id
-     * @param locale the locale
-     * @return the task with info
-     */
-    ITask findByOrderAndActionId( int nOrder, int nIdAction, Locale locale );
-
-    /**
      * decrements the order of all the next tasks after the one which will be
      * removed
      * @param nOrder the order id
      * @param nIdAction the action id
      */
     void decrementOrderByOne( int nOrder, int nIdAction );
+
+    /**
+     * Finds all the tasks which have an order lower to a given order
+     * @param nOrder1 the order 1
+     * @param nOrder2 the order 2
+     * @param nIdAction the action id
+     * @param locale the locale
+     * @return List<ITask> the list of all the tasks
+     */
+    List<ITask> findTasksBetweenOrders( int nOrder1, int nOrder2, int nIdAction, Locale locale );
+
+    /**
+     * Finds all the tasks which have an order greater to a given order
+     * @param nOrder the order
+     * @param nIdAction the action id
+     * @param locale the locale
+     * @return List<ITask> the list of all the tasks
+     */
+    List<ITask> findTasksAfterOrder( int nOrder, int nIdAction, Locale locale );
 }

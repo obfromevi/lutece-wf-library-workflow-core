@@ -160,17 +160,26 @@ public class StateService implements IStateService
      * {@inheritDoc}
      */
     @Override
-    public State findByOrderAndWorkflowId( int nOrder, int nIdWorkflow )
+    public void decrementOrderByOne( int nOrder, int nIdWorkflow )
     {
-        return _stateDAO.findByOrderAndWorkflowId( nOrder, nIdWorkflow );
+        _stateDAO.decrementOrderByOne( nOrder, nIdWorkflow );
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void decrementOrderByOne( int nOrder, int nIdWorkflow )
+    public List<State> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow )
     {
-        _stateDAO.decrementOrderByOne( nOrder, nIdWorkflow );
+        return _stateDAO.findStatesBetweenOrders( nOrder1, nOrder2, nIdWorkflow );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow )
+    {
+        return _stateDAO.findStatesAfterOrder( nOrder, nIdWorkflow );
     }
 }

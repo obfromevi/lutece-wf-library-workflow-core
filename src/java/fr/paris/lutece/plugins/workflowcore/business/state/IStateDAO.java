@@ -94,18 +94,27 @@ public interface IStateDAO
     int findMaximumOrderByWorkflowId( int nWorkflowId );
 
     /**
-     * return a state with an order and a given workflow id
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
-     * @return the state with info
-     */
-    State findByOrderAndWorkflowId( int nOrder, int nIdWorkflow );
-
-    /**
      * decrements the order of all the next states after the one which will be
      * removed
      * @param nOrder the order
      * @param nIdWorkflow the workflow id
      */
     void decrementOrderByOne( int nOrder, int nIdWorkflow );
+
+    /**
+     * Finds all the states which have an order lower to a given order
+     * @param nOrder1 the order 1
+     * @param nOrder2 the order 2
+     * @param nIdWorkflow the workflow id
+     * @return List<State> the list of all the states
+     */
+    List<State> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
+
+    /**
+     * Finds all the states which have an order greater to a given order
+     * @param nOrder the order
+     * @param nIdWorkflow the workflow id
+     * @return List<State> the list of all the states
+     */
+    List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 }

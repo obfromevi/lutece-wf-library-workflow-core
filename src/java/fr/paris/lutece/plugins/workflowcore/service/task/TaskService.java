@@ -112,17 +112,26 @@ public class TaskService implements ITaskService
      * {@inheritDoc}
      */
     @Override
-    public ITask findByOrderAndActionId( int nOrder, int nIdAction, Locale locale )
+    public void decrementOrderByOne( int nOrder, int nIdAction )
     {
-        return _taskDAO.findByOrderAndActionId( nOrder, nIdAction, locale );
+        _taskDAO.decrementOrderByOne( nOrder, nIdAction );
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void decrementOrderByOne( int nOrder, int nIdAction )
+    public List<ITask> findTasksBetweenOrders( int nOrder1, int nOrder2, int nIdAction, Locale locale )
     {
-        _taskDAO.decrementOrderByOne( nOrder, nIdAction );
+        return _taskDAO.findTasksBetweenOrders( nOrder1, nOrder2, nIdAction, locale );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ITask> findTasksAfterOrder( int nOrder, int nIdAction, Locale locale )
+    {
+        return _taskDAO.findTasksAfterOrder( nOrder, nIdAction, locale );
     }
 }
