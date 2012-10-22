@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>library-workflow-core</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <name>Library Workflow Core</name>
     <description>Workflow Core library</description>
     
@@ -96,8 +96,8 @@
     </dependencies>
     
     <scm>
-        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-workflow-core</connection>
-        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/library/library-workflow-core</developerConnection>
-        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/library/library-workflow-core</url>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-workflow-core-1.0.3</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/library-workflow-core-1.0.3</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/tags/library-workflow-core-1.0.3</url>
     </scm>
 </project>
