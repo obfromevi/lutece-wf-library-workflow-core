@@ -190,13 +190,13 @@ public class StateService implements IStateService
     public void initializeStateOrder( int nIdWorkflow )
     {
         List<State> listState = _stateDAO.findStatesForOrderInit( nIdWorkflow );
-        int order = 1;
+        int nOrder = 1;
+
         for ( State state : listState )
         {
-            state.setOrder( order );
+            state.setOrder( nOrder );
             update( state );
-            order++;
+            nOrder++;
         }
     }
-
 }

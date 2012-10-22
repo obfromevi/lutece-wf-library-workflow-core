@@ -142,12 +142,13 @@ public class TaskService implements ITaskService
     public void initializeTaskOrder( int nIdAction, Locale locale )
     {
         List<ITask> listTask = _taskDAO.findTasksForOrderInit( nIdAction, locale );
-        int order = 1;
+        int nOrder = 1;
+
         for ( ITask task : listTask )
         {
-            task.setOrder( order );
+            task.setOrder( nOrder );
             update( task );
-            order++;
+            nOrder++;
         }
     }
 }

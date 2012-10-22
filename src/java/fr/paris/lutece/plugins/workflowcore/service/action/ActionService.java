@@ -227,12 +227,13 @@ public class ActionService implements IActionService
     public void initializeActionOrder( int nIdWorkflow )
     {
         List<Action> listAction = _actionDAO.findActionsForOrderInit( nIdWorkflow );
-        int order = 1;
+        int nOrder = 1;
+
         for ( Action action : listAction )
         {
-            action.setOrder( order );
+            action.setOrder( nOrder );
             update( action );
-            order++;
+            nOrder++;
         }
     }
 }
