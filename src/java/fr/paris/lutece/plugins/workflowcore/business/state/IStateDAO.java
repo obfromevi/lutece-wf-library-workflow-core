@@ -117,4 +117,11 @@ public interface IStateDAO
      * @return List<State> the list of all the states
      */
     List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+
+    /**
+     * Finds all the states for the given workflow ordered by id
+     * @param nIdWorkflow the workflow id
+     * @return List<State> the list of all the states
+     */
+    List<State> findStatesForOrderInit( int nIdWorkflow );
 }

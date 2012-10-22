@@ -182,4 +182,21 @@ public class StateService implements IStateService
     {
         return _stateDAO.findStatesAfterOrder( nOrder, nIdWorkflow );
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void initializeStateOrder( int nIdWorkflow )
+    {
+        List<State> listState = _stateDAO.findStatesForOrderInit( nIdWorkflow );
+        int order = 1;
+        for ( State state : listState )
+        {
+            state.setOrder( order );
+            update( state );
+            order++;
+        }
+    }
+
 }

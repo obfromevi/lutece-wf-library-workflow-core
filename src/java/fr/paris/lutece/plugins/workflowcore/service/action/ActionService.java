@@ -219,4 +219,20 @@ public class ActionService implements IActionService
     {
         return _actionDAO.findStatesAfterOrder( nOrder, nIdWorkflow );
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void initializeActionOrder( int nIdWorkflow )
+    {
+        List<Action> listAction = _actionDAO.findActionsForOrderInit( nIdWorkflow );
+        int order = 1;
+        for ( Action action : listAction )
+        {
+            action.setOrder( order );
+            update( action );
+            order++;
+        }
+    }
 }

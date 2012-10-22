@@ -134,4 +134,11 @@ public interface IActionDAO
      * @return List<Action> the list of all the actions
      */
     List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+
+    /**
+     * Finds all the actions for the given workflow ordered by id
+     * @param nIdWorkflow the workflow id
+     * @return List<Action> the list of all the states
+     */
+    List<Action> findActionsForOrderInit( int nIdWorkflow );
 }

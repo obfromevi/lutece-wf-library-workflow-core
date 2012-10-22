@@ -132,4 +132,10 @@ public interface IActionService
      * @return List<Action> the list of all the actions
      */
     List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+
+    /**
+     * Initialize the display order of actions using their ids
+     * @param nIdWorkflow the workflow id
+     */
+    void initializeActionOrder( int nIdWorkflow );
 }

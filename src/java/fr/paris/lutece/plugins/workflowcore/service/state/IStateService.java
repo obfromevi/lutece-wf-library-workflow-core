@@ -127,4 +127,10 @@ public interface IStateService
      * @return List<State> the list of all the states
      */
     List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+
+    /**
+     * Initialize the display order of states using their ids
+     * @param nIdWorkflow the workflow id
+     */
+    void initializeStateOrder( int nIdWorkflow );
 }

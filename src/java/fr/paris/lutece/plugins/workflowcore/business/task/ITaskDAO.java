@@ -115,4 +115,12 @@ public interface ITaskDAO
      * @return List<ITask> the list of all the tasks
      */
     List<ITask> findTasksAfterOrder( int nOrder, int nIdAction, Locale locale );
+
+    /**
+     * Finds all the tasks for the given action ordered by id
+     * @param nIdAction the action id
+     * @param locale the locale
+     * @return List<Task> the list of all the tasks
+     */
+    List<ITask> findTasksForOrderInit( int nIdAction, Locale locale );
 }

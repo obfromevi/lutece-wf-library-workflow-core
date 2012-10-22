@@ -114,4 +114,11 @@ public interface ITaskService
      * @return List<ITask> the list of all the tasks
      */
     List<ITask> findTasksAfterOrder( int nOrder, int nIdAction, Locale locale );
+
+    /**
+     * Initialize the display order of tasks using their ids
+     * @param nIdAction the action id
+     * @param locale the locale
+     */
+    void initializeTaskOrder( int nIdAction, Locale locale );
 }
