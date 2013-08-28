@@ -683,6 +683,10 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType )
     {
         List<ResourceWorkflow> listResourceWorkflow = _resourceWorkflowService.getAllResourceWorkflowByState( nIdState );
+        if ( listResourceWorkflow == null || listResourceWorkflow.size( ) == 0 )
+        {
+            return new ArrayList<Integer>( );
+        }
         List<Integer> listResourceId = new ArrayList<Integer>( listResourceWorkflow.size( ) );
         for ( ResourceWorkflow resourceWorkflow : listResourceWorkflow )
         {
