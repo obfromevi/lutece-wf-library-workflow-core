@@ -215,7 +215,7 @@ public interface IWorkflowService
      *         given. Return an empty list if no resource was found, or if the
      *         state does not exist.
      */
-    public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType );
+    List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType );
 
     /**
      * Execute action automatic
