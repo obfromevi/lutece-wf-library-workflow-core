@@ -156,7 +156,7 @@ public class ResourceWorkflowService implements IResourceWorkflowService
     @Override
     public List<ResourceWorkflow> getAllResourceWorkflowByState( int nIdState )
     {
-        return _resourceWorkflowDAO.selectResourceWorkflowByWorkflow( nIdState );
+        return _resourceWorkflowDAO.selectResourceWorkflowByState( nIdState );
     }
 
     /**
