@@ -53,20 +53,22 @@ import javax.servlet.http.HttpServletRequest;
 public interface IWorkflowService
 {
     /**
-    * Creation of an instance of workflow
-    * @param workflow The instance of workflow which contains the informations to store
-    */
+     * Creation of an instance of workflow
+     * @param workflow The instance of workflow which contains the informations
+     *            to store
+     */
     void create( Workflow workflow );
 
     /**
      * Update of workflow which is specified in parameter
-     * @param workflow The instance of workflow which contains the informations to update
+     * @param workflow The instance of workflow which contains the informations
+     *            to update
      */
     void update( Workflow workflow );
 
     /**
-     * Remove workflow  which is specified in parameter
-     * @param  nIdWorkflow the workflow to remove
+     * Remove workflow which is specified in parameter
+     * @param nIdWorkflow the workflow to remove
      */
     void remove( int nIdWorkflow );
 
@@ -87,7 +89,8 @@ public interface IWorkflowService
     List<Workflow> getListWorkflowsByFilter( WorkflowFilter filter );
 
     /**
-     * returns a list of actions possible for a given document based on the status
+     * returns a list of actions possible for a given document based on the
+     * status
      * of the document in the workflow and the user role
      * @param nIdResource the document id
      * @param strResourceType the document type
@@ -97,7 +100,8 @@ public interface IWorkflowService
     Collection<Action> getActions( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
-     * returns a list of actions possible for a given document based on the status
+     * returns a list of actions possible for a given document based on the
+     * status
      * of the document in the workflow and the user role
      * @param listIdResource the list of resource id
      * @param strResourceType the document type
@@ -106,10 +110,10 @@ public interface IWorkflowService
      * @return a list of Action
      */
     Map<Integer, List<Action>> getActions( List<Integer> listIdResource, String strResourceType,
-        Integer nIdExternalParentId, int nIdWorkflow );
+            Integer nIdExternalParentId, int nIdWorkflow );
 
     /**
-     * returns the state of a  given document
+     * returns the state of a given document
      * @param nIdResource the resource id
      * @param strResourceType the resource type
      * @param nIdWorkflow the workflow id
@@ -119,7 +123,7 @@ public interface IWorkflowService
     State getState( int nIdResource, String strResourceType, int nIdWorkflow, Integer nIdExternalParentId );
 
     /**
-     * returns all state of a  given workflow
+     * returns all state of a given workflow
      * @param nIdWorkflow the workflow id
      * @return the state of a given document
      */
@@ -140,7 +144,8 @@ public interface IWorkflowService
     Map<String, String> getMapTaskTypes( Locale locale );
 
     /**
-     * Create a ResourceWorkflow Object wich contains the association of  resource and the initial state of the workflow
+     * Create a ResourceWorkflow Object wich contains the association of
+     * resource and the initial state of the workflow
      * @param nIdResource the resource id
      * @param strResourceType the resource type
      * @param workflow the workflow
@@ -148,7 +153,7 @@ public interface IWorkflowService
      * @return a ResourceWorkflow Object
      */
     ResourceWorkflow getInitialResourceWorkflow( int nIdResource, String strResourceType, Workflow workflow,
-        Integer nExternalParentId );
+            Integer nExternalParentId );
 
     // CHECK
 
@@ -184,7 +189,7 @@ public interface IWorkflowService
      * @param strUserAccessCode the user access code
      */
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId,
-        HttpServletRequest request, Locale locale, boolean isAutomatic, String strUserAccessCode );
+            HttpServletRequest request, Locale locale, boolean isAutomatic, String strUserAccessCode );
 
     /**
      * Remove in all workflows the resource specified in parameter
@@ -196,10 +201,21 @@ public interface IWorkflowService
     /**
      * Remove list of resource by list of id resource
      * @param lListIdResource the list of resource id
-     * @param strResourceType  the resource type
+     * @param strResourceType the resource type
      * @param nIdWorflow the workflow id
      */
     void doRemoveWorkFlowResourceByListId( List<Integer> lListIdResource, String strResourceType, Integer nIdWorflow );
+
+    /**
+     * Get the list of ids of resources of a given type that are in a given
+     * state
+     * @param nIdState The id of the state of resources to get
+     * @param strResourceType The type of resources to get
+     * @return The list of resources matching both given state id and resource
+     *         given. Return an empty list if no resource was found, or if the
+     *         state does not exist.
+     */
+    public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType );
 
     /**
      * Execute action automatic

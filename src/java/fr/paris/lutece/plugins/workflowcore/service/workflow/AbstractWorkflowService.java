@@ -61,14 +61,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.inject.Inject;
-
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
 
 
 /**
- *
+ * 
  * AbstractWorkflowService
- *
+ * 
  */
 public abstract class AbstractWorkflowService implements IWorkflowService
 {
@@ -120,36 +121,36 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     public void remove( int nIdWorkflow )
     {
         // Remove associated workflow resources
-        this.debug( "WorkflowService - Removing all resource workflow associated to the workflow (ID " + nIdWorkflow +
-            ")" );
+        this.debug( "WorkflowService - Removing all resource workflow associated to the workflow (ID " + nIdWorkflow
+                + ")" );
 
-        for ( ResourceWorkflow resourceWorkflow : _resourceWorkflowService.getAllResourceWorkflowByWorkflow( 
-                nIdWorkflow ) )
+        for ( ResourceWorkflow resourceWorkflow : _resourceWorkflowService
+                .getAllResourceWorkflowByWorkflow( nIdWorkflow ) )
         {
-            doRemoveWorkFlowResource( resourceWorkflow.getIdResource(  ), resourceWorkflow.getResourceType(  ),
-                nIdWorkflow );
+            doRemoveWorkFlowResource( resourceWorkflow.getIdResource( ), resourceWorkflow.getResourceType( ),
+                    nIdWorkflow );
         }
 
         // Remove associated actions
         this.debug( "WorkflowService - Removing all actions associated to the workflow (ID " + nIdWorkflow + ")" );
 
-        ActionFilter actionFilter = new ActionFilter(  );
+        ActionFilter actionFilter = new ActionFilter( );
         actionFilter.setIdWorkflow( nIdWorkflow );
 
         for ( Action actionToRemove : _actionService.getListActionByFilter( actionFilter ) )
         {
-            _actionService.remove( actionToRemove.getId(  ) );
+            _actionService.remove( actionToRemove.getId( ) );
         }
 
         // Remove associated states
         this.debug( "WorkflowService - Removing all states associated to the workflow (ID " + nIdWorkflow + ")" );
 
-        StateFilter stateFilter = new StateFilter(  );
+        StateFilter stateFilter = new StateFilter( );
         stateFilter.setIdWorkflow( nIdWorkflow );
 
         for ( State state : _stateService.getListStateByFilter( stateFilter ) )
         {
-            _stateService.remove( state.getId(  ) );
+            _stateService.remove( state.getId( ) );
         }
 
         this.debug( "WorkflowService - Removing workflow (ID " + nIdWorkflow + ")" );
@@ -182,25 +183,25 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     @Override
     public Collection<Action> getActions( int nIdResource, String strResourceType, int nIdWorkflow )
     {
-        List<Action> listAction = new ArrayList<Action>(  );
+        List<Action> listAction = new ArrayList<Action>( );
         State resourceState = null;
         ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType,
                 nIdWorkflow );
 
         if ( resourceWorkflow != null )
         {
-            resourceState = resourceWorkflow.getState(  );
+            resourceState = resourceWorkflow.getState( );
         }
         else
         {
             // Get initial state
-            StateFilter filter = new StateFilter(  );
+            StateFilter filter = new StateFilter( );
             filter.setIsInitialState( StateFilter.FILTER_TRUE );
             filter.setIdWorkflow( nIdWorkflow );
 
             List<State> listState = _stateService.getListStateByFilter( filter );
 
-            if ( listState.size(  ) > 0 )
+            if ( listState.size( ) > 0 )
             {
                 resourceState = listState.get( 0 );
             }
@@ -208,8 +209,8 @@ public abstract class AbstractWorkflowService implements IWorkflowService
 
         if ( resourceState != null )
         {
-            ActionFilter filter = new ActionFilter(  );
-            filter.setIdStateBefore( resourceState.getId(  ) );
+            ActionFilter filter = new ActionFilter( );
+            filter.setIdStateBefore( resourceState.getId( ) );
             filter.setIdWorkflow( nIdWorkflow );
             listAction = _actionService.getListActionByFilter( filter );
         }
@@ -222,19 +223,19 @@ public abstract class AbstractWorkflowService implements IWorkflowService
      */
     @Override
     public Map<Integer, List<Action>> getActions( List<Integer> listIdResource, String strResourceType,
-        Integer nIdExternalParentId, int nIdWorkflow )
+            Integer nIdExternalParentId, int nIdWorkflow )
     {
-        Map<Integer, List<Action>> result = new HashMap<Integer, List<Action>>(  );
+        Map<Integer, List<Action>> result = new HashMap<Integer, List<Action>>( );
         State initialState = null;
 
         // Get initial state
-        StateFilter filter = new StateFilter(  );
+        StateFilter filter = new StateFilter( );
         filter.setIsInitialState( StateFilter.FILTER_TRUE );
         filter.setIdWorkflow( nIdWorkflow );
 
         List<State> listState = _stateService.getListStateByFilter( filter );
 
-        if ( listState.size(  ) > 0 )
+        if ( listState.size( ) > 0 )
         {
             initialState = listState.get( 0 );
         }
@@ -242,38 +243,38 @@ public abstract class AbstractWorkflowService implements IWorkflowService
         Map<Integer, Integer> listIdsState = _resourceWorkflowService.getListIdStateByListId( listIdResource,
                 nIdWorkflow, strResourceType, nIdExternalParentId );
 
-        listIdResource.removeAll( listIdsState.keySet(  ) );
+        listIdResource.removeAll( listIdsState.keySet( ) );
 
         // Get all workflowstate
-        StateFilter filterAll = new StateFilter(  );
+        StateFilter filterAll = new StateFilter( );
         filterAll.setIdWorkflow( nIdWorkflow );
 
         List<State> listAllState = _stateService.getListStateByFilter( filterAll );
 
-        Map<Integer, List<Action>> listActionByStateId = new HashMap<Integer, List<Action>>(  );
+        Map<Integer, List<Action>> listActionByStateId = new HashMap<Integer, List<Action>>( );
 
         for ( State state : listAllState )
         {
-            ActionFilter actionfilter = new ActionFilter(  );
-            actionfilter.setIdStateBefore( state.getId(  ) );
+            ActionFilter actionfilter = new ActionFilter( );
+            actionfilter.setIdStateBefore( state.getId( ) );
             actionfilter.setIdWorkflow( nIdWorkflow );
 
             List<Action> listAction = _actionService.getListActionByFilter( actionfilter );
-            listActionByStateId.put( state.getId(  ), listAction );
+            listActionByStateId.put( state.getId( ), listAction );
         }
 
-        for ( Entry<Integer, Integer> entry : listIdsState.entrySet(  ) )
+        for ( Entry<Integer, Integer> entry : listIdsState.entrySet( ) )
         {
-            if ( listActionByStateId.containsKey( entry.getValue(  ) ) )
+            if ( listActionByStateId.containsKey( entry.getValue( ) ) )
             {
-                result.put( entry.getKey(  ), listActionByStateId.get( entry.getValue(  ) ) );
+                result.put( entry.getKey( ), listActionByStateId.get( entry.getValue( ) ) );
             }
         }
 
         if ( initialState != null )
         {
-            ActionFilter actionfilter = new ActionFilter(  );
-            actionfilter.setIdStateBefore( initialState.getId(  ) );
+            ActionFilter actionfilter = new ActionFilter( );
+            actionfilter.setIdStateBefore( initialState.getId( ) );
             actionfilter.setIdWorkflow( nIdWorkflow );
 
             List<Action> listAction = _actionService.getListActionByFilter( actionfilter );
@@ -293,7 +294,7 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     @Override
     public Collection<State> getAllStateByWorkflow( int nIdWorkflow )
     {
-        StateFilter stateFilter = new StateFilter(  );
+        StateFilter stateFilter = new StateFilter( );
         stateFilter.setIdWorkflow( nIdWorkflow );
 
         return _stateService.getListStateByFilter( stateFilter );
@@ -305,7 +306,7 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     @Override
     public List<Action> getMassActions( int nIdWorkflow )
     {
-        ActionFilter aFilter = new ActionFilter(  );
+        ActionFilter aFilter = new ActionFilter( );
         aFilter.setIdWorkflow( nIdWorkflow );
         aFilter.setIsMassAction( true );
 
@@ -318,8 +319,8 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     @Override
     public State getState( int nIdResource, String strResourceType, int nIdWorkflow, Integer nIdExternalParent )
     {
-        this.debug( "WorkflowService - Getting the state for ID resource = " + nIdResource + ", resource type = " +
-            strResourceType + ", ID workflow = " + nIdWorkflow + ", ID external parent " + nIdExternalParent );
+        this.debug( "WorkflowService - Getting the state for ID resource = " + nIdResource + ", resource type = "
+                + strResourceType + ", ID workflow = " + nIdWorkflow + ", ID external parent " + nIdExternalParent );
 
         State resourceState = _stateService.findByResource( nIdResource, strResourceType, nIdWorkflow );
 
@@ -334,13 +335,14 @@ public abstract class AbstractWorkflowService implements IWorkflowService
             if ( workflow != null )
             {
                 this.debug( "WorkflowService - Building the inital resource workflow." );
-                resourceWorkflow = getInitialResourceWorkflow( nIdResource, strResourceType, workflow, nIdExternalParent );
+                resourceWorkflow = getInitialResourceWorkflow( nIdResource, strResourceType, workflow,
+                        nIdExternalParent );
             }
 
             if ( resourceWorkflow != null )
             {
                 _resourceWorkflowService.create( resourceWorkflow );
-                resourceState = resourceWorkflow.getState(  );
+                resourceState = resourceWorkflow.getState( );
             }
         }
 
@@ -354,13 +356,13 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     public Map<String, String> getMapTaskTypes( Locale locale )
     {
         Collection<ITaskType> listTaskTypes = _taskFactory.getAllTaskTypes( locale );
-        Map<String, String> mapTaskTypes = new HashMap<String, String>(  );
+        Map<String, String> mapTaskTypes = new HashMap<String, String>( );
 
-        if ( ( listTaskTypes != null ) && !listTaskTypes.isEmpty(  ) )
+        if ( ( listTaskTypes != null ) && !listTaskTypes.isEmpty( ) )
         {
             for ( ITaskType taskType : listTaskTypes )
             {
-                mapTaskTypes.put( taskType.getKey(  ), taskType.getTitle(  ) );
+                mapTaskTypes.put( taskType.getKey( ), taskType.getTitle( ) );
             }
         }
 
@@ -372,18 +374,18 @@ public abstract class AbstractWorkflowService implements IWorkflowService
      */
     @Override
     public ResourceWorkflow getInitialResourceWorkflow( int nIdResource, String strResourceType, Workflow workflow,
-        Integer nExternalParentId )
+            Integer nExternalParentId )
     {
         ResourceWorkflow resourceWorkflow = null;
-        StateFilter filter = new StateFilter(  );
-        filter.setIdWorkflow( workflow.getId(  ) );
+        StateFilter filter = new StateFilter( );
+        filter.setIdWorkflow( workflow.getId( ) );
         filter.setIsInitialState( StateFilter.FILTER_TRUE );
 
         List<State> listInitialState = _stateService.getListStateByFilter( filter );
 
-        if ( ( listInitialState != null ) && !listInitialState.isEmpty(  ) )
+        if ( ( listInitialState != null ) && !listInitialState.isEmpty( ) )
         {
-            resourceWorkflow = new ResourceWorkflow(  );
+            resourceWorkflow = new ResourceWorkflow( );
             resourceWorkflow.setIdResource( nIdResource );
             resourceWorkflow.setResourceType( strResourceType );
             resourceWorkflow.setState( listInitialState.get( 0 ) );
@@ -404,25 +406,25 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     {
         Action action = _actionService.findByPrimaryKey( nIdAction );
 
-        StringBuilder sbLog = new StringBuilder( "\nWorkflowService - Checking permision to execute action ID " +
-                nIdAction + " for ID resource " + nIdResource + ", resource type '" + strResourceType +
-                "', ID external parent " + nIdExternalParent );
+        StringBuilder sbLog = new StringBuilder( "\nWorkflowService - Checking permision to execute action ID "
+                + nIdAction + " for ID resource " + nIdResource + ", resource type '" + strResourceType
+                + "', ID external parent " + nIdExternalParent );
 
         if ( action != null )
         {
             ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource,
-                    strResourceType, action.getWorkflow(  ).getId(  ) );
+                    strResourceType, action.getWorkflow( ).getId( ) );
 
-            if ( ( resourceWorkflow != null ) &&
-                    ( resourceWorkflow.getState(  ).getId(  ) == action.getStateBefore(  ).getId(  ) ) )
+            if ( ( resourceWorkflow != null )
+                    && ( resourceWorkflow.getState( ).getId( ) == action.getStateBefore( ).getId( ) ) )
             {
-                this.debug( sbLog.append( "\nOK" ).toString(  ) );
+                this.debug( sbLog.append( "\nOK" ).toString( ) );
 
                 return true;
             }
         }
 
-        this.debug( sbLog.append( "\nNOK" ).toString(  ) );
+        this.debug( sbLog.append( "\nNOK" ).toString( ) );
 
         return false;
     }
@@ -437,7 +439,7 @@ public abstract class AbstractWorkflowService implements IWorkflowService
 
         for ( ITask task : listTasks )
         {
-            if ( task.getTaskType(  ).isFormTaskRequired(  ) )
+            if ( task.getTaskType( ).isFormTaskRequired( ) )
             {
                 return true;
             }
@@ -453,23 +455,23 @@ public abstract class AbstractWorkflowService implements IWorkflowService
      */
     @Override
     public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent,
-        HttpServletRequest request, Locale locale, boolean bIsAutomatic, String strUserAccessCode )
+            HttpServletRequest request, Locale locale, boolean bIsAutomatic, String strUserAccessCode )
     {
-        this.debug( "\n--- WorkflowService - Starting doProcessAction ---" + "\n\tID resource = " + nIdResource +
-            "\n\tResource type = " + strResourceType + "\n\tID external parent " + nIdExternalParent +
-            "\n\tis automatic = " + bIsAutomatic + "\n\tUser access code = " + strUserAccessCode + "\n\tID action = " +
-            nIdAction );
+        this.debug( "\n--- WorkflowService - Starting doProcessAction ---" + "\n\tID resource = " + nIdResource
+                + "\n\tResource type = " + strResourceType + "\n\tID external parent " + nIdExternalParent
+                + "\n\tis automatic = " + bIsAutomatic + "\n\tUser access code = " + strUserAccessCode
+                + "\n\tID action = " + nIdAction );
 
         Action action = _actionService.findByPrimaryKey( nIdAction );
 
         if ( ( action != null ) && canProcessAction( nIdResource, strResourceType, nIdAction, nIdExternalParent ) )
         {
             ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource,
-                    strResourceType, action.getWorkflow(  ).getId(  ) );
+                    strResourceType, action.getWorkflow( ).getId( ) );
 
             if ( resourceWorkflow == null )
             {
-                resourceWorkflow = getInitialResourceWorkflow( nIdResource, strResourceType, action.getWorkflow(  ),
+                resourceWorkflow = getInitialResourceWorkflow( nIdResource, strResourceType, action.getWorkflow( ),
                         nIdExternalParent );
 
                 if ( resourceWorkflow != null )
@@ -491,48 +493,47 @@ public abstract class AbstractWorkflowService implements IWorkflowService
 
             for ( ITask task : listActionTasks )
             {
-                this.debug( "WorkflowService - Executing task ID " + task.getId(  ) );
+                this.debug( "WorkflowService - Executing task ID " + task.getId( ) );
                 task.setAction( action );
 
                 try
                 {
-                    task.processTask( resourceHistory.getId(  ), request, locale );
+                    task.processTask( resourceHistory.getId( ), request, locale );
                 }
                 catch ( Exception e )
                 {
-                    this.debug( "WorkflowService - Reverting the resource history ID " + resourceHistory.getId(  ) );
+                    this.debug( "WorkflowService - Reverting the resource history ID " + resourceHistory.getId( ) );
                     // Revert the creation of the resource history
-                    _resourceHistoryService.remove( resourceHistory.getId(  ) );
+                    _resourceHistoryService.remove( resourceHistory.getId( ) );
 
-                    throw new RuntimeException( "WorkflowService - Error when executing task ID " + task.getId(  ), e );
+                    throw new RuntimeException( "WorkflowService - Error when executing task ID " + task.getId( ), e );
                 }
             }
 
             // Reload the resource workflow in case a task had modified it
-            resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType,
-                    action.getWorkflow(  ).getId(  ) );
-            resourceWorkflow.setState( action.getStateAfter(  ) );
+            resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType, action
+                    .getWorkflow( ).getId( ) );
+            resourceWorkflow.setState( action.getStateAfter( ) );
             resourceWorkflow.setExternalParentId( nIdExternalParent );
             _resourceWorkflowService.update( resourceWorkflow );
 
-            if ( action.getStateAfter(  ) != null )
+            if ( action.getStateAfter( ) != null )
             {
-                this.debug( "WorkflowService - Getting the actions of the next state of the resource ID " +
-                    nIdResource );
+                this.debug( "WorkflowService - Getting the actions of the next state of the resource ID " + nIdResource );
 
-                State state = action.getStateAfter(  );
-                ActionFilter actionFilter = new ActionFilter(  );
-                actionFilter.setIdWorkflow( action.getWorkflow(  ).getId(  ) );
-                actionFilter.setIdStateBefore( state.getId(  ) );
+                State state = action.getStateAfter( );
+                ActionFilter actionFilter = new ActionFilter( );
+                actionFilter.setIdWorkflow( action.getWorkflow( ).getId( ) );
+                actionFilter.setIdStateBefore( state.getId( ) );
                 actionFilter.setIsAutomaticState( 1 );
 
                 List<Action> listAction = _actionService.getListActionByFilter( actionFilter );
 
-                if ( ( listAction != null ) && !listAction.isEmpty(  ) && ( listAction.get( 0 ) != null ) )
+                if ( ( listAction != null ) && !listAction.isEmpty( ) && ( listAction.get( 0 ) != null ) )
                 {
-                    this.debug( "WorkflowService - Executing the automatic action ID " + listAction.get( 0 ).getId(  ) );
-                    doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId(  ), nIdExternalParent,
-                        request, locale, true, null );
+                    this.debug( "WorkflowService - Executing the automatic action ID " + listAction.get( 0 ).getId( ) );
+                    doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent,
+                            request, locale, true, null );
                 }
             }
         }
@@ -546,57 +547,56 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     @Override
     public void doRemoveWorkFlowResource( int nIdResource, String strResourceType )
     {
-        for ( Workflow workflow : getListWorkflowsByFilter( new WorkflowFilter(  ) ) )
+        for ( Workflow workflow : getListWorkflowsByFilter( new WorkflowFilter( ) ) )
         {
-            doRemoveWorkFlowResource( nIdResource, strResourceType, workflow.getId(  ) );
+            doRemoveWorkFlowResource( nIdResource, strResourceType, workflow.getId( ) );
         }
     }
 
     /**
-    * Remove in the workflow the resource specified in parameter
-    * @param nIdResource the resource id
-    * @param strResourceType the resource type
-    * @param nIdWorkflow the workflow id
-    */
+     * Remove in the workflow the resource specified in parameter
+     * @param nIdResource the resource id
+     * @param strResourceType the resource type
+     * @param nIdWorkflow the workflow id
+     */
     public void doRemoveWorkFlowResource( int nIdResource, String strResourceType, int nIdWorkflow )
     {
-        this.debug( "WorkflowService - Removing workflow resource for resource ID " + nIdResource +
-            ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
+        this.debug( "WorkflowService - Removing workflow resource for resource ID " + nIdResource
+                + ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
 
         List<ResourceHistory> listResourceHistoryToRemove;
-        List<ITask> listTask = new ArrayList<ITask>(  );
+        List<ITask> listTask = new ArrayList<ITask>( );
         List<Action> listWorkflowAction;
 
         listResourceHistoryToRemove = _resourceHistoryService.getAllHistoryByResource( nIdResource, strResourceType,
                 nIdWorkflow );
 
-        ActionFilter actionFilter = new ActionFilter(  );
+        ActionFilter actionFilter = new ActionFilter( );
         actionFilter.setIdWorkflow( nIdWorkflow );
         listWorkflowAction = _actionService.getListActionByFilter( actionFilter );
 
         for ( Action action : listWorkflowAction )
         {
-            listTask.addAll( _taskService.getListTaskByIdAction( action.getId(  ), Locale.getDefault(  ) ) );
+            listTask.addAll( _taskService.getListTaskByIdAction( action.getId( ), Locale.getDefault( ) ) );
         }
 
         // Remove TaskInformation
-        this.debug( 
-            "WorkflowService - Removing the resource history associated to the resource workflow for ID resource = " +
-            nIdResource + ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
+        this.debug( "WorkflowService - Removing the resource history associated to the resource workflow for ID resource = "
+                + nIdResource + ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
 
         for ( ResourceHistory resourceHistory : listResourceHistoryToRemove )
         {
             for ( ITask task : listTask )
             {
-                task.doRemoveTaskInformation( resourceHistory.getId(  ) );
+                task.doRemoveTaskInformation( resourceHistory.getId( ) );
             }
 
-            _resourceHistoryService.remove( resourceHistory.getId(  ) );
+            _resourceHistoryService.remove( resourceHistory.getId( ) );
         }
 
         // Remove resourceWorkflow
-        this.debug( "WorkflowService - Removing the resource workflow for ID resource = " + nIdResource +
-            ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
+        this.debug( "WorkflowService - Removing the resource workflow for ID resource = " + nIdResource
+                + ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow );
 
         ResourceWorkflow resourceWorkflowToRemove = _resourceWorkflowService.findByPrimaryKey( nIdResource,
                 strResourceType, nIdWorkflow );
@@ -612,22 +612,22 @@ public abstract class AbstractWorkflowService implements IWorkflowService
      */
     @Override
     public void doRemoveWorkFlowResourceByListId( List<Integer> lListIdResource, String strResourceType,
-        Integer nIdWorflow )
+            Integer nIdWorflow )
     {
         this.debug( "WorkflowService - Removing the workflow resource by a list of IDs resource." );
 
         List<Integer> listIdHistory = _resourceHistoryService.getListHistoryIdByListIdResourceId( lListIdResource,
                 strResourceType, nIdWorflow );
 
-        ActionFilter actionFilter = new ActionFilter(  );
+        ActionFilter actionFilter = new ActionFilter( );
         actionFilter.setIdWorkflow( nIdWorflow );
 
         List<Action> listWorkflowAction = _actionService.getListActionByFilter( actionFilter );
-        List<ITask> listTask = new ArrayList<ITask>(  );
+        List<ITask> listTask = new ArrayList<ITask>( );
 
         for ( Action action : listWorkflowAction )
         {
-            listTask.addAll( _taskService.getListTaskByIdAction( action.getId(  ), Locale.getDefault(  ) ) );
+            listTask.addAll( _taskService.getListTaskByIdAction( action.getId( ), Locale.getDefault( ) ) );
         }
 
         for ( Integer nIdHistory : listIdHistory )
@@ -647,32 +647,50 @@ public abstract class AbstractWorkflowService implements IWorkflowService
      */
     @Override
     public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow,
-        Integer nExternalParentId )
+            Integer nExternalParentId )
     {
-        this.debug( "WorkflowService - Executing automatic action for ID resource = " + nIdResource +
-            ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow + ", ID external parent = " +
-            nExternalParentId );
+        this.debug( "WorkflowService - Executing automatic action for ID resource = " + nIdResource
+                + ", Resource type = " + strResourceType + ", ID workflow = " + nIdWorkflow + ", ID external parent = "
+                + nExternalParentId );
 
         ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType,
                 nIdWorkflow );
 
-        if ( ( resourceWorkflow != null ) && ( resourceWorkflow.getState(  ) != null ) )
+        if ( ( resourceWorkflow != null ) && ( resourceWorkflow.getState( ) != null ) )
         {
-            State state = resourceWorkflow.getState(  );
-            state = _stateService.findByPrimaryKey( state.getId(  ) );
+            State state = resourceWorkflow.getState( );
+            state = _stateService.findByPrimaryKey( state.getId( ) );
 
-            ActionFilter actionFilter = new ActionFilter(  );
-            actionFilter.setIdWorkflow( state.getWorkflow(  ).getId(  ) );
-            actionFilter.setIdStateBefore( state.getId(  ) );
+            ActionFilter actionFilter = new ActionFilter( );
+            actionFilter.setIdWorkflow( state.getWorkflow( ).getId( ) );
+            actionFilter.setIdStateBefore( state.getId( ) );
             actionFilter.setIsAutomaticState( 1 );
 
             List<Action> listAction = _actionService.getListActionByFilter( actionFilter );
 
-            if ( ( listAction != null ) && !listAction.isEmpty(  ) && ( listAction.get( 0 ) != null ) )
+            if ( ( listAction != null ) && !listAction.isEmpty( ) && ( listAction.get( 0 ) != null ) )
             {
-                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId(  ), nExternalParentId, null,
-                    null, true, null );
+                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nExternalParentId, null,
+                        null, true, null );
             }
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType )
+    {
+        List<ResourceWorkflow> listResourceWorkflow = _resourceWorkflowService.getAllResourceWorkflowByState( nIdState );
+        List<Integer> listResourceId = new ArrayList<Integer>( listResourceWorkflow.size( ) );
+        for ( ResourceWorkflow resourceWorkflow : listResourceWorkflow )
+        {
+            if ( StringUtils.equals( strResourceType, resourceWorkflow.getResourceType( ) ) )
+            {
+                listResourceId.add( resourceWorkflow.getIdResource( ) );
+            }
+        }
+        return listResourceId;
     }
 }
