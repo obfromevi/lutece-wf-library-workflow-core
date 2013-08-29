@@ -103,9 +103,9 @@ public class TaskService implements ITaskService
      * {@inheritDoc}
      */
     @Override
-    public int findMaximumOrderByWorkflowId( int nIdAction )
+    public int findMaximumOrderByActionId( int nIdAction )
     {
-        return _taskDAO.findMaximumOrderByWorkflowId( nIdAction );
+        return _taskDAO.findMaximumOrderByActionId( nIdAction );
     }
 
     /**

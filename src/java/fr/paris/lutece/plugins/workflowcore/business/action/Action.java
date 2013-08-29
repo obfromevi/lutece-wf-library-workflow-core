@@ -61,12 +61,13 @@ public class Action implements RBACResource, IReferenceItem
     private boolean _bIsMassAction;
     private Collection<Integer> _listIdsLinkedAction;
     private int _nOrder;
+    private boolean _bAutomaticReflexiveAction;
 
     /**
-     *
+     * 
      * @return the id of the workflow action
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
@@ -82,17 +83,17 @@ public class Action implements RBACResource, IReferenceItem
 
     /**
      * Returns the action name
-     *
+     * 
      * @return the action name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
 
     /**
      * Set the action name
-     *
+     * 
      * @param strName the action name
      */
     public void setName( String strName )
@@ -102,17 +103,17 @@ public class Action implements RBACResource, IReferenceItem
 
     /**
      * Returns the action description
-     *
-     * @return  the action description
+     * 
+     * @return the action description
      */
-    public String getDescription(  )
+    public String getDescription( )
     {
         return _strDescription;
     }
 
     /**
      * Set the action description
-     *
+     * 
      * @param strDescription The Description
      */
     public void setDescription( String strDescription )
@@ -122,17 +123,17 @@ public class Action implements RBACResource, IReferenceItem
 
     /**
      * Returns the action icon
-     *
+     * 
      * @return The Icon
      */
-    public Icon getIcon(  )
+    public Icon getIcon( )
     {
         return _icon;
     }
 
     /**
      * Set the action icon
-     *
+     * 
      * @param icon the icon
      */
     public void setIcon( Icon icon )
@@ -144,7 +145,7 @@ public class Action implements RBACResource, IReferenceItem
      * Return the State of the document before processing the action
      * @return The StateBefore
      */
-    public State getStateBefore(  )
+    public State getStateBefore( )
     {
         return _stateBefore;
     }
@@ -162,15 +163,15 @@ public class Action implements RBACResource, IReferenceItem
      * Returns the State of the document after processing the action
      * @return The StateAfter
      */
-    public State getStateAfter(  )
+    public State getStateAfter( )
     {
         return _stateAfter;
     }
 
     /**
-      * Set the State of the document after processing the action
-      * @param stateAfter The StateAfter
-    */
+     * Set the State of the document after processing the action
+     * @param stateAfter The StateAfter
+     */
     public void setStateAfter( State stateAfter )
     {
         _stateAfter = stateAfter;
@@ -180,7 +181,7 @@ public class Action implements RBACResource, IReferenceItem
      * RBAC resource implementation
      * @return The resource type code
      */
-    public String getResourceTypeCode(  )
+    public String getResourceTypeCode( )
     {
         return RESOURCE_TYPE;
     }
@@ -189,16 +190,16 @@ public class Action implements RBACResource, IReferenceItem
      * RBAC resource implmentation
      * @return The resourceId
      */
-    public String getResourceId(  )
+    public String getResourceId( )
     {
         return Integer.toString( _nId );
     }
 
     /**
-    *
-    * @return the workflow associated
-    */
-    public Workflow getWorkflow(  )
+     * 
+     * @return the workflow associated
+     */
+    public Workflow getWorkflow( )
     {
         return _workflow;
     }
@@ -213,10 +214,11 @@ public class Action implements RBACResource, IReferenceItem
     }
 
     /**
-    *
-    * @return return true if the resources of this state shall be assigned to a workgroup
-    */
-    public boolean isAutomaticState(  )
+     * 
+     * @return return true if the resources of this state shall be assigned to a
+     *         workgroup
+     */
+    public boolean isAutomaticState( )
     {
         return _bAutomaticState;
     }
@@ -243,7 +245,7 @@ public class Action implements RBACResource, IReferenceItem
      * Check if the action is a mass action
      * @return true if it is a mass action, false otherwise
      */
-    public boolean isMassAction(  )
+    public boolean isMassAction( )
     {
         return _bIsMassAction;
     }
@@ -259,7 +261,7 @@ public class Action implements RBACResource, IReferenceItem
     /**
      * @return the _listIdsLinkedAction
      */
-    public Collection<Integer> getListIdsLinkedAction(  )
+    public Collection<Integer> getListIdsLinkedAction( )
     {
         return _listIdsLinkedAction;
     }
@@ -268,7 +270,7 @@ public class Action implements RBACResource, IReferenceItem
      * get the order of an action
      * @return the order of the action (to display in lists)
      */
-    public int getOrder(  )
+    public int getOrder( )
     {
         return _nOrder;
     }
@@ -280,5 +282,25 @@ public class Action implements RBACResource, IReferenceItem
     public void setOrder( int nOrder )
     {
         this._nOrder = nOrder;
+    }
+
+    /**
+     * Check if this action is an automatic reflexive action
+     * @return True if this action is an automatic reflexive action false
+     *         otherwise.
+     */
+    public boolean isAutomaticReflexiveAction( )
+    {
+        return _bAutomaticReflexiveAction;
+    }
+
+    /**
+     * Set whether this action is an automatic reflexive action
+     * @param bAutomaticReflexiveAction True if this action is an automatic
+     *            reflexive action false otherwise.
+     */
+    public void setAutomaticReflexiveAction( boolean bAutomaticReflexiveAction )
+    {
+        _bAutomaticReflexiveAction = bAutomaticReflexiveAction;
     }
 }

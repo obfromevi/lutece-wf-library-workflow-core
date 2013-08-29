@@ -517,8 +517,13 @@ public abstract class AbstractWorkflowService implements IWorkflowService
             resourceWorkflow.setExternalParentId( nIdExternalParent );
             _resourceWorkflowService.update( resourceWorkflow );
 
-            if ( action.getStateAfter( ) != null )
+            if ( action.getStateAfter( ) != null && !action.isAutomaticReflexiveAction( ) )
             {
+                if ( action.getStateBefore( ).getId( ) != action.getStateAfter( ).getId( ) )
+                {
+                    doProcessAutomaticReflexiveActions( nIdResource, strResourceType, action.getStateAfter( ).getId( ),
+                            nIdExternalParent, locale );
+                }
                 this.debug( "WorkflowService - Getting the actions of the next state of the resource ID " + nIdResource );
 
                 State state = action.getStateAfter( );
@@ -539,6 +544,33 @@ public abstract class AbstractWorkflowService implements IWorkflowService
         }
 
         this.debug( "\n--- WorkflowService - End doProcessAction ---" );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState,
+            Integer nIdExternalParent, Locale locale )
+    {
+        this.debug( "WorkflowService - Getting the automatic reflexive actions of the next state of the resource with ID "
+                + nIdResource );
+
+        State state = _stateService.findByPrimaryKey( nIdState );
+        ActionFilter actionFilter = new ActionFilter( );
+        actionFilter.setIdWorkflow( state.getWorkflow( ).getId( ) );
+        actionFilter.setIdStateBefore( state.getId( ) );
+        actionFilter.setAutomaticReflexiveAction( true );
+        List<Action> listAction = _actionService.getListActionByFilter( actionFilter );
+
+        if ( listAction != null && listAction.size( ) > 0 )
+        {
+            for ( Action action : listAction )
+            {
+                doProcessAction( nIdResource, strResourceType, action.getId( ), nIdExternalParent, null, locale, true,
+                        null );
+            }
+        }
     }
 
     /**

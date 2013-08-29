@@ -44,15 +44,15 @@ public interface IActionDAO
 {
     /**
      * Insert a new record in the table.
-     *
+     * 
      * @param action instance of the Action object to insert
      */
     void insert( Action action );
 
     /**
      * update record in the table.
-     *
-     * @param  action instance of the Action object to update
+     * 
+     * @param action instance of the Action object to update
      */
     void store( Action action );
 
@@ -131,14 +131,15 @@ public interface IActionDAO
      * Finds all the actions which have an order greater to a given order
      * @param nOrder the order
      * @param nIdWorkflow the workflow id
-     * @return List<Action> the list of all the actions
+     * @return List<Action> the list of all the actions.
      */
     List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the actions for the given workflow ordered by id
      * @param nIdWorkflow the workflow id
-     * @return List<Action> the list of all the states
+     * @return List<Action> the list actions. Only regular actions are returned,
+     *         automatic reflexive actions are ignored.
      */
     List<Action> findActionsForOrderInit( int nIdWorkflow );
 }

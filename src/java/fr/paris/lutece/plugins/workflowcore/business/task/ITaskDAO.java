@@ -87,7 +87,7 @@ public interface ITaskDAO
      * @param nIdAction the action id
      * @return the maximum order of the tasks in the given action
      */
-    int findMaximumOrderByWorkflowId( int nIdAction );
+    int findMaximumOrderByActionId( int nIdAction );
 
     /**
      * decrements the order of all the next tasks after the one which will be

@@ -185,11 +185,22 @@ public interface IWorkflowService
      * @param nExternalParentId the external parent id*
      * @param request the request
      * @param locale locale
-     * @param isAutomatic true if action is automatic
+     * @param bIsAutomatic true if action is automatic
      * @param strUserAccessCode the user access code
      */
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId,
-            HttpServletRequest request, Locale locale, boolean isAutomatic, String strUserAccessCode );
+            HttpServletRequest request, Locale locale, boolean bIsAutomatic, String strUserAccessCode );
+
+    /**
+     * Proceed automatic reflexive actions of state given in parameter
+     * @param nIdResource the resource id
+     * @param strResourceType the resource type
+     * @param nIdState the state id
+     * @param nIdExternalParent the external parent id*
+     * @param locale locale
+     */
+    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState,
+            Integer nIdExternalParent, Locale locale );
 
     /**
      * Remove in all workflows the resource specified in parameter
