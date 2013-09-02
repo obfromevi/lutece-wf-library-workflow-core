@@ -343,6 +343,8 @@ public abstract class AbstractWorkflowService implements IWorkflowService
             {
                 _resourceWorkflowService.create( resourceWorkflow );
                 resourceState = resourceWorkflow.getState( );
+                doProcessAutomaticReflexiveActions( nIdResource, strResourceType, resourceState.getId( ),
+                        nIdExternalParent, Locale.getDefault( ) );
             }
         }
 
