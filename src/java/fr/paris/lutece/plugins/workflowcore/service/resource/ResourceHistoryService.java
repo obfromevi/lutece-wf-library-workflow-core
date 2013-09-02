@@ -91,7 +91,10 @@ public class ResourceHistoryService implements IResourceHistoryService
     public ResourceHistory findByPrimaryKey( int nIdHistory )
     {
         ResourceHistory resourceHistory = _resourceHistoryDAO.load( nIdHistory );
-        resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction(  ).getId(  ) ) );
+        if ( resourceHistory != null )
+        {
+            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
+        }
 
         return resourceHistory;
     }
