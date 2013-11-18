@@ -89,22 +89,20 @@ public interface IWorkflowService
     List<Workflow> getListWorkflowsByFilter( WorkflowFilter filter );
 
     /**
-     * returns a list of actions possible for a given document based on the
-     * status
-     * of the document in the workflow and the user role
-     * @param nIdResource the document id
-     * @param strResourceType the document type
+     * returns a list of actions possible for a given resource based on the
+     * status of the resource in the workflow and the user role
+     * @param nIdResource the resource id
+     * @param strResourceType the resource type
      * @param nIdWorkflow the workflow id
      * @return a list of Action
      */
     Collection<Action> getActions( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
-     * returns a list of actions possible for a given document based on the
-     * status
-     * of the document in the workflow and the user role
+     * returns a list of actions possible for a given resource based on the
+     * status of the resource in the workflow and the user role
      * @param listIdResource the list of resource id
-     * @param strResourceType the document type
+     * @param strResourceType the resource type
      * @param nIdExternalParentId the external parent identifier
      * @param nIdWorkflow the workflow id
      * @return a list of Action
@@ -113,19 +111,19 @@ public interface IWorkflowService
             Integer nIdExternalParentId, int nIdWorkflow );
 
     /**
-     * returns the state of a given document
+     * returns the state of a given resource
      * @param nIdResource the resource id
      * @param strResourceType the resource type
      * @param nIdWorkflow the workflow id
      * @param nIdExternalParentId the external parent id
-     * @return the state of a given document
+     * @return the state of a given resource
      */
     State getState( int nIdResource, String strResourceType, int nIdWorkflow, Integer nIdExternalParentId );
 
     /**
      * returns all state of a given workflow
      * @param nIdWorkflow the workflow id
-     * @return the state of a given document
+     * @return the list of states of a given workflow
      */
     Collection<State> getAllStateByWorkflow( int nIdWorkflow );
 
@@ -203,7 +201,7 @@ public interface IWorkflowService
             Integer nIdExternalParent, Locale locale );
 
     /**
-     * Remove in all workflows the resource specified in parameter
+     * Remove in every workflows the resource specified in parameter
      * @param nIdResource the resource id
      * @param strResourceType the resource type
      */
@@ -230,10 +228,19 @@ public interface IWorkflowService
 
     /**
      * Execute action automatic
-     * @param nIdResource the document id
-     * @param strResourceType the document type
+     * @param nIdResource the resource id
+     * @param strResourceType the resource type
      * @param nIdWorkflow the workflow id
      * @param nExternalParentId the external parent id
      */
     void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId );
+
+    /**
+     * Check if an automatic action can be processed or not
+     * @param nIdResource The id of the resource
+     * @param strResourceType The resource type
+     * @param nIdAction The id of the action
+     * @return True if the action can be processed, false otherwise
+     */
+    boolean canAutomaticActionBeProcessed( int nIdResource, String strResourceType, int nIdAction );
 }

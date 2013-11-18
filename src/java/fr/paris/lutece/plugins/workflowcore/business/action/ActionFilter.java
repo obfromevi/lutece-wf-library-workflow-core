@@ -164,9 +164,8 @@ public class ActionFilter
     }
 
     /**
-     * 
-     * @return 1 if the state return must be the automatic action
-     *         0 if the state return must not be the automatic action
+     * @return 1 if actions must be automatic actions
+     *         0 if actions must not be automatic actions
      */
     public int getIsAutomaticState( )
     {
@@ -174,11 +173,10 @@ public class ActionFilter
     }
 
     /**
-     * Set 1 if the state return must be the automatic action
-     * 0 if the state return must not be the automatic action
+     * Set 1 if actions must be automatic actions, 0 if they must not be
+     * automatic
      * @param nIsAutomaticState 1 if the state return must be the automatic
-     *            action
-     *            0 if the state return must not be the automatic action
+     *            action 0 if the state return must not be the automatic action
      */
     public void setIsAutomaticState( int nIsAutomaticState )
     {

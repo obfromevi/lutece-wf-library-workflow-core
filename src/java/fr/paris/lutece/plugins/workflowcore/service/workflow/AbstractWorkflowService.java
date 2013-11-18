@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.workflowcore.service.workflow;
 
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.action.ActionFilter;
+import fr.paris.lutece.plugins.workflowcore.business.prerequisite.Prerequisite;
 import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceHistoryFactory;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflow;
@@ -45,6 +46,8 @@ import fr.paris.lutece.plugins.workflowcore.business.workflow.IWorkflowDAO;
 import fr.paris.lutece.plugins.workflowcore.business.workflow.Workflow;
 import fr.paris.lutece.plugins.workflowcore.business.workflow.WorkflowFilter;
 import fr.paris.lutece.plugins.workflowcore.service.action.IActionService;
+import fr.paris.lutece.plugins.workflowcore.service.prerequisite.IAutomaticActionPrerequisiteService;
+import fr.paris.lutece.plugins.workflowcore.service.prerequisite.IPrerequisiteManagementService;
 import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistoryService;
 import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceWorkflowService;
 import fr.paris.lutece.plugins.workflowcore.service.state.IStateService;
@@ -89,6 +92,8 @@ public abstract class AbstractWorkflowService implements IWorkflowService
     private IResourceHistoryService _resourceHistoryService;
     @Inject
     private IResourceHistoryFactory _resourceHistoryFactory;
+    @Inject
+    private IPrerequisiteManagementService _prerequisiteManagementService;
 
     /**
      * Debug
@@ -421,7 +426,10 @@ public abstract class AbstractWorkflowService implements IWorkflowService
                     && ( resourceWorkflow.getState( ).getId( ) == action.getStateBefore( ).getId( ) ) )
             {
                 this.debug( sbLog.append( "\nOK" ).toString( ) );
-
+                if ( action.isAutomaticState( ) )
+                {
+                    return canAutomaticActionBeProcessed( nIdResource, strResourceType, nIdAction );
+                }
                 return true;
             }
         }
@@ -730,5 +738,25 @@ public abstract class AbstractWorkflowService implements IWorkflowService
             }
         }
         return listResourceId;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean canAutomaticActionBeProcessed( int nIdResource, String strResourceType, int nIdAction )
+    {
+        for ( Prerequisite prerequisite : _prerequisiteManagementService.getListPrerequisite( nIdAction ) )
+        {
+            IAutomaticActionPrerequisiteService prerequisiteService = _prerequisiteManagementService
+                    .getPrerequisiteService( prerequisite.getPrerequisiteType( ) );
+            if ( !prerequisiteService.canActionBePerformed( nIdResource, strResourceType,
+                    _prerequisiteManagementService.getPrerequisiteConfiguration( prerequisite.getIdPrerequisite( ),
+                            prerequisiteService ), nIdAction ) )
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
