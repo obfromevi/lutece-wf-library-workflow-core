@@ -197,7 +197,7 @@ public interface IWorkflowService
      * @param nIdExternalParent the external parent id*
      * @param locale locale
      */
-    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState,
+    void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState,
             Integer nIdExternalParent, Locale locale );
 
     /**
