@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
+
 /**
  * Interface of DAO to manage prerequisite configurations
  */

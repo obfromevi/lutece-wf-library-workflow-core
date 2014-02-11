@@ -108,7 +108,7 @@ public interface IWorkflowService
      * @return a list of Action
      */
     Map<Integer, List<Action>> getActions( List<Integer> listIdResource, String strResourceType,
-            Integer nIdExternalParentId, int nIdWorkflow );
+        Integer nIdExternalParentId, int nIdWorkflow );
 
     /**
      * returns the state of a given resource
@@ -151,7 +151,7 @@ public interface IWorkflowService
      * @return a ResourceWorkflow Object
      */
     ResourceWorkflow getInitialResourceWorkflow( int nIdResource, String strResourceType, Workflow workflow,
-            Integer nExternalParentId );
+        Integer nExternalParentId );
 
     // CHECK
 
@@ -187,7 +187,7 @@ public interface IWorkflowService
      * @param strUserAccessCode the user access code
      */
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId,
-            HttpServletRequest request, Locale locale, boolean bIsAutomatic, String strUserAccessCode );
+        HttpServletRequest request, Locale locale, boolean bIsAutomatic, String strUserAccessCode );
 
     /**
      * Proceed automatic reflexive actions of state given in parameter
@@ -198,7 +198,7 @@ public interface IWorkflowService
      * @param locale locale
      */
     void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState,
-            Integer nIdExternalParent, Locale locale );
+        Integer nIdExternalParent, Locale locale );
 
     /**
      * Remove in every workflows the resource specified in parameter

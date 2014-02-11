@@ -48,7 +48,7 @@ public interface IPrerequisiteManagementService
      * Get the list of prerequisites services
      * @return The list of prerequisite services
      */
-    List<IAutomaticActionPrerequisiteService> getPrerequisiteServiceList( );
+    List<IAutomaticActionPrerequisiteService> getPrerequisiteServiceList(  );
 
     /**
      * Get the prerequisite service associated with a prerequisite type
@@ -76,5 +76,5 @@ public interface IPrerequisiteManagementService
      *         configuration
      */
     IPrerequisiteConfig getPrerequisiteConfiguration( int nIdPrerequisite,
-            IAutomaticActionPrerequisiteService prerequisiteService );
+        IAutomaticActionPrerequisiteService prerequisiteService );
 }

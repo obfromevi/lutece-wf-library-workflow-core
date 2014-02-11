@@ -57,20 +57,20 @@ public interface IAutomaticActionPrerequisiteService
      * Get the type of prerequisites associated with this service
      * @return The type of prerequisites associated with this service
      */
-    String getPrerequisiteType( );
+    String getPrerequisiteType(  );
 
     /**
      * Get the I18n key of the title of the prerequisite
      * @return the I18n key of the title of the prerequisite
      */
-    String getTitleI18nKey( );
+    String getTitleI18nKey(  );
 
     /**
      * Check if the prerequisite type of the this service needs a configuration
      * @return True if the prerequisite type need a configuration, false
      *         otherwise
      */
-    boolean hasConfiguration( );
+    boolean hasConfiguration(  );
 
     /**
      * Get a new instance of the configuration of this prerequisite type.<br />
@@ -80,7 +80,7 @@ public interface IAutomaticActionPrerequisiteService
      * @return A new instance of the configuration of this prerequisite type, or
      *         null if the prerequisite has no configuration
      */
-    IPrerequisiteConfig getEmptyConfiguration( );
+    IPrerequisiteConfig getEmptyConfiguration(  );
 
     /**
      * Get the bean name of the DAO for configurations of this prerequisite
@@ -91,7 +91,7 @@ public interface IAutomaticActionPrerequisiteService
      * @return The name of the bean of the configuration, or null if the
      *         prerequisite has no configuration
      */
-    String getConfigurationDaoBeanName( );
+    String getConfigurationDaoBeanName(  );
 
     /**
      * Get the HTML form to create or modify a configuration for a new

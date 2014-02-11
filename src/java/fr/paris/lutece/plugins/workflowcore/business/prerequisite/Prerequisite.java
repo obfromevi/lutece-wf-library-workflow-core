@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
+
 /**
  * Business class of prerequisites
  */
@@ -46,7 +47,7 @@ public class Prerequisite
      * Get the id of this prerequisite
      * @return The id of this prerequisite
      */
-    public int getIdPrerequisite( )
+    public int getIdPrerequisite(  )
     {
         return _nPrerequisiteId;
     }
@@ -64,7 +65,7 @@ public class Prerequisite
      * Get the type of the prerequisite
      * @return The type of the prerequisite
      */
-    public String getPrerequisiteType( )
+    public String getPrerequisiteType(  )
     {
         return _strPrerequisiteType;
     }
@@ -82,7 +83,7 @@ public class Prerequisite
      * Get the id of the action associated with this prerequisite
      * @return The id of the action associated with this prerequisite
      */
-    public int getIdAction( )
+    public int getIdAction(  )
     {
         return _nIdAction;
     }

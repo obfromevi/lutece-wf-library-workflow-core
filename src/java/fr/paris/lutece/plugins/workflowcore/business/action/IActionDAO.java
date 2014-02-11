@@ -44,14 +44,14 @@ public interface IActionDAO
 {
     /**
      * Insert a new record in the table.
-     * 
+     *
      * @param action instance of the Action object to insert
      */
     void insert( Action action );
 
     /**
      * update record in the table.
-     * 
+     *
      * @param action instance of the Action object to update
      */
     void store( Action action );

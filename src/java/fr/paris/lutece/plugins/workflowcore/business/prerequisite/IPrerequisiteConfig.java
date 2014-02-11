@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
+
 /**
  * Interface of beans that describe prerequisite configuration
  */
@@ -42,7 +43,7 @@ public interface IPrerequisiteConfig
      * Get the id of the prerequisite associated with this configuration
      * @return The id of the prerequisite associated with this configuration
      */
-    int getIdPrerequisite( );
+    int getIdPrerequisite(  );
 
     /**
      * Set the id of the prerequisite associated with this configuration
@@ -56,7 +57,7 @@ public interface IPrerequisiteConfig
      * @return the type of the prerequisite service associated with this
      *         configuration
      */
-    String getPrerequisiteType( );
+    String getPrerequisiteType(  );
 
     /**
      * Set the type of the prerequisite associated with this
