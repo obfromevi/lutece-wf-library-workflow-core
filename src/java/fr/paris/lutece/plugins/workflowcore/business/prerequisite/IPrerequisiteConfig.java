@@ -33,11 +33,13 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
+import java.io.Serializable;
+
 
 /**
  * Interface of beans that describe prerequisite configuration
  */
-public interface IPrerequisiteConfig
+public interface IPrerequisiteConfig extends Serializable
 {
     /**
      * Get the id of the prerequisite associated with this configuration

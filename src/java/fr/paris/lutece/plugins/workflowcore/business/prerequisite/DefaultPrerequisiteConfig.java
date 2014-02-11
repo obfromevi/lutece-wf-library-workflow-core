@@ -39,6 +39,7 @@ package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
  */
 public class DefaultPrerequisiteConfig implements IPrerequisiteConfig
 {
+    private static final long serialVersionUID = 4465942779066055387L;
     private int _nId;
     private String _strKey;
 
