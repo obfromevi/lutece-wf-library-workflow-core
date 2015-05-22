@@ -40,6 +40,7 @@ import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
 import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistoryService;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
+import fr.paris.lutece.portal.service.cache.AbstractCacheableService;
 
 import java.util.Collection;
 import java.util.List;
@@ -53,9 +54,11 @@ import javax.inject.Inject;
  * ActionService
  *
  */
-public class ActionService implements IActionService
+public class ActionService extends AbstractCacheableService implements IActionService
 {
     public static final String BEAN_SERVICE = "workflow.actionService";
+    private static final String CACHE_SERVICE_NAME = "Action Cache Service";
+
     @Inject
     private IActionDAO _actionDAO;
     @Inject
@@ -82,6 +85,7 @@ public class ActionService implements IActionService
         _actionDAO.store( action );
         removeLinkedActions( action.getId(  ) );
         createLinkedActions( action );
+        removeKey( getCacheKey( action.getId( ) ) );
     }
 
     /**
@@ -115,6 +119,7 @@ public class ActionService implements IActionService
         removeLinkedActions( nIdAction );
 
         _actionDAO.delete( nIdAction );
+        removeKey( getCacheKey( nIdAction ) );
     }
 
     // FINDERS
@@ -125,10 +130,15 @@ public class ActionService implements IActionService
     @Override
     public Action findByPrimaryKey( int nIdAction )
     {
-        Action action = _actionDAO.loadWithIcon( nIdAction );
-        action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
-
-        return action;
+        String strId = getCacheKey(nIdAction);
+        Action a = (Action) getFromCache( strId );
+        if( a == null )
+        { 
+            a = _actionDAO.loadWithIcon( nIdAction );
+            a.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+            putInCache( strId , a );
+        }
+        return a;
     }
 
     /**
@@ -200,6 +210,7 @@ public class ActionService implements IActionService
     public void decrementOrderByOne( int nOrder, int nIdWorkflow )
     {
         _actionDAO.decrementOrderByOne( nOrder, nIdWorkflow );
+        resetCache();
     }
 
     /**
@@ -235,5 +246,28 @@ public class ActionService implements IActionService
             update( action );
             nOrder++;
         }
+    }
+
+    /** Constructor */
+    public ActionService(  )
+    {
+        initCache(  );
+    }
+
+    /**
+     * Gets the cache service name
+     * @return The service name
+     */
+    @Override
+    public String getName(  )
+    {
+        return CACHE_SERVICE_NAME;
+    }
+
+    private String getCacheKey( int nIdAction )
+    {
+        StringBuilder sbKey = new StringBuilder();
+        sbKey.append( "[Action:" ).append( Integer.toString(nIdAction) ).append( "][user:null]");
+        return sbKey.toString();
     }
 }
