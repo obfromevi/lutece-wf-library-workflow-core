@@ -126,8 +126,10 @@ public class ActionService implements IActionService
     public Action findByPrimaryKey( int nIdAction )
     {
         Action action = _actionDAO.loadWithIcon( nIdAction );
-        action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
-
+        if ( action != null )
+        {
+        	action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+        }
         return action;
     }
 
