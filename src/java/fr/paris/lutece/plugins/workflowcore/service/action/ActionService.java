@@ -137,6 +137,20 @@ public class ActionService implements IActionService
      * {@inheritDoc}
      */
     @Override
+    public Action findByPrimaryKeyWithoutIcon( int nIdAction )
+    {
+        Action action = _actionDAO.load( nIdAction );
+        if ( action != null )
+        {
+        	action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+        }
+        return action;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Action> getListActionByFilter( ActionFilter filter )
     {
         List<Action> listActions = _actionDAO.selectActionsByFilter( filter );

@@ -88,6 +88,13 @@ public interface IActionService
     Action findByPrimaryKey( int nIdAction );
 
     /**
+     * Load the Action Object without loading the contents of the icon
+     * @param nIdAction the action id
+     * @return the Action Object
+     */
+    Action findByPrimaryKeyWithoutIcon( int nIdAction );
+
+    /**
      * Select actions by filter
      * @param filter the action filter
      * @return Action List
