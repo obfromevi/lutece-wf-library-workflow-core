@@ -91,6 +91,15 @@ public class ActionService implements IActionService
     {
         Action action = findByPrimaryKey( nIdAction );
 
+        //remove all task associated with the action
+        List<ITask> listTask = _taskService.getListTaskByIdAction( nIdAction, Locale.FRENCH );
+
+        for ( ITask task : listTask )
+        {
+            task.doRemoveConfig(  );
+            _taskService.remove( task.getId(  ) );
+        }
+
         if ( action != null )
         {
             // remove resource history associated
@@ -100,15 +109,6 @@ public class ActionService implements IActionService
             {
                 _resourceHistoryService.remove( resourceHistory.getId( ) );
             }
-        }
-
-        // remove all task associated with the action
-        List<ITask> listTask = _taskService.getListTaskByIdAction( nIdAction, Locale.FRENCH );
-
-        for ( ITask task : listTask )
-        {
-            task.doRemoveConfig( );
-            _taskService.remove( task.getId( ) );
         }
 
         removeLinkedActions( nIdAction );
