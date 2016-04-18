@@ -47,8 +47,19 @@ public class WorkflowFilter
     public static final int FILTER_TRUE = 1;
     private int _nIsEnabled = ALL_INT;
     private String _strWorkgroup = ALL_STRING;
+    private String _strName = null;
+    
+    
 
-    /**
+    public String getName() {
+		return _strName;
+	}
+
+	public void setName(String name) {
+		this._strName = name;
+	}
+
+	/**
      *
      * @return 1 if the workflow return must be enabled
      *                    0 if the workflow return must be disabled
