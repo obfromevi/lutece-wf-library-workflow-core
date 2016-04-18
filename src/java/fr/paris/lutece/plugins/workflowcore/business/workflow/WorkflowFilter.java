@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.workflow;
 
+import org.apache.commons.lang.StringUtils;
+
 
 /**
  *
@@ -114,5 +116,10 @@ public class WorkflowFilter
     public boolean containsWorkgroupCriteria(  )
     {
         return ( !_strWorkgroup.equals( ALL_STRING ) );
+    }
+    
+    public boolean containsName () {
+    	
+    	return StringUtils.isNotBlank(_strName);
     }
 }
