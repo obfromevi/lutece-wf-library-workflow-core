@@ -42,10 +42,13 @@ import java.sql.Timestamp;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * This is the business class for the object Workflow
  */
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class Workflow implements AdminWorkgroupResource, IReferenceItem
 {
     // Variables declarations

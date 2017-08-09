@@ -41,11 +41,14 @@ import fr.paris.lutece.portal.service.rbac.RBACResource;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * State
  *
  */
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class State implements IReferenceItem, RBACResource
 {
     public static final String RESOURCE_TYPE = "WORKFLOW_STATE_TYPE";

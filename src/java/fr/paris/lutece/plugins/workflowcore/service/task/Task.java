@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.task;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
 
@@ -42,6 +44,7 @@ import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
  * Task
  *
  */
+@JsonIgnoreProperties( ignoreUnknown = true )
 public abstract class Task implements ITask
 {
     private int _nId;

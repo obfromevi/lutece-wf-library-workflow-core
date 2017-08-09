@@ -41,10 +41,13 @@ import fr.paris.lutece.portal.service.rbac.RBACResource;
 
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * Action Object
  */
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class Action implements RBACResource, IReferenceItem
 {
     public static final String RESOURCE_TYPE = "WORKFLOW_ACTION_TYPE";
