@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.workflowcore.service.task;
 import java.util.Locale;
 import java.util.Map;
 
-
 /**
  *
  * This class implements a simple task
@@ -45,10 +44,10 @@ import java.util.Map;
 public abstract class SimpleTask extends Task
 {
     /**
-    * {@inheritDoc}
-    */
+     * {@inheritDoc}
+     */
     @Override
-    public void init(  )
+    public void init( )
     {
     }
 
@@ -65,7 +64,7 @@ public abstract class SimpleTask extends Task
      * {@inheritDoc}
      */
     @Override
-    public void doRemoveConfig(  )
+    public void doRemoveConfig( )
     {
     }
 

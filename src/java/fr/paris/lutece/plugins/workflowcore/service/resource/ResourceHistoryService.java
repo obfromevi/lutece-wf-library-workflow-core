@@ -41,7 +41,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-
 /**
  *
  * ResourceHistoryService
@@ -94,7 +93,7 @@ public class ResourceHistoryService implements IResourceHistoryService
 
         if ( resourceHistory != null )
         {
-            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction(  ).getId(  ) ) );
+            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
         }
 
         return resourceHistory;
@@ -104,8 +103,7 @@ public class ResourceHistoryService implements IResourceHistoryService
      * {@inheritDoc}
      */
     @Override
-    public List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType,
-        Integer nIdWorflow )
+    public List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow )
     {
         return _resourceHistoryDAO.getListHistoryIdByListIdResourceId( listIdResource, strResourceType, nIdWorflow );
     }
@@ -116,12 +114,11 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public List<ResourceHistory> getAllHistoryByResource( int nIdResource, String strResourceType, int nIdWorkflow )
     {
-        List<ResourceHistory> listResourceHistory = _resourceHistoryDAO.selectByResource( nIdResource, strResourceType,
-                nIdWorkflow );
+        List<ResourceHistory> listResourceHistory = _resourceHistoryDAO.selectByResource( nIdResource, strResourceType, nIdWorkflow );
 
         for ( ResourceHistory resourceHistory : listResourceHistory )
         {
-            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction(  ).getId(  ) ) );
+            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
         }
 
         return listResourceHistory;
@@ -137,7 +134,7 @@ public class ResourceHistoryService implements IResourceHistoryService
 
         for ( ResourceHistory resourceHistory : listResourceHistory )
         {
-            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction(  ).getId(  ) ) );
+            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
         }
 
         return listResourceHistory;
@@ -149,14 +146,13 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public ResourceHistory getLastHistoryResource( int nIdResource, String strResourceType, int nIdWorkflow )
     {
-        List<ResourceHistory> listResourceHistory = _resourceHistoryDAO.selectByResource( nIdResource, strResourceType,
-                nIdWorkflow );
+        List<ResourceHistory> listResourceHistory = _resourceHistoryDAO.selectByResource( nIdResource, strResourceType, nIdWorkflow );
 
         for ( ResourceHistory resourceHistory : listResourceHistory )
         {
-            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction(  ).getId(  ) ) );
+            resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
         }
 
-        return ( listResourceHistory.size(  ) > 0 ) ? listResourceHistory.get( 0 ) : null;
+        return ( listResourceHistory.size( ) > 0 ) ? listResourceHistory.get( 0 ) : null;
     }
 }

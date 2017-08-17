@@ -44,7 +44,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 /**
  * This is the business class for the object Workflow
  */
@@ -64,22 +63,25 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
     /**
      * Initialize the workflow
      */
-    public static void init(  )
+    public static void init( )
     {
     }
 
     /**
      * Returns the IdWorkflow
+     * 
      * @return The IdWorkflow
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
 
     /**
      * Sets the IdWorkflow
-     * @param nIdWorkflow The IdWorkflow
+     * 
+     * @param nIdWorkflow
+     *            The IdWorkflow
      */
     public void setId( int nIdWorkflow )
     {
@@ -88,16 +90,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
 
     /**
      * Returns the Name
+     * 
      * @return The Name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
 
     /**
      * Sets the Name
-     * @param strName The Name
+     * 
+     * @param strName
+     *            The Name
      */
     public void setName( String strName )
     {
@@ -106,16 +111,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
 
     /**
      * Returns the Description
+     * 
      * @return The Description
      */
-    public String getDescription(  )
+    public String getDescription( )
     {
         return _strDescription;
     }
 
     /**
      * Sets the Description
-     * @param strDescription The Description
+     * 
+     * @param strDescription
+     *            The Description
      */
     public void setDescription( String strDescription )
     {
@@ -123,17 +131,20 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
     }
 
     /**
-     *return the list of all actions associated to the workflow
+     * return the list of all actions associated to the workflow
+     * 
      * @return the list of all actions associated to the workflow
      */
-    public List<Action> getAllActions(  )
+    public List<Action> getAllActions( )
     {
         return _listActions;
     }
 
     /**
-     *set the list of all actions associated to the workflow
-     * @param listActions the list of all actions associated to the workflow
+     * set the list of all actions associated to the workflow
+     * 
+     * @param listActions
+     *            the list of all actions associated to the workflow
      */
     public void setAllActions( List<Action> listActions )
     {
@@ -142,16 +153,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
 
     /**
      * return the list of all states associated to the workflow
+     * 
      * @return the list of all states associated to the workflow
      */
-    public List<State> getAllStates(  )
+    public List<State> getAllStates( )
     {
         return _listStates;
     }
 
     /**
-     *set the list of all states associated to the workflow
-     * @param listStates the list of all states associated to the workflow
+     * set the list of all states associated to the workflow
+     * 
+     * @param listStates
+     *            the list of all states associated to the workflow
      */
     public void setAllStates( List<State> listStates )
     {
@@ -159,17 +173,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
     }
 
     /**
-    *
-    * @return the work group associate to the workflow
-    */
-    public String getWorkgroup(  )
+     *
+     * @return the work group associate to the workflow
+     */
+    public String getWorkgroup( )
     {
         return _strWorkgroupKey;
     }
 
     /**
-     * set  the work group associate to the workflow
-     * @param workGroup  the work group associate to the workflow
+     * set the work group associate to the workflow
+     * 
+     * @param workGroup
+     *            the work group associate to the workflow
      */
     public void setWorkgroup( String workGroup )
     {
@@ -177,17 +193,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
     }
 
     /**
-    *
-    * @return the creation date
-    */
-    public Timestamp getCreationDate(  )
+     *
+     * @return the creation date
+     */
+    public Timestamp getCreationDate( )
     {
         return _tCreationDate;
     }
 
     /**
      * set the creation date
-     * @param dateCreation the creation date
+     * 
+     * @param dateCreation
+     *            the creation date
      */
     public void setCreationDate( Timestamp dateCreation )
     {
@@ -195,17 +213,19 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
     }
 
     /**
-    *
-    * @return true if the workflow is enabled
-    */
-    public boolean isEnabled(  )
+     *
+     * @return true if the workflow is enabled
+     */
+    public boolean isEnabled( )
     {
         return _bEnabled;
     }
 
     /**
      * set true if the workflow is enabled
-     * @param enable true if the workflow is enabled
+     * 
+     * @param enable
+     *            true if the workflow is enabled
      */
     public void setEnabled( boolean enable )
     {

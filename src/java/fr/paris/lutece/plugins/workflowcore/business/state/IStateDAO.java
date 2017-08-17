@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.state;
 
 import java.util.List;
 
-
 /**
  *
  * IStateDAO
@@ -46,81 +45,106 @@ public interface IStateDAO
     /**
      * Insert a new record in the table.
      *
-     * @param state instance of the State object to insert
+     * @param state
+     *            instance of the State object to insert
      */
     void insert( State state );
 
     /**
      * update record in the table.
      *
-     * @param  state instance of the State object to update
+     * @param state
+     *            instance of the State object to update
      */
     void store( State state );
 
     /**
      * Load the state Object
-     * @param nIdState the state id
+     * 
+     * @param nIdState
+     *            the state id
      * @return the state Object
      */
     State load( int nIdState );
 
     /**
      * Load the state Object from the given resource
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the state Object
      */
     State findByResource( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
      * Delete the state Object
-     * @param nIdState the state id
+     * 
+     * @param nIdState
+     *            the state id
      */
     void delete( int nIdState );
 
     /**
      * select all states by filter
-     * @param filter StateFilter Object
+     * 
+     * @param filter
+     *            StateFilter Object
      * @return a list of state
      */
     List<State> selectStatesByFilter( StateFilter filter );
 
     /**
      * return the maximum order number of that states in a given workflow
-     * @param nWorkflowId the workflow id
+     * 
+     * @param nWorkflowId
+     *            the workflow id
      * @return the maximum order of the states in the workflow
      */
     int findMaximumOrderByWorkflowId( int nWorkflowId );
 
     /**
-     * decrements the order of all the next states after the one which will be
-     * removed
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * decrements the order of all the next states after the one which will be removed
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      */
     void decrementOrderByOne( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the states which have an order lower to a given order
-     * @param nOrder1 the order 1
-     * @param nOrder2 the order 2
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder1
+     *            the order 1
+     * @param nOrder2
+     *            the order 2
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the states
      */
     List<State> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
 
     /**
      * Finds all the states which have an order greater to a given order
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the states
      */
     List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the states for the given workflow ordered by id
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the states
      */
     List<State> findStatesForOrderInit( int nIdWorkflow );

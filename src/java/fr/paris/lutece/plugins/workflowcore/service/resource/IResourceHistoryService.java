@@ -37,7 +37,6 @@ import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
 
 import java.util.List;
 
-
 /**
  *
  * IResourceHistoryService
@@ -46,65 +45,88 @@ import java.util.List;
 public interface IResourceHistoryService
 {
     /**
-    * Creation of an instance of resoureceHistory
-    * @param resourceHistory The instance of resourceHistory which contains the informations to store
-    */
+     * Creation of an instance of resoureceHistory
+     * 
+     * @param resourceHistory
+     *            The instance of resourceHistory which contains the informations to store
+     */
     void create( ResourceHistory resourceHistory );
 
     /**
      * Remove resourceHistory which is specified in parameter
-     * @param  nIdHistory History id to remove
+     * 
+     * @param nIdHistory
+     *            History id to remove
      */
     void remove( int nIdHistory );
 
     /**
      * Delete ResourceHistory list by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      */
     void removeByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
     /**
      * Get list history id by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      * @return list of history id
      */
-    List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType,
-        Integer nIdWorflow );
+    List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
     // Finders
 
     /**
      * Load the resource history Object
-     * @param nIdHistory the resource history key
+     * 
+     * @param nIdHistory
+     *            the resource history key
      * @return the resource workflow Object
      */
     ResourceHistory findByPrimaryKey( int nIdHistory );
 
     /**
-     * Load all  ResourceHistory Object for a given resource
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * Load all ResourceHistory Object for a given resource
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the list of ResourceHistory
      */
     List<ResourceHistory> getAllHistoryByResource( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
-     * Load all  ResourceHistory Object for a given resource
-     * @param nIdAction the action id
+     * Load all ResourceHistory Object for a given resource
+     * 
+     * @param nIdAction
+     *            the action id
      * @return the list of ResourceHistory
      */
     List<ResourceHistory> getAllHistoryByAction( int nIdAction );
 
     /**
      * Load the last resource history depending creation date
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the list of ResourceHistory
      */
     ResourceHistory getLastHistoryResource( int nIdResource, String strResourceType, int nIdWorkflow );

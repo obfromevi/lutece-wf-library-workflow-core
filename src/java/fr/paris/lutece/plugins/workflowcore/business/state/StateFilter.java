@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.state;
 
-
 /**
  *
  * class WorkflowFilter
@@ -49,19 +48,18 @@ public class StateFilter
 
     /**
      *
-     * @return 1 if the state return must be the initial state
-     *          0 if the state return must not be the initial state
+     * @return 1 if the state return must be the initial state 0 if the state return must not be the initial state
      */
-    public int getIsInitialState(  )
+    public int getIsInitialState( )
     {
         return _nIsInitialState;
     }
 
     /**
-     * Set 1 if the state return must be the initial state
-     *            0 if the state return must not be the initial state
-     * @param idState 1 if the state return must be the initial state
-     *                0 if the state return must not be the initial state
+     * Set 1 if the state return must be the initial state 0 if the state return must not be the initial state
+     * 
+     * @param idState
+     *            1 if the state return must be the initial state 0 if the state return must not be the initial state
      */
     public void setIsInitialState( int idState )
     {
@@ -72,23 +70,25 @@ public class StateFilter
      *
      * @return true if the filter contain workflow state
      */
-    public boolean containsIsInitialState(  )
+    public boolean containsIsInitialState( )
     {
         return ( _nIsInitialState != ALL_INT );
     }
 
     /**
-    *
-    * @return  the id of workflow insert in the filter
-    */
-    public int getIdWorkflow(  )
+     *
+     * @return the id of workflow insert in the filter
+     */
+    public int getIdWorkflow( )
     {
         return _nIdWorkFlow;
     }
 
     /**
      * set the id of workflow in the filter
-     * @param idWorkflow the id of workflow to insert in the filter
+     * 
+     * @param idWorkflow
+     *            the id of workflow to insert in the filter
      */
     public void setIdWorkflow( int idWorkflow )
     {
@@ -100,7 +100,7 @@ public class StateFilter
      * @return true if the filter contain an id of workflow
      *
      */
-    public boolean containsIdWorkflow(  )
+    public boolean containsIdWorkflow( )
     {
         return ( _nIdWorkFlow != ALL_INT );
     }

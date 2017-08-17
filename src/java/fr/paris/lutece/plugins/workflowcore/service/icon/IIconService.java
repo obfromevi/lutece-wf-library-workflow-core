@@ -37,7 +37,6 @@ import fr.paris.lutece.plugins.workflowcore.business.icon.Icon;
 
 import java.util.List;
 
-
 /**
  *
  * IIconService
@@ -47,38 +46,49 @@ public interface IIconService
 {
     /**
      * Create an icon
-     * @param icon the icon
+     * 
+     * @param icon
+     *            the icon
      */
     void create( Icon icon );
 
     /**
      * Update of icon which is specified in parameter
-     * @param icon  The instance of icon which contains the informations to update
+     * 
+     * @param icon
+     *            The instance of icon which contains the informations to update
      */
     void update( Icon icon );
 
     /**
      * Update metatdata of icon which is specified in parameter
-     * @param icon  The instance of icon which contains the informations to update
+     * 
+     * @param icon
+     *            The instance of icon which contains the informations to update
      */
     void updateMetadata( Icon icon );
 
     /**
      * Remove icon which is specified in parameter
-     * @param  nIdIcon The icon key to remove
+     * 
+     * @param nIdIcon
+     *            The icon key to remove
      */
     void remove( int nIdIcon );
 
     /**
      * Load the icon Object
-     * @param nIdIcon the icon id
+     * 
+     * @param nIdIcon
+     *            the icon id
      * @return the Icon Object
      */
     Icon findByPrimaryKey( int nIdIcon );
 
     /**
      * return the list of all icon
+     * 
      * @return a list of icon
      */
-    List<Icon> getListIcons(  );
+    List<Icon> getListIcons( );
 }

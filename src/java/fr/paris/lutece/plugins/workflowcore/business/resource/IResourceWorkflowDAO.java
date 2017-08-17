@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.workflowcore.business.resource;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  *
  * IResourceWorkflowDAO
@@ -46,118 +45,160 @@ public interface IResourceWorkflowDAO
 {
     /**
      * Insert a new record in the table.
-     * @param resourceWorkflow instance of the ResourceWorkflow object to insert
+     * 
+     * @param resourceWorkflow
+     *            instance of the ResourceWorkflow object to insert
      */
     void insert( ResourceWorkflow resourceWorkflow );
 
     /**
      * update record in the table.
-     * @param resourceWorkflow instance of the ResourceWorkflow object to update
+     * 
+     * @param resourceWorkflow
+     *            instance of the ResourceWorkflow object to update
      */
     void store( ResourceWorkflow resourceWorkflow );
 
     /**
      * Load the Resource workflow Object
-     * @param nIdResource the resource Id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdResource
+     *            the resource Id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the Document workflow Object
      */
     ResourceWorkflow load( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
-     * Delete  resourceWorkflow Object
-     * @param resourceWorkflow resourceWorkflow object
+     * Delete resourceWorkflow Object
+     * 
+     * @param resourceWorkflow
+     *            resourceWorkflow object
      */
     void delete( ResourceWorkflow resourceWorkflow );
 
     /**
      * Delete Workgroups list by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      */
     void removeWorkgroupsByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
     /**
      * Delete resource list by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      */
     void removeByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
     /**
      * Select All resourceWorkflow associated to the workflow
-     * @param nIdWorkflow workflow id
+     * 
+     * @param nIdWorkflow
+     *            workflow id
      * @return List of resourceWorkflow Object
      */
     List<ResourceWorkflow> selectResourceWorkflowByWorkflow( int nIdWorkflow );
 
     /**
      * Select All resourceWorkflow associated to the workflow
-     * @param nIdWorkflow workflow id
+     * 
+     * @param nIdWorkflow
+     *            workflow id
      * @return List of Id resource
      */
     List<Integer> selectResourceIdByWorkflow( int nIdWorkflow );
 
     /**
      * Select All resourceWorkflow associated to the state
-     * @param nIdState workflow state
+     * 
+     * @param nIdState
+     *            workflow state
      * @return List of resourceWorkflow Object
      */
     List<ResourceWorkflow> selectResourceWorkflowByState( int nIdState );
 
     /**
      * select the resource entity owner
-     * @param resourceWorkflow the resource
-     * @return a list of  entities Owner
+     * 
+     * @param resourceWorkflow
+     *            the resource
+     * @return a list of entities Owner
      */
     List<String> selectWorkgroups( ResourceWorkflow resourceWorkflow );
 
     /**
      * delete all resource entities owner
-     * @param resourceWorkflow the resource
+     * 
+     * @param resourceWorkflow
+     *            the resource
      */
     void deleteWorkgroups( ResourceWorkflow resourceWorkflow );
 
     /**
      * insert a new entities owner
-     * @param resourceWorkflow the resource
-     * @param strWorkgroup the workgroupkey
+     * 
+     * @param resourceWorkflow
+     *            the resource
+     * @param strWorkgroup
+     *            the workgroupkey
      */
     void insertWorkgroup( ResourceWorkflow resourceWorkflow, String strWorkgroup );
 
     /**
      * Select ResourceWorkflow by filter
-     * @param filter the ResourceWorkflow filter
+     * 
+     * @param filter
+     *            the ResourceWorkflow filter
      * @return ResourceWorkflow List
      */
     List<ResourceWorkflow> getListResourceWorkflowByFilter( ResourceWorkflowFilter filter );
 
     /**
      * Select ResourceWorkflow id by filter
-     * @param filter the ResourceWorkflow filter
+     * 
+     * @param filter
+     *            the ResourceWorkflow filter
      * @return ResourceWorkflow id list
      */
     List<Integer> getListResourceWorkflowIdByFilter( ResourceWorkflowFilter filter );
 
     /**
      * Select ResourceWorkflow by filter
-     * @param filter the ResourceWorkflow filter
-     * @param lListIdWorkflowState the list of id workflow state
+     * 
+     * @param filter
+     *            the ResourceWorkflow filter
+     * @param lListIdWorkflowState
+     *            the list of id workflow state
      * @return ResourceWorkflow List
      */
     List<Integer> getListResourceWorkflowIdByFilter( ResourceWorkflowFilter filter, List<Integer> lListIdWorkflowState );
 
     /**
      * Select id state by list id resource
-     * @param lListIdResource the resource list id
-     * @param nIdWorflow The worflow id
-     * @param strResourceType the ressource type
-     * @param nIdExternalParentId the external parent id
+     * 
+     * @param lListIdResource
+     *            the resource list id
+     * @param nIdWorflow
+     *            The worflow id
+     * @param strResourceType
+     *            the ressource type
+     * @param nIdExternalParentId
+     *            the external parent id
      * @return a map of <id_resource, id_state>
      */
-    Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow,
-        String strResourceType, Integer nIdExternalParentId );
+    Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId );
 }

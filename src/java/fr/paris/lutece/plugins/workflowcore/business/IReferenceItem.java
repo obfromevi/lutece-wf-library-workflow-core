@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business;
 
-
 /**
  *
  * IReferenceItem
@@ -43,13 +42,14 @@ public interface IReferenceItem
 {
     /**
      * return the item id
+     * 
      * @return the item id
      */
-    int getId(  );
+    int getId( );
 
     /**
      *
      * @return the item name
      */
-    String getName(  );
+    String getName( );
 }

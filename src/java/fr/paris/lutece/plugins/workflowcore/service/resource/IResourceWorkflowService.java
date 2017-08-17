@@ -39,7 +39,6 @@ import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflowFi
 import java.util.List;
 import java.util.Map;
 
-
 /**
  *
  * IResourceWorkflowService
@@ -48,28 +47,38 @@ import java.util.Map;
 public interface IResourceWorkflowService
 {
     /**
-    * Creation of an instance of resoureceWorkflow
-    * @param resourceWorkflow The instance of resourceWorkflow which contains the informations to store
-    */
+     * Creation of an instance of resoureceWorkflow
+     * 
+     * @param resourceWorkflow
+     *            The instance of resourceWorkflow which contains the informations to store
+     */
     void create( ResourceWorkflow resourceWorkflow );
 
     /**
      * Update of resourceWorkflow which is specified in parameter
-     * @param  resourceWorkflow The instance of resourceWorkflow which contains the informations to update
+     * 
+     * @param resourceWorkflow
+     *            The instance of resourceWorkflow which contains the informations to update
      */
     void update( ResourceWorkflow resourceWorkflow );
 
     /**
      * Remove resourceWorkflow which is specified in parameter
-     * @param  resourceWorkflow The instance of resourceWorkflow which contains the informations to remove
+     * 
+     * @param resourceWorkflow
+     *            The instance of resourceWorkflow which contains the informations to remove
      */
     void remove( ResourceWorkflow resourceWorkflow );
 
     /**
      * Delete record and workflow list by list id resource
-     * @param listIdResource list of resource id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the worflow id
+     * 
+     * @param listIdResource
+     *            list of resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the worflow id
      */
     void removeByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
@@ -77,65 +86,85 @@ public interface IResourceWorkflowService
 
     /**
      * Load the resourceWorkflow Object
-     * @param nIdResource the resource Id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdResource
+     *            the resource Id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the resource workflow Object
      */
     ResourceWorkflow findByPrimaryKey( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
      * Select All resourceWorkflow Object associated to the workflow
-     * @param nIdWorkflow workflow id
+     * 
+     * @param nIdWorkflow
+     *            workflow id
      * @return List of resourceWorkflow Object
      */
     List<ResourceWorkflow> getAllResourceWorkflowByWorkflow( int nIdWorkflow );
 
     /**
      * Select All resourceWorkflow Object associated to the workflow
-     * @param nIdWorkflow workflow id
+     * 
+     * @param nIdWorkflow
+     *            workflow id
      * @return List of Id resource
      */
     List<Integer> getAllResourceIdByWorkflow( int nIdWorkflow );
 
     /**
      * Select All resourceWorkflow Object associated to the state
-     * @param nIdState state
+     * 
+     * @param nIdState
+     *            state
      * @return List of resourceWorkflow Object
      */
     List<ResourceWorkflow> getAllResourceWorkflowByState( int nIdState );
 
     /**
      * Select ResourceWorkflow by filter
-     * @param resourceWorkflowFilter the filter
+     * 
+     * @param resourceWorkflowFilter
+     *            the filter
      * @return ResourceWorkflow List
      */
     List<ResourceWorkflow> getListResourceWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter );
 
     /**
      * Select Resource Workflow id by filter
-     * @param resourceWorkflowFilter the filter
-     * @param lListIdWorkflowState list of workflow state
+     * 
+     * @param resourceWorkflowFilter
+     *            the filter
+     * @param lListIdWorkflowState
+     *            list of workflow state
      * @return ResourceWorkflow list id
      */
-    List<Integer> getListResourceIdWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter,
-        List<Integer> lListIdWorkflowState );
+    List<Integer> getListResourceIdWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter, List<Integer> lListIdWorkflowState );
 
     /**
      * Select ResourceWorkflow ID by filter
-     * @param resourceWorkflowFilter the filter
+     * 
+     * @param resourceWorkflowFilter
+     *            the filter
      * @return ResourceWorkflow ID List
      */
     List<Integer> getListResourceIdWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter );
 
     /**
      * Select id state by list id resource
-     * @param lListIdResource the resource list id
-     * @param nIdWorflow The worflow id
-     * @param strResourceType the ressource type
-     * @param nIdExternalParentId the external parent id
+     * 
+     * @param lListIdResource
+     *            the resource list id
+     * @param nIdWorflow
+     *            The worflow id
+     * @param strResourceType
+     *            the ressource type
+     * @param nIdExternalParentId
+     *            the external parent id
      * @return a map of <id_resource, id_state>
      */
-    Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow,
-        String strResourceType, Integer nIdExternalParentId );
+    Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId );
 }

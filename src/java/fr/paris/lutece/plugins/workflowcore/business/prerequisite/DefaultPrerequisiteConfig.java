@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
-
 /**
  * Default implementation of prerequisite configuration
  */
@@ -47,7 +46,7 @@ public class DefaultPrerequisiteConfig implements IPrerequisiteConfig
      * {@inheritDoc}
      */
     @Override
-    public int getIdPrerequisite(  )
+    public int getIdPrerequisite( )
     {
         return _nId;
     }
@@ -65,7 +64,7 @@ public class DefaultPrerequisiteConfig implements IPrerequisiteConfig
      * {@inheritDoc}
      */
     @Override
-    public String getPrerequisiteType(  )
+    public String getPrerequisiteType( )
     {
         return _strKey;
     }

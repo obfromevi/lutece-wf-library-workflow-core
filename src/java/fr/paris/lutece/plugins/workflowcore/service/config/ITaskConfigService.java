@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.service.config;
 
 import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
 
-
 /**
  *
  * ITaskConfigService
@@ -45,19 +44,25 @@ public interface ITaskConfigService
 {
     /**
      * Create a new config
-     * @param config the config
+     * 
+     * @param config
+     *            the config
      */
     void create( ITaskConfig config );
 
     /**
      * Update a config
-     * @param config the config
+     * 
+     * @param config
+     *            the config
      */
     void update( ITaskConfig config );
 
     /**
      * Remove a config
-     * @param nIdTask the task id
+     * 
+     * @param nIdTask
+     *            the task id
      */
     void remove( int nIdTask );
 

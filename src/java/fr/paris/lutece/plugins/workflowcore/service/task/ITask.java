@@ -41,10 +41,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  *
- *  ITask
+ * ITask
  *
  */
 public interface ITask
@@ -52,80 +51,96 @@ public interface ITask
     /**
      * @return the task Id
      */
-    int getId(  );
+    int getId( );
 
     /**
-     * @param nId the task id
+     * @param nId
+     *            the task id
      */
     void setId( int nId );
 
     /**
      * @return the TaskType Object
      */
-    ITaskType getTaskType(  );
+    ITaskType getTaskType( );
 
     /**
-     * @param taskType the task type object
+     * @param taskType
+     *            the task type object
      */
     void setTaskType( ITaskType taskType );
 
     /**
      * @return the action associate to the task
      */
-    Action getAction(  );
+    Action getAction( );
 
     /**
-     * @param action the action associate to the task
+     * @param action
+     *            the action associate to the task
      */
     void setAction( Action action );
 
     /**
      * Process the task
-     * @param nIdResourceHistory the resource history id
-     * @param request the request
-     * @param locale locale
+     * 
+     * @param nIdResourceHistory
+     *            the resource history id
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
      */
     void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale );
 
     /**
      * returns the task title
-     * @param locale locale
+     * 
+     * @param locale
+     *            locale
      * @return the task title
      */
     String getTitle( Locale locale );
 
     /**
      * returns the entries of the task form
-     * @param locale locale
-     * @return the  entries of the task form
+     * 
+     * @param locale
+     *            locale
+     * @return the entries of the task form
      */
     Map<String, String> getTaskFormEntries( Locale locale );
 
     /**
      * Initialize the task
      */
-    void init(  );
+    void init( );
 
     /**
      * Remove taskInformation associate to the history
-     * @param nIdHistory the document id
+     * 
+     * @param nIdHistory
+     *            the document id
      */
     void doRemoveTaskInformation( int nIdHistory );
 
     /**
      * Remove the task configuration
      */
-    void doRemoveConfig(  );
+    void doRemoveConfig( );
 
     /**
      * get the order of a task
+     * 
      * @return the order of the task(to display in lists)
      */
-    int getOrder(  );
+    int getOrder( );
 
     /**
      * set the order of an task
-     * @param nOrder the order
+     * 
+     * @param nOrder
+     *            the order
      */
     void setOrder( int nOrder );
 }

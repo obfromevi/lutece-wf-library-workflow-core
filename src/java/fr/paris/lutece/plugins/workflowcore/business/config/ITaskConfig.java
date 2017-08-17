@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.config;
 
-
 /**
  *
  * ITaskConfig
@@ -42,14 +41,17 @@ package fr.paris.lutece.plugins.workflowcore.business.config;
 public interface ITaskConfig
 {
     /**
-    * Get the ID task
-    * @return id Task
-    */
-    int getIdTask(  );
+     * Get the ID task
+     * 
+     * @return id Task
+     */
+    int getIdTask( );
 
     /**
      * Set id Task
-     * @param idTask id task
+     * 
+     * @param idTask
+     *            id task
      */
     void setIdTask( int idTask );
 }

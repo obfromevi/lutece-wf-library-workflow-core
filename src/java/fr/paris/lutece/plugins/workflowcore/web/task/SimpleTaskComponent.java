@@ -39,7 +39,6 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  *
  * This component implements a task that does not require :
@@ -64,8 +63,7 @@ public abstract class SimpleTaskComponent extends TaskComponent
      * {@inheritDoc}
      */
     @Override
-    public String doValidateTask( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale,
-        ITask task )
+    public String doValidateTask( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale, ITask task )
     {
         return null;
     }
@@ -83,8 +81,7 @@ public abstract class SimpleTaskComponent extends TaskComponent
      * {@inheritDoc}
      */
     @Override
-    public String getDisplayTaskForm( int nIdResource, String strResourceType, HttpServletRequest request,
-        Locale locale, ITask task )
+    public String getDisplayTaskForm( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale, ITask task )
     {
         return null;
     }

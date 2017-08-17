@@ -33,37 +33,41 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
-
 /**
  * Interface of DAO to manage prerequisite configurations
  */
 public interface IPrerequisiteConfigDAO
 {
     /**
-     * Creates a new prerequisite configuration. Note that there is no need to
-     * persist the prerequisite type and the action id.
-     * @param config The configuration to create
+     * Creates a new prerequisite configuration. Note that there is no need to persist the prerequisite type and the action id.
+     * 
+     * @param config
+     *            The configuration to create
      */
     void createConfig( IPrerequisiteConfig config );
 
     /**
-     * Updates a prerequisite configuration. Note that there is no need to
-     * persist the prerequisite type and the action id.
-     * @param config The configuration to update
+     * Updates a prerequisite configuration. Note that there is no need to persist the prerequisite type and the action id.
+     * 
+     * @param config
+     *            The configuration to update
      */
     void updateConfig( IPrerequisiteConfig config );
 
     /**
      * Remove a configuration from its id
-     * @param nIdPrerequisite The id of the configuration
+     * 
+     * @param nIdPrerequisite
+     *            The id of the configuration
      */
     void removeConfig( int nIdPrerequisite );
 
     /**
      * Find a prerequisite by its primary key
-     * @param nIdPrerequisite The id of the prerequisite
-     * @return The configuration with the given id, or null if no configuration
-     *         has the given id
+     * 
+     * @param nIdPrerequisite
+     *            The id of the prerequisite
+     * @return The configuration with the given id, or null if no configuration has the given id
      */
     IPrerequisiteConfig findByPrimaryKey( int nIdPrerequisite );
 }

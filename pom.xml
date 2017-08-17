@@ -22,7 +22,7 @@
         <springVersion>3.1.0.RELEASE</springVersion>
         <common.beanutils.version>1.7.0</common.beanutils.version>
         <log4j.version>1.2.14</log4j.version>
-        <jackson.version>2.9.0</jackson.version>
+        <jackson.version>2.8.4</jackson.version>
     </properties>
 	
     <repositories>
@@ -99,17 +99,7 @@
         	<groupId>com.fasterxml.jackson.module</groupId>
       		<artifactId>jackson-module-parameter-names</artifactId>
       		<version>${jackson.version}</version>
-    	</dependency>
-    	<dependency>
-      		<groupId>com.fasterxml.jackson.datatype</groupId>
-      		<artifactId>jackson-datatype-jdk8</artifactId>
-      		<version>${jackson.version}</version>
-    	</dependency>
-    	<dependency>
-      		<groupId>com.fasterxml.jackson.datatype</groupId>
-      		<artifactId>jackson-datatype-jsr310</artifactId>
-      		<version>${jackson.version}</version>
-    	</dependency>
+    	</dependency>    	
     </dependencies>
     
     <scm>

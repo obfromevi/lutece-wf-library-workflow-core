@@ -47,7 +47,6 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-
 /**
  *
  * ActionService
@@ -80,7 +79,7 @@ public class ActionService implements IActionService
     public void update( Action action )
     {
         _actionDAO.store( action );
-        removeLinkedActions( action.getId(  ) );
+        removeLinkedActions( action.getId( ) );
         createLinkedActions( action );
     }
 
@@ -94,22 +93,22 @@ public class ActionService implements IActionService
 
         if ( action != null )
         {
-            //remove resource history associated
+            // remove resource history associated
             List<ResourceHistory> listResourceHistory = _resourceHistoryService.getAllHistoryByAction( nIdAction );
 
             for ( ResourceHistory resourceHistory : listResourceHistory )
             {
-                _resourceHistoryService.remove( resourceHistory.getId(  ) );
+                _resourceHistoryService.remove( resourceHistory.getId( ) );
             }
         }
 
-        //remove all task associated with the action
+        // remove all task associated with the action
         List<ITask> listTask = _taskService.getListTaskByIdAction( nIdAction, Locale.FRENCH );
 
         for ( ITask task : listTask )
         {
-            task.doRemoveConfig(  );
-            _taskService.remove( task.getId(  ) );
+            task.doRemoveConfig( );
+            _taskService.remove( task.getId( ) );
         }
 
         removeLinkedActions( nIdAction );
@@ -128,7 +127,7 @@ public class ActionService implements IActionService
         Action action = _actionDAO.loadWithIcon( nIdAction );
         if ( action != null )
         {
-        	action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+            action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
         }
         return action;
     }
@@ -142,7 +141,7 @@ public class ActionService implements IActionService
         Action action = _actionDAO.load( nIdAction );
         if ( action != null )
         {
-        	action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
+            action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
         }
         return action;
     }
@@ -155,11 +154,11 @@ public class ActionService implements IActionService
     {
         List<Action> listActions = _actionDAO.selectActionsByFilter( filter );
 
-        if ( ( listActions != null ) && !listActions.isEmpty(  ) )
+        if ( ( listActions != null ) && !listActions.isEmpty( ) )
         {
             for ( Action action : listActions )
             {
-                action.setListIdsLinkedAction( getListIdsLinkedAction( action.getId(  ) ) );
+                action.setListIdsLinkedAction( getListIdsLinkedAction( action.getId( ) ) );
             }
         }
 
@@ -172,12 +171,11 @@ public class ActionService implements IActionService
     @Override
     public void createLinkedActions( Action action )
     {
-        if ( ( action != null ) && ( action.getListIdsLinkedAction(  ) != null ) &&
-                !action.getListIdsLinkedAction(  ).isEmpty(  ) )
+        if ( ( action != null ) && ( action.getListIdsLinkedAction( ) != null ) && !action.getListIdsLinkedAction( ).isEmpty( ) )
         {
-            for ( int nIdLinkedAction : action.getListIdsLinkedAction(  ) )
+            for ( int nIdLinkedAction : action.getListIdsLinkedAction( ) )
             {
-                _actionDAO.insertLinkedActions( action.getId(  ), nIdLinkedAction );
+                _actionDAO.insertLinkedActions( action.getId( ), nIdLinkedAction );
             }
         }
     }

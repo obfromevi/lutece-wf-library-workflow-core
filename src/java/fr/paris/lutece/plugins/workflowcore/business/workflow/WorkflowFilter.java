@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.workflow;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  *
  * class WorkflowFilter
@@ -50,32 +49,31 @@ public class WorkflowFilter
     private int _nIsEnabled = ALL_INT;
     private String _strWorkgroup = ALL_STRING;
     private String _strName = null;
-    
-    
 
-    public String getName() {
-		return _strName;
-	}
+    public String getName( )
+    {
+        return _strName;
+    }
 
-	public void setName(String name) {
-		this._strName = name;
-	}
+    public void setName( String name )
+    {
+        this._strName = name;
+    }
 
-	/**
+    /**
      *
-     * @return 1 if the workflow return must be enabled
-     *                    0 if the workflow return must be disabled
+     * @return 1 if the workflow return must be enabled 0 if the workflow return must be disabled
      */
-    public int getIsEnabled(  )
+    public int getIsEnabled( )
     {
         return _nIsEnabled;
     }
 
     /**
-     * Set 1 if the workflow return must be enabled
-     *            0 if the workflow return must be disabled
-     * @param idState  1 if the workflow return must be enabled
-     *                                      0 if the workflow return must be disabled
+     * Set 1 if the workflow return must be enabled 0 if the workflow return must be disabled
+     * 
+     * @param idState
+     *            1 if the workflow return must be enabled 0 if the workflow return must be disabled
      */
     public void setIsEnabled( int idState )
     {
@@ -86,40 +84,43 @@ public class WorkflowFilter
      *
      * @return true if the filter contain workflow state
      */
-    public boolean containsIsEnabled(  )
+    public boolean containsIsEnabled( )
     {
         return ( _nIsEnabled != ALL_INT );
     }
 
     /**
-    *
-    * @return the workgroup of the workflow
-    */
-    public String getWorkgroup(  )
+     *
+     * @return the workgroup of the workflow
+     */
+    public String getWorkgroup( )
     {
         return _strWorkgroup;
     }
 
     /**
-    * set the workgroup of the workflow
-    * @param workgroup the workgroup of the workflow
-    */
+     * set the workgroup of the workflow
+     * 
+     * @param workgroup
+     *            the workgroup of the workflow
+     */
     public void setWorkGroup( String workgroup )
     {
         _strWorkgroup = workgroup;
     }
 
     /**
-    *
-    * @return true if the filter contaion  workflow criteria
-    */
-    public boolean containsWorkgroupCriteria(  )
+     *
+     * @return true if the filter contaion workflow criteria
+     */
+    public boolean containsWorkgroupCriteria( )
     {
         return ( !_strWorkgroup.equals( ALL_STRING ) );
     }
-    
-    public boolean containsName () {
-    	
-    	return StringUtils.isNotBlank(_strName);
+
+    public boolean containsName( )
+    {
+
+        return StringUtils.isNotBlank( _strName );
     }
 }

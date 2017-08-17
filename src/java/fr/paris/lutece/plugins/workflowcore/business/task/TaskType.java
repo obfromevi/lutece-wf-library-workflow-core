@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.task;
 
-
 /**
  *
  * TaskType
@@ -54,7 +53,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public String getKey(  )
+    public String getKey( )
     {
         return _strKey;
     }
@@ -72,7 +71,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public String getTitleI18nKey(  )
+    public String getTitleI18nKey( )
     {
         return _strTitleI18nKey;
     }
@@ -90,7 +89,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public String getBeanName(  )
+    public String getBeanName( )
     {
         return _strBeanName;
     }
@@ -105,10 +104,10 @@ public class TaskType implements ITaskType
     }
 
     /**
-         * {@inheritDoc}
-         */
+     * {@inheritDoc}
+     */
     @Override
-    public String getConfigBeanName(  )
+    public String getConfigBeanName( )
     {
         return _strConfigBeanName;
     }
@@ -126,7 +125,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public String getTitle(  )
+    public String getTitle( )
     {
         return _strTitle;
     }
@@ -144,7 +143,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public boolean isConfigRequired(  )
+    public boolean isConfigRequired( )
     {
         return _bIsConfigureRequire;
     }
@@ -162,7 +161,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public boolean isFormTaskRequired(  )
+    public boolean isFormTaskRequired( )
     {
         return _bIsFormTaskRequire;
     }
@@ -180,7 +179,7 @@ public class TaskType implements ITaskType
      * {@inheritDoc}
      */
     @Override
-    public boolean isTaskForAutomaticAction(  )
+    public boolean isTaskForAutomaticAction( )
     {
         return _bIsTaskForAutomaticAction;
     }

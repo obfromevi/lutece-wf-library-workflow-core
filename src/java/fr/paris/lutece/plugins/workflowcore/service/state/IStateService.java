@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.workflowcore.business.state.StateFilter;
 
 import java.util.List;
 
-
 /**
  *
  * IStateService
@@ -47,20 +46,26 @@ import java.util.List;
 public interface IStateService
 {
     /**
-    * Creation of an instance of state
-    * @param state The instance of state which contains the informations to store
-    */
+     * Creation of an instance of state
+     * 
+     * @param state
+     *            The instance of state which contains the informations to store
+     */
     void create( State state );
 
     /**
      * Update of state which is specified in parameter
-     * @param state The instance of state which contains the informations to update
+     * 
+     * @param state
+     *            The instance of state which contains the informations to update
      */
     void update( State state );
 
     /**
      * Remove state which is specified in parameter
-     * @param nIdState The state id to remove
+     * 
+     * @param nIdState
+     *            The state id to remove
      */
     void remove( int nIdState );
 
@@ -68,69 +73,92 @@ public interface IStateService
 
     /**
      * Load the state Object
-     * @param nIdState the state id
+     * 
+     * @param nIdState
+     *            the state id
      * @return the State Object
      */
     State findByPrimaryKey( int nIdState );
 
     /**
      * Load the state Object from the given resource
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the state Object
      */
     State findByResource( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
      * Select states by filter
-     * @param filter the state filter
+     * 
+     * @param filter
+     *            the state filter
      * @return State List
      */
     List<State> getListStateByFilter( StateFilter filter );
 
     /**
      * return the initial state of the workflow
-     * @param nIdWorkflow yhe workflow id
+     * 
+     * @param nIdWorkflow
+     *            yhe workflow id
      * @return the initial state of the workflow
      */
     State getInitialState( int nIdWorkflow );
 
     /**
      * return the maximum order number of that states in a given workflow
-     * @param nWorkflowId the workflow id
+     * 
+     * @param nWorkflowId
+     *            the workflow id
      * @return the maximum order of the states in the workflow
      */
     int findMaximumOrderByWorkflowId( int nWorkflowId );
 
     /**
-     * decrements the order of all the next states after the one which will be
-     * removed
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * decrements the order of all the next states after the one which will be removed
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      */
     void decrementOrderByOne( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the states which have an order lower to a given order
-     * @param nOrder1 the order1
-     * @param nOrder2 the order2
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder1
+     *            the order1
+     * @param nOrder2
+     *            the order2
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the states
      */
     List<State> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
 
     /**
      * Finds all the states which have an order greater to a given order
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the states
      */
     List<State> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 
     /**
      * Initialize the display order of states using their ids
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdWorkflow
+     *            the workflow id
      */
     void initializeStateOrder( int nIdWorkflow );
 }

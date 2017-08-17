@@ -39,7 +39,6 @@ import java.sql.Timestamp;
 
 import java.util.GregorianCalendar;
 
-
 /**
  *
  * ResourceHistoryFactory
@@ -53,15 +52,14 @@ public class ResourceHistoryFactory implements IResourceHistoryFactory
      * {@inheritDoc}
      */
     @Override
-    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action,
-        String strUserAccessCode, boolean isAutomatic )
+    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic )
     {
-        ResourceHistory resourceHistory = new ResourceHistory(  );
+        ResourceHistory resourceHistory = new ResourceHistory( );
         resourceHistory.setIdResource( nIdResource );
         resourceHistory.setResourceType( strResourceType );
         resourceHistory.setAction( action );
-        resourceHistory.setWorkFlow( action.getWorkflow(  ) );
-        resourceHistory.setCreationDate( new Timestamp( GregorianCalendar.getInstance(  ).getTimeInMillis(  ) ) );
+        resourceHistory.setWorkFlow( action.getWorkflow( ) );
+        resourceHistory.setCreationDate( new Timestamp( GregorianCalendar.getInstance( ).getTimeInMillis( ) ) );
 
         if ( isAutomatic )
         {

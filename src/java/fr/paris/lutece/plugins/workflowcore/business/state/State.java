@@ -43,7 +43,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 /**
  * State
  *
@@ -68,14 +67,16 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return the id of the workflow state
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
 
     /**
      * set the id of the workflow state
-     * @param idState the id of the workflow state
+     * 
+     * @param idState
+     *            the id of the workflow state
      */
     public void setId( int idState )
     {
@@ -83,17 +84,19 @@ public class State implements IReferenceItem, RBACResource
     }
 
     /**
-    *
-    * @return the workflow associated
-    */
-    public Workflow getWorkflow(  )
+     *
+     * @return the workflow associated
+     */
+    public Workflow getWorkflow( )
     {
         return _workflow;
     }
 
     /**
      * set the the workflow associated
-     * @param workflow the workflow associated
+     * 
+     * @param workflow
+     *            the workflow associated
      */
     public void setWorkflow( Workflow workflow )
     {
@@ -105,7 +108,7 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return the action name
      */
-    public String getName(  )
+    public String getName( )
     {
         return _strName;
     }
@@ -113,7 +116,8 @@ public class State implements IReferenceItem, RBACResource
     /**
      * Set the action name
      *
-     * @param strName the action name
+     * @param strName
+     *            the action name
      */
     public void setName( String strName )
     {
@@ -123,9 +127,9 @@ public class State implements IReferenceItem, RBACResource
     /**
      * Returns the action description
      *
-     * @return  the action description
+     * @return the action description
      */
-    public String getDescription(  )
+    public String getDescription( )
     {
         return _strDescription;
     }
@@ -133,7 +137,8 @@ public class State implements IReferenceItem, RBACResource
     /**
      * Set the action description
      *
-     * @param strDescription The Description
+     * @param strDescription
+     *            The Description
      */
     public void setDescription( String strDescription )
     {
@@ -145,7 +150,7 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return The Icon
      */
-    public Icon getIcon(  )
+    public Icon getIcon( )
     {
         return _icon;
     }
@@ -153,7 +158,8 @@ public class State implements IReferenceItem, RBACResource
     /**
      * Set the action icon
      *
-     * @param icon the icon
+     * @param icon
+     *            the icon
      */
     public void setIcon( Icon icon )
     {
@@ -161,17 +167,20 @@ public class State implements IReferenceItem, RBACResource
     }
 
     /**
-     *return the list of all actions associated to the state
+     * return the list of all actions associated to the state
+     * 
      * @return the list of all actions associated to the state
      */
-    public List<Action> getAllActions(  )
+    public List<Action> getAllActions( )
     {
         return _listActions;
     }
 
     /**
-     *set the list of all actions associated to the state
-     * @param listActions the list of all actions associated to the state
+     * set the list of all actions associated to the state
+     * 
+     * @param listActions
+     *            the list of all actions associated to the state
      */
     public void setAllActions( List<Action> listActions )
     {
@@ -182,14 +191,16 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return true if the state is the initial state of the workflow
      */
-    public Boolean isInitialState(  )
+    public Boolean isInitialState( )
     {
         return _bInitialState;
     }
 
     /**
-     *  set true if the state is the initial state of the workflow
-     * @param isInitialState true if the state is the initial state of the workflow
+     * set true if the state is the initial state of the workflow
+     * 
+     * @param isInitialState
+     *            true if the state is the initial state of the workflow
      */
     public void setInitialState( Boolean isInitialState )
     {
@@ -198,18 +209,20 @@ public class State implements IReferenceItem, RBACResource
 
     /**
      * RBAC resource implementation
+     * 
      * @return The resource type code
      */
-    public String getResourceTypeCode(  )
+    public String getResourceTypeCode( )
     {
         return RESOURCE_TYPE;
     }
 
     /**
      * RBAC resource implmentation
+     * 
      * @return The resourceId
      */
-    public String getResourceId(  )
+    public String getResourceId( )
     {
         return Integer.toString( _nId );
     }
@@ -218,14 +231,16 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return return true if the resources of this state shall be assigned to a workgroup
      */
-    public Boolean isRequiredWorkgroupAssigned(  )
+    public Boolean isRequiredWorkgroupAssigned( )
     {
         return _bRequiredWorkgroupAssigned;
     }
 
     /**
      * set true return true if the resources of this state shall be assigned to a workgroup
-     * @param requireUserAssociated true return true if the resources of this state shall be assigned to to a workgroup
+     * 
+     * @param requireUserAssociated
+     *            true return true if the resources of this state shall be assigned to to a workgroup
      */
     public void setRequiredWorkgroupAssigned( Boolean requireUserAssociated )
     {
@@ -234,16 +249,19 @@ public class State implements IReferenceItem, RBACResource
 
     /**
      * get the order of a state
+     * 
      * @return the order of the state (to display in lists)
      */
-    public int getOrder(  )
+    public int getOrder( )
     {
         return _nOrder;
     }
 
     /**
      * set the order of a state
-     * @param nOrder the order
+     * 
+     * @param nOrder
+     *            the order
      */
     public void setOrder( int nOrder )
     {

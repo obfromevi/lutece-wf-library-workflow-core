@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.workflowcore.business.action;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
  * IActionDAO
  **/
@@ -45,101 +44,130 @@ public interface IActionDAO
     /**
      * Insert a new record in the table.
      *
-     * @param action instance of the Action object to insert
+     * @param action
+     *            instance of the Action object to insert
      */
     void insert( Action action );
 
     /**
      * update record in the table.
      *
-     * @param action instance of the Action object to update
+     * @param action
+     *            instance of the Action object to update
      */
     void store( Action action );
 
     /**
      * Load the action Object
-     * @param nIdAction the state id
+     * 
+     * @param nIdAction
+     *            the state id
      * @return the Action Object
      */
     Action load( int nIdAction );
 
     /**
      * Load the action Object with icon associated
-     * @param nIdAction the state id
+     * 
+     * @param nIdAction
+     *            the state id
      * @return the Action Object
      */
     Action loadWithIcon( int nIdAction );
 
     /**
      * Delete the action Object
-     * @param nIdAction the action id
+     * 
+     * @param nIdAction
+     *            the action id
      */
     void delete( int nIdAction );
 
     /**
      * select all actions by filter
-     * @param filter the action filter
+     * 
+     * @param filter
+     *            the action filter
      * @return a list of action
      */
     List<Action> selectActionsByFilter( ActionFilter filter );
 
     /**
      * Create the links between actions
-     * @param nIdAction the id action
-     * @param nIdLinkedAction the id linked action
+     * 
+     * @param nIdAction
+     *            the id action
+     * @param nIdLinkedAction
+     *            the id linked action
      */
     void insertLinkedActions( int nIdAction, int nIdLinkedAction );
 
     /**
      * Remove the links between actions
-     * @param nIdAction the ID action
+     * 
+     * @param nIdAction
+     *            the ID action
      */
     void removeLinkedActions( int nIdAction );
 
     /**
      * Load the list of IDs linked to the given ID action.
-     * @param nIdAction the ID action
+     * 
+     * @param nIdAction
+     *            the ID action
      * @return a list of IDs
      */
     Collection<Integer> selectListIdsLinkedAction( int nIdAction );
 
     /**
      * return the maximum order number of that states in a given workflow
-     * @param nWorkflowId the workflow id
+     * 
+     * @param nWorkflowId
+     *            the workflow id
      * @return the maximum order of the states in the workflow
      */
     int findMaximumOrderByWorkflowId( int nWorkflowId );
 
     /**
-     * decrements the order of all the next states after the one which will be
-     * removed
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * decrements the order of all the next states after the one which will be removed
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      */
     void decrementOrderByOne( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the actions which have an order lower to a given order
-     * @param nOrder1 the order 1
-     * @param nOrder2 the order 2
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder1
+     *            the order 1
+     * @param nOrder2
+     *            the order 2
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<State> the list of all the actions
      */
     List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
 
     /**
      * Finds all the actions which have an order greater to a given order
-     * @param nOrder the order
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdWorkflow
+     *            the workflow id
      * @return List<Action> the list of all the actions.
      */
     List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
 
     /**
      * Finds all the actions for the given workflow ordered by id
-     * @param nIdWorkflow the workflow id
-     * @return List<Action> the list actions. Only regular actions are returned,
-     *         automatic reflexive actions are ignored.
+     * 
+     * @param nIdWorkflow
+     *            the workflow id
+     * @return List<Action> the list actions. Only regular actions are returned, automatic reflexive actions are ignored.
      */
     List<Action> findActionsForOrderInit( int nIdWorkflow );
 }

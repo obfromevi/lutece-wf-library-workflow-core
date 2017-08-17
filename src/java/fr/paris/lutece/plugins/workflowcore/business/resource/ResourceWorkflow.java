@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.workflowcore.business.workflow.Workflow;
 
 import java.util.List;
 
-
 /**
  *
  * ResourceWorkflow
@@ -55,17 +54,19 @@ public class ResourceWorkflow
     private boolean _bIsAssociatedWithWorkgroup;
 
     /**
-    *
-    * @return the workflow associated
-    */
-    public Workflow getWorkflow(  )
+     *
+     * @return the workflow associated
+     */
+    public Workflow getWorkflow( )
     {
         return _workflow;
     }
 
     /**
      * set the the workflow associated
-     * @param workflow the workflow associated
+     * 
+     * @param workflow
+     *            the workflow associated
      */
     public void setWorkFlow( Workflow workflow )
     {
@@ -74,17 +75,20 @@ public class ResourceWorkflow
 
     /**
      * Returns the State of the document
+     * 
      * @return The State
      */
-    public State getState(  )
+    public State getState( )
     {
         return _state;
     }
 
     /**
-      * Set the State of the document
-      * @param state The State
-    */
+     * Set the State of the document
+     * 
+     * @param state
+     *            The State
+     */
     public void setState( State state )
     {
         _state = state;
@@ -92,16 +96,19 @@ public class ResourceWorkflow
 
     /**
      * return the id of the resource
+     * 
      * @return the id of the resource
      */
-    public int getIdResource(  )
+    public int getIdResource( )
     {
         return _nIdResource;
     }
 
     /**
      * set the id of the resource
-     * @param idResource  the id of the resource
+     * 
+     * @param idResource
+     *            the id of the resource
      */
     public void setIdResource( int idResource )
     {
@@ -110,16 +117,19 @@ public class ResourceWorkflow
 
     /**
      * return the resource type
+     * 
      * @return resource type
      */
-    public String getResourceType(  )
+    public String getResourceType( )
     {
         return _strResourceType;
     }
 
     /**
      * set the resource type
-     * @param resourceType the resource type
+     * 
+     * @param resourceType
+     *            the resource type
      */
     public void setResourceType( String resourceType )
     {
@@ -130,14 +140,16 @@ public class ResourceWorkflow
      *
      * @return the workgroups associated to the resource
      */
-    public List<String> getWorkgroups(  )
+    public List<String> getWorkgroups( )
     {
         return _workgroups;
     }
 
     /**
      * set the the workgroups associated to the resource
-     * @param worgroups the list of workgroups
+     * 
+     * @param worgroups
+     *            the list of workgroups
      */
     public void setWorkgroups( List<String> worgroups )
     {
@@ -146,16 +158,19 @@ public class ResourceWorkflow
 
     /**
      * Get the external parent id key
+     * 
      * @return the external parent id key
      */
-    public Integer getExternalParentId(  )
+    public Integer getExternalParentId( )
     {
         return _nIdExternalParent;
     }
 
     /**
      * Set external parent id key
-     * @param nIdExternalParent the external parent id to set
+     * 
+     * @param nIdExternalParent
+     *            the external parent id to set
      */
     public void setExternalParentId( Integer nIdExternalParent )
     {
@@ -164,7 +179,9 @@ public class ResourceWorkflow
 
     /**
      * set to true if the workgroup is associate with workgroups
-     * @param bIsAssociatedWithWorkgroup true if it is associated to a workgroup
+     * 
+     * @param bIsAssociatedWithWorkgroup
+     *            true if it is associated to a workgroup
      */
     public void setAssociatedWithWorkgroup( boolean bIsAssociatedWithWorkgroup )
     {
@@ -175,7 +192,7 @@ public class ResourceWorkflow
      *
      * @return true if the workgroup is associate with workgroups
      */
-    public boolean isAssociatedWithWorkgroup(  )
+    public boolean isAssociatedWithWorkgroup( )
     {
         return _bIsAssociatedWithWorkgroup;
     }

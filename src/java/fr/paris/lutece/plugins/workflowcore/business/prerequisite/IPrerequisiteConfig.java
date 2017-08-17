@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
 import java.io.Serializable;
 
-
 /**
  * Interface of beans that describe prerequisite configuration
  */
@@ -43,29 +42,31 @@ public interface IPrerequisiteConfig extends Serializable
 {
     /**
      * Get the id of the prerequisite associated with this configuration
+     * 
      * @return The id of the prerequisite associated with this configuration
      */
-    int getIdPrerequisite(  );
+    int getIdPrerequisite( );
 
     /**
      * Set the id of the prerequisite associated with this configuration
-     * @param nId The id of the prerequisite associated with this configuration
+     * 
+     * @param nId
+     *            The id of the prerequisite associated with this configuration
      */
     void setIdPrerequisite( int nId );
 
     /**
-     * Get the type of the prerequisite service associated with this
-     * configuration
-     * @return the type of the prerequisite service associated with this
-     *         configuration
+     * Get the type of the prerequisite service associated with this configuration
+     * 
+     * @return the type of the prerequisite service associated with this configuration
      */
-    String getPrerequisiteType(  );
+    String getPrerequisiteType( );
 
     /**
-     * Set the type of the prerequisite associated with this
-     * configuration
-     * @param strPrerequisiteType the type of the prerequisite service
-     *            associated with this configuration
+     * Set the type of the prerequisite associated with this configuration
+     * 
+     * @param strPrerequisiteType
+     *            the type of the prerequisite service associated with this configuration
      */
     void setPrerequisiteType( String strPrerequisiteType );
 }

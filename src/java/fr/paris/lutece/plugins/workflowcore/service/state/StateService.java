@@ -43,7 +43,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-
 /**
  *
  * StateService
@@ -85,7 +84,7 @@ public class StateService implements IStateService
 
         if ( state != null )
         {
-            //remove workflow resources associated
+            // remove workflow resources associated
             List<ResourceWorkflow> listResourceWorkflow = _resourceWorkflowService.getAllResourceWorkflowByState( nIdState );
 
             for ( ResourceWorkflow resourceWorkflow : listResourceWorkflow )
@@ -133,13 +132,13 @@ public class StateService implements IStateService
     public State getInitialState( int nIdWorkflow )
     {
         // test if initial test already exist
-        StateFilter filter = new StateFilter(  );
+        StateFilter filter = new StateFilter( );
         filter.setIdWorkflow( nIdWorkflow );
         filter.setIsInitialState( StateFilter.FILTER_TRUE );
 
         List<State> listState = getListStateByFilter( filter );
 
-        if ( listState.size(  ) != 0 )
+        if ( listState.size( ) != 0 )
         {
             return listState.get( 0 );
         }

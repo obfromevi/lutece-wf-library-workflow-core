@@ -40,7 +40,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-
 /**
  *
  * IconService
@@ -103,8 +102,8 @@ public class IconService implements IIconService
      * {@inheritDoc}
      */
     @Override
-    public List<Icon> getListIcons(  )
+    public List<Icon> getListIcons( )
     {
-        return _iconDAO.selectAll(  );
+        return _iconDAO.selectAll( );
     }
 }

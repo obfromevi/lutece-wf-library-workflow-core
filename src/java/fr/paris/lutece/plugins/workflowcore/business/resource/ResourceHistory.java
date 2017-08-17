@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.workflowcore.business.workflow.Workflow;
 
 import java.sql.Timestamp;
 
-
 /**
  *
  * ResourceHistory
@@ -56,16 +55,19 @@ public class ResourceHistory
 
     /**
      * return the id of the resource history
+     * 
      * @return the id of the resource history
      */
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
 
     /**
      * set the id of the resource history
-     * @param idHistory  the id of the resource history
+     * 
+     * @param idHistory
+     *            the id of the resource history
      */
     public void setId( int idHistory )
     {
@@ -73,17 +75,19 @@ public class ResourceHistory
     }
 
     /**
-    *
-    * @return the workflow associated
-    */
-    public Workflow getWorkflow(  )
+     *
+     * @return the workflow associated
+     */
+    public Workflow getWorkflow( )
     {
         return _workflow;
     }
 
     /**
      * set the the workflow associated
-     * @param workflow the workflow associated
+     * 
+     * @param workflow
+     *            the workflow associated
      */
     public void setWorkFlow( Workflow workflow )
     {
@@ -92,17 +96,20 @@ public class ResourceHistory
 
     /**
      * Returns the action performed on the resource
+     * 
      * @return The action performed on the resource
      */
-    public Action getAction(  )
+    public Action getAction( )
     {
         return _action;
     }
 
     /**
-      * Set the action performed on the resource
-      * @param action The action
-    */
+     * Set the action performed on the resource
+     * 
+     * @param action
+     *            The action
+     */
     public void setAction( Action action )
     {
         _action = action;
@@ -110,16 +117,19 @@ public class ResourceHistory
 
     /**
      * return the id of the resource
+     * 
      * @return the id of the resource
      */
-    public int getIdResource(  )
+    public int getIdResource( )
     {
         return _nIdResource;
     }
 
     /**
      * set the id of the resource
-     * @param idResource  the id of the resource
+     * 
+     * @param idResource
+     *            the id of the resource
      */
     public void setIdResource( int idResource )
     {
@@ -128,16 +138,19 @@ public class ResourceHistory
 
     /**
      * return the resource type
+     * 
      * @return resource type
      */
-    public String getResourceType(  )
+    public String getResourceType( )
     {
         return _strResourceType;
     }
 
     /**
      * set the resource type
-     * @param resourceType the resource type
+     * 
+     * @param resourceType
+     *            the resource type
      */
     public void setResourceType( String resourceType )
     {
@@ -145,17 +158,19 @@ public class ResourceHistory
     }
 
     /**
-    *
-    * @return the creation date
-    */
-    public Timestamp getCreationDate(  )
+     *
+     * @return the creation date
+     */
+    public Timestamp getCreationDate( )
     {
         return _tCreationDate;
     }
 
     /**
      * set the creation date
-     * @param dateCreation the creation date
+     * 
+     * @param dateCreation
+     *            the creation date
      */
     public void setCreationDate( Timestamp dateCreation )
     {
@@ -167,7 +182,7 @@ public class ResourceHistory
      *
      * @return The User acces code
      */
-    public String getUserAccessCode(  )
+    public String getUserAccessCode( )
     {
         return _strUserAccessCode;
     }
@@ -175,7 +190,8 @@ public class ResourceHistory
     /**
      * Sets the User acces code
      *
-     * @param strEventUser The User acces code
+     * @param strEventUser
+     *            The User acces code
      */
     public void setUserAccessCode( String strEventUser )
     {

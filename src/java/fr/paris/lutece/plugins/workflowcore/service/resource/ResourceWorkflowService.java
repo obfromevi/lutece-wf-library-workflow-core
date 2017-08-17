@@ -42,7 +42,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-
 /**
  *
  * ResourceWorkflowService
@@ -59,8 +58,8 @@ public class ResourceWorkflowService implements IResourceWorkflowService
     @Override
     public void create( ResourceWorkflow resourceWorkflow )
     {
-        List<String> listWorkgroup = resourceWorkflow.getWorkgroups(  );
-        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size(  ) > 0 ) );
+        List<String> listWorkgroup = resourceWorkflow.getWorkgroups( );
+        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size( ) > 0 ) );
 
         _resourceWorkflowDAO.insert( resourceWorkflow );
 
@@ -79,10 +78,10 @@ public class ResourceWorkflowService implements IResourceWorkflowService
     @Override
     public void update( ResourceWorkflow resourceWorkflow )
     {
-        List<String> listWorkgroup = resourceWorkflow.getWorkgroups(  );
-        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size(  ) > 0 ) );
+        List<String> listWorkgroup = resourceWorkflow.getWorkgroups( );
+        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size( ) > 0 ) );
         _resourceWorkflowDAO.store( resourceWorkflow );
-        //update workgroups list
+        // update workgroups list
         _resourceWorkflowDAO.deleteWorkgroups( resourceWorkflow );
 
         if ( listWorkgroup != null )
@@ -172,8 +171,7 @@ public class ResourceWorkflowService implements IResourceWorkflowService
      * {@inheritDoc}
      */
     @Override
-    public List<Integer> getListResourceIdWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter,
-        List<Integer> lListIdWorkflowState )
+    public List<Integer> getListResourceIdWorkflowByFilter( ResourceWorkflowFilter resourceWorkflowFilter, List<Integer> lListIdWorkflowState )
     {
         return _resourceWorkflowDAO.getListResourceWorkflowIdByFilter( resourceWorkflowFilter, lListIdWorkflowState );
     }
@@ -191,10 +189,8 @@ public class ResourceWorkflowService implements IResourceWorkflowService
      * {@inheritDoc}
      */
     @Override
-    public Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdRessource, int nIdWorflow,
-        String strResourceType, Integer nIdExternalParentId )
+    public Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdRessource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId )
     {
-        return _resourceWorkflowDAO.getListIdStateByListId( lListIdRessource, nIdWorflow, strResourceType,
-            nIdExternalParentId );
+        return _resourceWorkflowDAO.getListIdStateByListId( lListIdRessource, nIdWorflow, strResourceType, nIdExternalParentId );
     }
 }

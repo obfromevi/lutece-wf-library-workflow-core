@@ -38,7 +38,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
 
-
 /**
  *
  * Task
@@ -56,7 +55,7 @@ public abstract class Task implements ITask
      * {@inheritDoc}
      */
     @Override
-    public int getId(  )
+    public int getId( )
     {
         return _nId;
     }
@@ -74,7 +73,7 @@ public abstract class Task implements ITask
      * {@inheritDoc}
      */
     @Override
-    public ITaskType getTaskType(  )
+    public ITaskType getTaskType( )
     {
         return _taskType;
     }
@@ -92,7 +91,7 @@ public abstract class Task implements ITask
      * {@inheritDoc}
      */
     @Override
-    public Action getAction(  )
+    public Action getAction( )
     {
         return _action;
     }
@@ -108,16 +107,19 @@ public abstract class Task implements ITask
 
     /**
      * get the order of a task
+     * 
      * @return the order of the task(to display in lists)
      */
-    public int getOrder(  )
+    public int getOrder( )
     {
         return _nOrder;
     }
 
     /**
      * set the order of an task
-     * @param nOrder the order
+     * 
+     * @param nOrder
+     *            the order
      */
     public void setOrder( int nOrder )
     {

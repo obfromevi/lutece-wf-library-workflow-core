@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.task;
 
-
 /**
  *
  * ITaskType
@@ -42,83 +41,92 @@ package fr.paris.lutece.plugins.workflowcore.business.task;
 public interface ITaskType
 {
     /**
-     * @return  key of the task type
+     * @return key of the task type
      */
-    String getKey(  );
+    String getKey( );
 
     /**
-     * @param key title the key of the text type
+     * @param key
+     *            title the key of the text type
      */
     void setKey( String key );
 
     /**
      * @return the I18n title key of the task type
      */
-    String getTitleI18nKey(  );
+    String getTitleI18nKey( );
 
     /**
-     * @param title the title of the task type
+     * @param title
+     *            the title of the task type
      */
     void setTitleI18nKey( String title );
 
     /**
      * @return the bean name of the task
      */
-    String getBeanName(  );
+    String getBeanName( );
 
     /**
-     * @param strBeanName the bean name of the task
+     * @param strBeanName
+     *            the bean name of the task
      */
     void setBeanName( String strBeanName );
 
     /**
      * @return the task config bean name
      */
-    String getConfigBeanName(  );
+    String getConfigBeanName( );
 
     /**
-     * @param strConfigBeanName the task config bean name
+     * @param strConfigBeanName
+     *            the task config bean name
      */
     void setConfigBeanName( String strConfigBeanName );
 
     /**
      * @return the title of the task type
      */
-    String getTitle(  );
+    String getTitle( );
 
     /**
-     * Set the  title of the task type
-     * @param title the title of the task type
+     * Set the title of the task type
+     * 
+     * @param title
+     *            the title of the task type
      */
     void setTitle( String title );
 
     /**
      * @return true if the task use a configuration
      */
-    boolean isConfigRequired(  );
+    boolean isConfigRequired( );
 
     /**
-     * @param bIsConfigRequired true if the task use a configuration
+     * @param bIsConfigRequired
+     *            true if the task use a configuration
      */
     void setConfigRequired( boolean bIsConfigRequired );
 
     /**
      * @return true if the task use a form
      */
-    boolean isFormTaskRequired(  );
+    boolean isFormTaskRequired( );
 
     /**
-     * @param bIsFormTaskRequired true if the task use a form
+     * @param bIsFormTaskRequired
+     *            true if the task use a form
      */
     void setFormTaskRequired( boolean bIsFormTaskRequired );
 
     /**
      * @return true if the task may be use by automatic action
      */
-    boolean isTaskForAutomaticAction(  );
+    boolean isTaskForAutomaticAction( );
 
     /**
-     * @param bIsTaskForAutomaticAction true if the task may be use by automatic action
+     * @param bIsTaskForAutomaticAction
+     *            true if the task may be use by automatic action
      */
     void setTaskForAutomaticAction( boolean bIsTaskForAutomaticAction );
 }

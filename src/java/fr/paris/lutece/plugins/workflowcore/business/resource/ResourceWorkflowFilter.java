@@ -37,7 +37,6 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 
-
 /**
  *
  * ResourceWorkflowFilter
@@ -56,14 +55,16 @@ public class ResourceWorkflowFilter
      *
      * @return the resource type
      */
-    public String getResourceType(  )
+    public String getResourceType( )
     {
         return _strResourceType;
     }
 
     /**
      * Set the resource type
-     * @param strResourceType the resource type
+     * 
+     * @param strResourceType
+     *            the resource type
      */
     public void setResourceType( String strResourceType )
     {
@@ -74,23 +75,25 @@ public class ResourceWorkflowFilter
      *
      * @return true if the filter contain resource type
      */
-    public boolean containsResourceType(  )
+    public boolean containsResourceType( )
     {
         return StringUtils.isNotBlank( _strResourceType );
     }
 
     /**
-    *
-    * @return  the id of workflow insert in the filter
-    */
-    public int getIdWorkflow(  )
+     *
+     * @return the id of workflow insert in the filter
+     */
+    public int getIdWorkflow( )
     {
         return _nIdWorkFlow;
     }
 
     /**
      * set the id of workflow in the filter
-     * @param idWorkflow the id of workflow to insert in the filter
+     * 
+     * @param idWorkflow
+     *            the id of workflow to insert in the filter
      */
     public void setIdWorkflow( int idWorkflow )
     {
@@ -102,23 +105,25 @@ public class ResourceWorkflowFilter
      * @return true if the filter contain an id of workflow
      *
      */
-    public boolean containsIdWorkflow(  )
+    public boolean containsIdWorkflow( )
     {
         return ( _nIdWorkFlow != ALL_INT );
     }
 
     /**
-    *
-    * @return  the id of State insert in the filter
-    */
-    public int getIdState(  )
+     *
+     * @return the id of State insert in the filter
+     */
+    public int getIdState( )
     {
         return _nIdState;
     }
 
     /**
      * set the id of State in the filter
-     * @param idState the state id to insert in the filter
+     * 
+     * @param idState
+     *            the state id to insert in the filter
      */
     public void setIdState( int idState )
     {
@@ -130,14 +135,16 @@ public class ResourceWorkflowFilter
      * @return true if the filter contain an id of State
      *
      */
-    public boolean containsIdState(  )
+    public boolean containsIdState( )
     {
         return ( _nIdState != ALL_INT );
     }
 
     /**
      * The workgroup key list to set
-     * @param workgroupKeyList The workgroup key list
+     * 
+     * @param workgroupKeyList
+     *            The workgroup key list
      */
     public void setWorkgroupKeyList( Map<String, String> workgroupKeyList )
     {
@@ -146,43 +153,48 @@ public class ResourceWorkflowFilter
 
     /**
      * Get workgroup key list
+     * 
      * @return The workgroup key list
      */
-    public Map<String, String> getWorkgroupKeyList(  )
+    public Map<String, String> getWorkgroupKeyList( )
     {
         return _workgroupKeyList;
     }
 
     /**
-    *
-    * @return true if the filter contain workgroup key list
-    */
-    public boolean containsWorkgroupKeyList(  )
+     *
+     * @return true if the filter contain workgroup key list
+     */
+    public boolean containsWorkgroupKeyList( )
     {
         return ( _workgroupKeyList != null );
     }
 
     /**
      * Test if filter contains an external parent id
+     * 
      * @return true if contains an external parent id
      */
-    public boolean containsExternalParentId(  )
+    public boolean containsExternalParentId( )
     {
         return ( _nIdExternalParent != null );
     }
 
     /**
      * Get the external parent id key
+     * 
      * @return the external parent id key
      */
-    public Integer getExternalParentId(  )
+    public Integer getExternalParentId( )
     {
         return _nIdExternalParent;
     }
 
     /**
      * Set external parent id key
-     * @param nIdExternalParent the external parent id to set
+     * 
+     * @param nIdExternalParent
+     *            the external parent id to set
      */
     public void setExternalParentId( Integer nIdExternalParent )
     {

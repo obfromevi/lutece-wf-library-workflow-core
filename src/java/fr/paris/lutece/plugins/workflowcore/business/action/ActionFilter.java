@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.action;
 
-
 /**
  *
  * class ActionFilter
@@ -56,14 +55,16 @@ public class ActionFilter
      *
      * @return the id of workflow insert in the filter
      */
-    public int getIdWorkflow(  )
+    public int getIdWorkflow( )
     {
         return _nIdWorkFlow;
     }
 
     /**
      * set the id of workflow in the filter
-     * @param nIdWorkflow the id of workflow to insert in the filter
+     * 
+     * @param nIdWorkflow
+     *            the id of workflow to insert in the filter
      */
     public void setIdWorkflow( int nIdWorkflow )
     {
@@ -75,7 +76,7 @@ public class ActionFilter
      * @return true if the filter contain an id of workflow
      *
      */
-    public boolean containsIdWorkflow(  )
+    public boolean containsIdWorkflow( )
     {
         return ( _nIdWorkFlow != ALL_INT );
     }
@@ -84,14 +85,16 @@ public class ActionFilter
      *
      * @return the initial state insert in the filter
      */
-    public int getIdStateBefore(  )
+    public int getIdStateBefore( )
     {
         return _nIdStateBefore;
     }
 
     /**
      * set the id of the initial state in the filter
-     * @param nIdStateBefore the id of state to insert in the filter
+     * 
+     * @param nIdStateBefore
+     *            the id of state to insert in the filter
      */
     public void setIdStateBefore( int nIdStateBefore )
     {
@@ -103,7 +106,7 @@ public class ActionFilter
      * @return true if the filter contain an id of the initial state
      *
      */
-    public boolean containsIdStateBefore(  )
+    public boolean containsIdStateBefore( )
     {
         return ( _nIdStateBefore != ALL_INT );
     }
@@ -112,14 +115,16 @@ public class ActionFilter
      *
      * @return the id of the state after doing the action insert in the filter
      */
-    public int getIdStateAfter(  )
+    public int getIdStateAfter( )
     {
         return _nIdStateAfter;
     }
 
     /**
      * set the id of the state after doing the action insert in the filter
-     * @param nIdStateAfter the id of the state to insert in the filter
+     * 
+     * @param nIdStateAfter
+     *            the id of the state to insert in the filter
      */
     public void setIdStateAfter( int nIdStateAfter )
     {
@@ -128,11 +133,10 @@ public class ActionFilter
 
     /**
      *
-     * @return true if the filter contain the id of the state after doing the
-     *         action
+     * @return true if the filter contain the id of the state after doing the action
      *
      */
-    public boolean containsIdStateAfter(  )
+    public boolean containsIdStateAfter( )
     {
         return ( _nIdStateAfter != ALL_INT );
     }
@@ -141,14 +145,16 @@ public class ActionFilter
      *
      * @return the id of the icon insert in the filter
      */
-    public int getIdIcon(  )
+    public int getIdIcon( )
     {
         return _nIdIcon;
     }
 
     /**
      * set the id of the icon insert in the filter
-     * @param nIdIcon the id of the icon insert in the filter
+     * 
+     * @param nIdIcon
+     *            the id of the icon insert in the filter
      */
     public void setIdIcon( int nIdIcon )
     {
@@ -159,25 +165,24 @@ public class ActionFilter
      *
      * @return true if the filter contain the id of the icon
      */
-    public boolean containsIdIcon(  )
+    public boolean containsIdIcon( )
     {
         return ( _nIdIcon != ALL_INT );
     }
 
     /**
-     * @return 1 if actions must be automatic actions
-     *         0 if actions must not be automatic actions
+     * @return 1 if actions must be automatic actions 0 if actions must not be automatic actions
      */
-    public int getIsAutomaticState(  )
+    public int getIsAutomaticState( )
     {
         return _nIsAutomaticState;
     }
 
     /**
-     * Set 1 if actions must be automatic actions, 0 if they must not be
-     * automatic
-     * @param nIsAutomaticState 1 if the state return must be the automatic
-     *            action 0 if the state return must not be the automatic action
+     * Set 1 if actions must be automatic actions, 0 if they must not be automatic
+     * 
+     * @param nIsAutomaticState
+     *            1 if the state return must be the automatic action 0 if the state return must not be the automatic action
      */
     public void setIsAutomaticState( int nIsAutomaticState )
     {
@@ -188,26 +193,25 @@ public class ActionFilter
      *
      * @return true if the filter contain automatic action
      */
-    public boolean containsIsAutomaticState(  )
+    public boolean containsIsAutomaticState( )
     {
         return ( _nIsAutomaticState != ALL_INT );
     }
 
     /**
      *
-     * @return 1 if the state return must be the mass action
-     *         0 if the state return must not be the mass action
+     * @return 1 if the state return must be the mass action 0 if the state return must not be the mass action
      */
-    public int getIsMassAction(  )
+    public int getIsMassAction( )
     {
         return _nIsMassAction;
     }
 
     /**
-     * Set true if the state return must be the mass action
-     * false if the state return must not be the mass action
-     * @param bIsMassAction true if the state return must be the mass action
-     *            false if the state return must not be the mass action
+     * Set true if the state return must be the mass action false if the state return must not be the mass action
+     * 
+     * @param bIsMassAction
+     *            true if the state return must be the mass action false if the state return must not be the mass action
      */
     public void setIsMassAction( boolean bIsMassAction )
     {
@@ -218,27 +222,26 @@ public class ActionFilter
      *
      * @return true if the filter contain mass action
      */
-    public boolean containsIsMassAction(  )
+    public boolean containsIsMassAction( )
     {
         return ( _nIsMassAction != ALL_INT );
     }
 
     /**
      * Check if actions must be automatic reflexive actions, or regular actions
-     * @return True if actions must be automatic reflexive actions, false
-     *         otherwise. If no value is specified, then only regular actions
-     *         are returned
+     * 
+     * @return True if actions must be automatic reflexive actions, false otherwise. If no value is specified, then only regular actions are returned
      */
-    public boolean isAutomaticReflexiveAction(  )
+    public boolean isAutomaticReflexiveAction( )
     {
         return _bIsAutomaticReflexiveAction;
     }
 
     /**
-     * Set whether actions must be automatic reflexive actions, or regular
-     * actions
-     * @param bAutomaticReflexiveAction True if actions must be automatic
-     *            reflexive actions, false otherwise.
+     * Set whether actions must be automatic reflexive actions, or regular actions
+     * 
+     * @param bAutomaticReflexiveAction
+     *            True if actions must be automatic reflexive actions, false otherwise.
      */
     public void setAutomaticReflexiveAction( boolean bAutomaticReflexiveAction )
     {

@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.workflowcore.service.task;
 import java.util.List;
 import java.util.Locale;
 
-
 /**
  *
  * ITaskService
@@ -45,80 +44,108 @@ import java.util.Locale;
 public interface ITaskService
 {
     /**
-    * Creation of an instance of task
-    * @param task The instance of task which contains the informations to store
-    */
+     * Creation of an instance of task
+     * 
+     * @param task
+     *            The instance of task which contains the informations to store
+     */
     void create( ITask task );
 
     /**
      * Update of task which is specified in parameter
-     * @param  task The instance of task which contains the informations to update
+     * 
+     * @param task
+     *            The instance of task which contains the informations to update
      */
     void update( ITask task );
 
     /**
      * Remove task which is specified in parameter
-     * @param nIdTask The task key
+     * 
+     * @param nIdTask
+     *            The task key
      */
     void remove( int nIdTask );
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Load the Task Object
-     * @param nIdTask the task id
-     * @param locale the locale
+     * 
+     * @param nIdTask
+     *            the task id
+     * @param locale
+     *            the locale
      * @return the Task Object
      */
     ITask findByPrimaryKey( int nIdTask, Locale locale );
 
     /**
      * Select all tasks associated to the action
-     * @param nIdAction the action key
-     * @param locale the locale
+     * 
+     * @param nIdAction
+     *            the action key
+     * @param locale
+     *            the locale
      * @return Task list
      */
     List<ITask> getListTaskByIdAction( int nIdAction, Locale locale );
 
     /**
      * return the maximum order number of the tasks in a given workflow
-     * @param nIdAction the action id
+     * 
+     * @param nIdAction
+     *            the action id
      * @return the maximum order of the tasks in the given action
      */
     int findMaximumOrderByActionId( int nIdAction );
 
     /**
-     * decrements the order of all the next tasks after the one which will be
-     * removed
-     * @param nOrder the order id
-     * @param nIdAction the action id
+     * decrements the order of all the next tasks after the one which will be removed
+     * 
+     * @param nOrder
+     *            the order id
+     * @param nIdAction
+     *            the action id
      */
     void decrementOrderByOne( int nOrder, int nIdAction );
 
     /**
      * Finds all the tasks which have an order lower to a given order
-     * @param nOrder1 the order 1
-     * @param nOrder2 the order 2
-     * @param nIdAction the action id
-     * @param locale the locale
+     * 
+     * @param nOrder1
+     *            the order 1
+     * @param nOrder2
+     *            the order 2
+     * @param nIdAction
+     *            the action id
+     * @param locale
+     *            the locale
      * @return List<ITask> the list of all the tasks
      */
     List<ITask> findTasksBetweenOrders( int nOrder1, int nOrder2, int nIdAction, Locale locale );
 
     /**
      * Finds all the tasks which have an order greater to a given order
-     * @param nOrder the order
-     * @param nIdAction the action id
-     * @param locale the locale
+     * 
+     * @param nOrder
+     *            the order
+     * @param nIdAction
+     *            the action id
+     * @param locale
+     *            the locale
      * @return List<ITask> the list of all the tasks
      */
     List<ITask> findTasksAfterOrder( int nOrder, int nIdAction, Locale locale );
 
     /**
      * Initialize the display order of tasks using their ids
-     * @param nIdAction the action id
-     * @param locale the locale
+     * 
+     * @param nIdAction
+     *            the action id
+     * @param locale
+     *            the locale
      */
     void initializeTaskOrder( int nIdAction, Locale locale );
 }

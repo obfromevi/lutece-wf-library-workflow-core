@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.workflowcore.business.prerequisite.Prerequisite;
 
 import java.util.List;
 
-
 /**
  * Interface of the service that allows to manage prerequisites
  */
@@ -46,35 +45,37 @@ public interface IPrerequisiteManagementService
 {
     /**
      * Get the list of prerequisites services
+     * 
      * @return The list of prerequisite services
      */
-    List<IAutomaticActionPrerequisiteService> getPrerequisiteServiceList(  );
+    List<IAutomaticActionPrerequisiteService> getPrerequisiteServiceList( );
 
     /**
      * Get the prerequisite service associated with a prerequisite type
-     * @param strPrerequisiteType The prerequisite type
-     * @return The prerequisite service, or null if no service was found for the
-     *         given prerequisite type
+     * 
+     * @param strPrerequisiteType
+     *            The prerequisite type
+     * @return The prerequisite service, or null if no service was found for the given prerequisite type
      */
     IAutomaticActionPrerequisiteService getPrerequisiteService( String strPrerequisiteType );
 
     /**
      * Get the list of prerequisites associated with an action
-     * @param nIdAction The id of the action
-     * @return The list of prerequisites associated with the given action, or an
-     *         empty list if no prerequisite is associated with the given action
+     * 
+     * @param nIdAction
+     *            The id of the action
+     * @return The list of prerequisites associated with the given action, or an empty list if no prerequisite is associated with the given action
      */
     List<Prerequisite> getListPrerequisite( int nIdAction );
 
     /**
      * Get the configuration of a prerequisite
-     * @param nIdPrerequisite the if of the prerequisite to get the
-     *            configuration of
-     * @param prerequisiteService The prerequisite service to use to get the
-     *            configuration
-     * @return The configuration, or null if the prerequisite has no
-     *         configuration
+     * 
+     * @param nIdPrerequisite
+     *            the if of the prerequisite to get the configuration of
+     * @param prerequisiteService
+     *            The prerequisite service to use to get the configuration
+     * @return The configuration, or null if the prerequisite has no configuration
      */
-    IPrerequisiteConfig getPrerequisiteConfiguration( int nIdPrerequisite,
-        IAutomaticActionPrerequisiteService prerequisiteService );
+    IPrerequisiteConfig getPrerequisiteConfiguration( int nIdPrerequisite, IAutomaticActionPrerequisiteService prerequisiteService );
 }

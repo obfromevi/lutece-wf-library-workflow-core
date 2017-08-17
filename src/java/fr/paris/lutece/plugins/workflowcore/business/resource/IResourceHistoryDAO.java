@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.resource;
 
 import java.util.List;
 
-
 /**
  *
  * IResourceHistoryDAO
@@ -46,55 +45,73 @@ public interface IResourceHistoryDAO
     /**
      * Insert a new record in the table.
      *
-     * @param resourceHistory instance of the ResourceHistory object to insert
+     * @param resourceHistory
+     *            instance of the ResourceHistory object to insert
      */
     void insert( ResourceHistory resourceHistory );
 
     /**
      * Load the Resource History Object
-     * @param nIdHistory the history id
+     * 
+     * @param nIdHistory
+     *            the history id
      * @return the Resource History Object
      *
      */
     ResourceHistory load( int nIdHistory );
 
     /**
-     * Load all  ResourceHistory Object for a given resource
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param nIdWorkflow the workflow id
+     * Load all ResourceHistory Object for a given resource
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the list of ResourceHistory
      */
     List<ResourceHistory> selectByResource( int nIdResource, String strResourceType, int nIdWorkflow );
 
     /**
-     * Load all  ResourceHistory Object for a given resource
-     * @param nIdAction the action id
+     * Load all ResourceHistory Object for a given resource
+     * 
+     * @param nIdAction
+     *            the action id
      * @return the list of ResourceHistory
      */
     List<ResourceHistory> selectByAction( int nIdAction );
 
     /**
      * Delete the ResourceHistory Object
-     * @param nIdHistory the history id
+     * 
+     * @param nIdHistory
+     *            the history id
      */
     void delete( int nIdHistory );
 
     /**
      * Delete ResourceHistory list by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      */
     void deleteByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 
     /**
      * Get list history id by list of id resource
-     * @param listIdResource the resource list id
-     * @param strResourceType the resource type
-     * @param nIdWorflow the workflow id
+     * 
+     * @param listIdResource
+     *            the resource list id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorflow
+     *            the workflow id
      * @return list of history id
      */
-    List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType,
-        Integer nIdWorflow );
+    List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
 }

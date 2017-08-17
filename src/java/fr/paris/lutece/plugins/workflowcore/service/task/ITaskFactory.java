@@ -39,7 +39,6 @@ import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
 import java.util.Collection;
 import java.util.Locale;
 
-
 /**
  *
  * ITaskFactory
@@ -49,28 +48,36 @@ public interface ITaskFactory
 {
     /**
      * return an instance of Task Object depending on the task type
-     * @param strKey the type task key
-     * @param locale the Locale
-     * @return an instance of Task  Object
+     * 
+     * @param strKey
+     *            the type task key
+     * @param locale
+     *            the Locale
+     * @return an instance of Task Object
      */
     ITask newTask( String strKey, Locale locale );
 
     /**
      * Return an instance of a {@link ITaskConfig}
-     * @param strKey the task type key
+     * 
+     * @param strKey
+     *            the task type key
      * @return a {@link ITaskConfig}
      */
     ITaskConfig newTaskConfig( String strKey );
 
     /**
      * Get all task types
+     * 
      * @return a collection of {@link ITaskType}
      */
-    Collection<ITaskType> getAllTaskTypes(  );
+    Collection<ITaskType> getAllTaskTypes( );
 
     /**
      * Get all task types
-     * @param locale the locale
+     * 
+     * @param locale
+     *            the locale
      * @return a collection of {@link ITaskType}
      */
     Collection<ITaskType> getAllTaskTypes( Locale locale );

@@ -40,7 +40,6 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  *
  * ITaskComponentManager
@@ -49,83 +48,116 @@ import javax.servlet.http.HttpServletRequest;
 public interface ITaskComponentManager
 {
     /**
-    * Get the list of task components
-    * @return a list of {@link ITaskComponent}
-    */
-    List<ITaskComponent> getTaskComponents(  );
+     * Get the list of task components
+     * 
+     * @return a list of {@link ITaskComponent}
+     */
+    List<ITaskComponent> getTaskComponents( );
 
     /**
      * Get the task component from a given key
-     * @param strKey the key
+     * 
+     * @param strKey
+     *            the key
      * @return an instance of {@link ITaskComponent}
      */
     ITaskComponent getTaskComponent( String strKey );
 
     /**
      * Get the task component from a given task
-     * @param task the task
+     * 
+     * @param task
+     *            the task
      * @return an instance of {@link ITaskComponent}
      */
     ITaskComponent getTaskComponent( ITask task );
 
     /**
-    * Returns the informations which must  be displayed in the tasks form
-    * @param nIdResource the resource id
-    * @param strResourceType the resource type
-    * @param request request
-    * @param locale locale
-    * @param task the task
-    * @return the information which must  be displayed in the tasks form
-    */
-    String getDisplayTaskForm( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale,
-        ITask task );
+     * Returns the informations which must be displayed in the tasks form
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param request
+     *            request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
+     * @return the information which must be displayed in the tasks form
+     */
+    String getDisplayTaskForm( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale, ITask task );
 
     /**
-    * Returns the informations which must  be displayed in the task configuration
-    * @param request request
-    * @param locale locale
-    * @param task the task
-    * @return the information which must  be displayed in the task configuration
-    */
+     * Returns the informations which must be displayed in the task configuration
+     * 
+     * @param request
+     *            request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
+     * @return the information which must be displayed in the task configuration
+     */
     String getDisplayConfigForm( HttpServletRequest request, Locale locale, ITask task );
 
     /**
      * Return for a document the informations store during processing task
-     * @param nIdHistory the document id
-     * @param request the request
-     * @param locale locale
-     * @param task the task
+     * 
+     * @param nIdHistory
+     *            the document id
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
      * @return the informations store during processing task
      */
     String getDisplayTaskInformation( int nIdHistory, HttpServletRequest request, Locale locale, ITask task );
 
     /**
-     * Return a xml which contains  for a document the informations store during processing task
-     * @param nIdHistory the document id
-     * @param request the request
-     * @param locale locale
-     * @param task the task
+     * Return a xml which contains for a document the informations store during processing task
+     * 
+     * @param nIdHistory
+     *            the document id
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
      * @return the informations store during processing task
      */
     String getTaskInformationXml( int nIdHistory, HttpServletRequest request, Locale locale, ITask task );
 
     /**
      * validates the user input associated to the task
-     * @param nIdResource the resource id
-     * @param strResourceType the resource type
-     * @param request request
-     * @param locale locale
-     * @param task the task
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param request
+     *            request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
      * @return null if there is no error in the task form else return the error message url
      */
-    String doValidateTask( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale,
-        ITask task );
+    String doValidateTask( int nIdResource, String strResourceType, HttpServletRequest request, Locale locale, ITask task );
 
     /**
      * Perform the task configuration
-     * @param request request
-     * @param locale locale
-     * @param task the task
+     * 
+     * @param request
+     *            request
+     * @param locale
+     *            locale
+     * @param task
+     *            the task
      * @return the url to go after perform task configuration
      */
     String doSaveConfig( HttpServletRequest request, Locale locale, ITask task );

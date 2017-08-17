@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
-
 /**
  * Business class of prerequisites
  */
@@ -45,16 +44,19 @@ public class Prerequisite
 
     /**
      * Get the id of this prerequisite
+     * 
      * @return The id of this prerequisite
      */
-    public int getIdPrerequisite(  )
+    public int getIdPrerequisite( )
     {
         return _nPrerequisiteId;
     }
 
     /**
      * Set the id of this prerequisite
-     * @param nIdPrerequisite The id of this prerequisite
+     * 
+     * @param nIdPrerequisite
+     *            The id of this prerequisite
      */
     public void setIdPrerequisite( int nIdPrerequisite )
     {
@@ -63,16 +65,19 @@ public class Prerequisite
 
     /**
      * Get the type of the prerequisite
+     * 
      * @return The type of the prerequisite
      */
-    public String getPrerequisiteType(  )
+    public String getPrerequisiteType( )
     {
         return _strPrerequisiteType;
     }
 
     /**
      * Set the type of the prerequisite
-     * @param strPrerequisiteType The type of the prerequisite
+     * 
+     * @param strPrerequisiteType
+     *            The type of the prerequisite
      */
     public void setPrerequisiteType( String strPrerequisiteType )
     {
@@ -81,16 +86,19 @@ public class Prerequisite
 
     /**
      * Get the id of the action associated with this prerequisite
+     * 
      * @return The id of the action associated with this prerequisite
      */
-    public int getIdAction(  )
+    public int getIdAction( )
     {
         return _nIdAction;
     }
 
     /**
      * Set the id of the action associated with this prerequisite
-     * @param nIdAction The id of the action associated with this prerequisite
+     * 
+     * @param nIdAction
+     *            The id of the action associated with this prerequisite
      */
     public void setIdAction( int nIdAction )
     {

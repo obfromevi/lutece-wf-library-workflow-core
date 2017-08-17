@@ -54,7 +54,6 @@ import javax.inject.Inject;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  *
  * TaskComponent
@@ -71,29 +70,32 @@ public abstract class TaskComponent implements ITaskComponent
 
     /**
      * Validate the config
-     * @param config the config to validate
-     * @param request the HTTP request
+     * 
+     * @param config
+     *            the config to validate
+     * @param request
+     *            the HTTP request
      * @return the JSP error if the config is not validated, an empty String otherwise
      */
     public abstract String validateConfig( ITaskConfig config, HttpServletRequest request );
 
     /**
-    * {@inheritDoc}
-    */
+     * {@inheritDoc}
+     */
     @Override
     public String doSaveConfig( HttpServletRequest request, Locale locale, ITask task )
     {
         // In case there are no errors, then the config is created/updated
         boolean bCreate = false;
-        ITaskConfig config = _taskConfigService.findByPrimaryKey( task.getId(  ) );
+        ITaskConfig config = _taskConfigService.findByPrimaryKey( task.getId( ) );
 
         if ( config == null )
         {
-            config = _taskFactory.newTaskConfig( _taskType.getKey(  ) );
+            config = _taskFactory.newTaskConfig( _taskType.getKey( ) );
 
             if ( config != null )
             {
-                config.setIdTask( task.getId(  ) );
+                config.setIdTask( task.getId( ) );
                 bCreate = true;
             }
         }
@@ -102,7 +104,7 @@ public abstract class TaskComponent implements ITaskComponent
         {
             try
             {
-                BeanUtils.populate( config, request.getParameterMap(  ) );
+                BeanUtils.populate( config, request.getParameterMap( ) );
 
                 String strApply = request.getParameter( PARAMETER_APPLY );
 
@@ -126,18 +128,18 @@ public abstract class TaskComponent implements ITaskComponent
                     _taskConfigService.update( config );
                 }
             }
-            catch ( IllegalAccessException e )
+            catch( IllegalAccessException e )
             {
-                _logger.error( e.getMessage(  ), e );
+                _logger.error( e.getMessage( ), e );
             }
-            catch ( InvocationTargetException e )
+            catch( InvocationTargetException e )
             {
-                _logger.error( e.getMessage(  ), e );
+                _logger.error( e.getMessage( ), e );
             }
         }
         else
         {
-            _logger.error( "TaskComponent - could not instanciate a new TaskConfig for type " + _taskType.getKey(  ) );
+            _logger.error( "TaskComponent - could not instanciate a new TaskConfig for type " + _taskType.getKey( ) );
         }
 
         return null;
@@ -153,24 +155,25 @@ public abstract class TaskComponent implements ITaskComponent
     }
 
     /**
-         * Set the task config service
-         * @param taskConfigService the task config service
-         */
+     * Set the task config service
+     * 
+     * @param taskConfigService
+     *            the task config service
+     */
     public void setTaskConfigService( ITaskConfigService taskConfigService )
     {
         _taskConfigService = taskConfigService;
     }
 
     /**
-    * {@inheritDoc}
-    */
+     * {@inheritDoc}
+     */
     @Override
     public boolean isInvoked( String strKey )
     {
-        if ( ( _taskType != null ) && StringUtils.isNotBlank( _taskType.getKey(  ) ) &&
-                StringUtils.isNotBlank( strKey ) )
+        if ( ( _taskType != null ) && StringUtils.isNotBlank( _taskType.getKey( ) ) && StringUtils.isNotBlank( strKey ) )
         {
-            return _taskType.getKey(  ).equals( strKey );
+            return _taskType.getKey( ).equals( strKey );
         }
 
         return false;
@@ -180,11 +183,11 @@ public abstract class TaskComponent implements ITaskComponent
      * {@inheritDoc}
      */
     @Override
-    public void afterPropertiesSet(  ) throws Exception
+    public void afterPropertiesSet( ) throws Exception
     {
         Assert.notNull( _taskType, "The property 'taskType' is required." );
 
-        if ( _taskType.isConfigRequired(  ) )
+        if ( _taskType.isConfigRequired( ) )
         {
             Assert.notNull( _taskConfigService, "The property 'taskConfigService' is required." );
         }
@@ -192,9 +195,10 @@ public abstract class TaskComponent implements ITaskComponent
 
     /**
      * Get the task config service
+     * 
      * @return the task config service
      */
-    protected ITaskConfigService getTaskConfigService(  )
+    protected ITaskConfigService getTaskConfigService( )
     {
         return _taskConfigService;
     }

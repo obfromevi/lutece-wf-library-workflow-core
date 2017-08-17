@@ -33,7 +33,6 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.config;
 
-
 /**
  *
  * TaskConfig
@@ -47,7 +46,7 @@ public abstract class TaskConfig implements ITaskConfig
      * {@inheritDoc}
      */
     @Override
-    public int getIdTask(  )
+    public int getIdTask( )
     {
         return _nIdTask;
     }

@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.icon;
 
 import java.util.List;
 
-
 /**
  *
  * IIconDAO
@@ -45,38 +44,49 @@ public interface IIconDAO
 {
     /**
      * Insert a new record in the table.
-     * @param icon instance of the Icon object to insert
+     * 
+     * @param icon
+     *            instance of the Icon object to insert
      */
     void insert( Icon icon );
 
     /**
      * update record in the table.
-     * @param  icon instance of the Icon object to update
+     * 
+     * @param icon
+     *            instance of the Icon object to update
      */
     void store( Icon icon );
 
     /**
      * update icon metadata in the table.
-     * @param  icon instance of the Icon object to update
+     * 
+     * @param icon
+     *            instance of the Icon object to update
      */
     void storeMetadata( Icon icon );
 
     /**
      * Load the icon Object
-     * @param nIdIcon the icon id
+     * 
+     * @param nIdIcon
+     *            the icon id
      * @return the icon Object
      */
     Icon load( int nIdIcon );
 
     /**
      * Delete the Icon Object
-     * @param nIdIcon the icon id
+     * 
+     * @param nIdIcon
+     *            the icon id
      */
     void delete( int nIdIcon );
 
     /**
      * select all Icons
+     * 
      * @return a list of Icon
      */
-    List<Icon> selectAll(  );
+    List<Icon> selectAll( );
 }

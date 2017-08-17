@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfigDAO;
 
 import org.apache.log4j.Logger;
 
-
 /**
  *
  * TaskConfigService
@@ -51,7 +50,9 @@ public class TaskConfigService implements ITaskConfigService
 
     /**
      * Set the task config dao
-     * @param taskConfigDAO the task config DAO
+     * 
+     * @param taskConfigDAO
+     *            the task config DAO
      */
     public void setTaskConfigDAO( ITaskConfigDAO<ITaskConfig> taskConfigDAO )
     {
@@ -102,8 +103,11 @@ public class TaskConfigService implements ITaskConfigService
 
     /**
      * Get the config bean
-     * @param <T> The class of the bean
-     * @param config the config
+     * 
+     * @param <T>
+     *            The class of the bean
+     * @param config
+     *            the config
      * @return the config bean
      */
     public static <T> T getConfigBean( ITaskConfig config )
@@ -114,9 +118,9 @@ public class TaskConfigService implements ITaskConfigService
             {
                 return (T) config;
             }
-            catch ( Exception e )
+            catch( Exception e )
             {
-                _logger.error( e.getMessage(  ), e );
+                _logger.error( e.getMessage( ), e );
             }
         }
 
@@ -125,9 +129,10 @@ public class TaskConfigService implements ITaskConfigService
 
     /**
      * Get the DAO
+     * 
      * @return the DAO
      */
-    protected ITaskConfigDAO<ITaskConfig> getDAO(  )
+    protected ITaskConfigDAO<ITaskConfig> getDAO( )
     {
         return _taskConfigDAO;
     }

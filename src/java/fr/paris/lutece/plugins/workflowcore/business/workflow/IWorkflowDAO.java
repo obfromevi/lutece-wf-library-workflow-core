@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.workflow;
 
 import java.util.List;
 
-
 /**
  *
  * IWorkflowDAO
@@ -46,33 +45,41 @@ public interface IWorkflowDAO
     /**
      * Insert a new record in the table.
      *
-     * @param workflow instance of the Workflow object to insert
+     * @param workflow
+     *            instance of the Workflow object to insert
      */
     void insert( Workflow workflow );
 
     /**
      * update record in the table.
      *
-     * @param workflow instance of the Workflow object to update
+     * @param workflow
+     *            instance of the Workflow object to update
      */
     void store( Workflow workflow );
 
     /**
      * Load the workflow Object
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdWorkflow
+     *            the workflow id
      * @return the workflow Object
      */
     Workflow load( int nIdWorkflow );
 
     /**
      * Delete the workflow Object
-     * @param nIdWorkflow the workflow id
+     * 
+     * @param nIdWorkflow
+     *            the workflow id
      */
     void delete( int nIdWorkflow );
 
     /**
      * select workflow by Filter
-     * @param filter the filter
+     * 
+     * @param filter
+     *            the filter
      * @return a list of state
      */
     List<Workflow> selectWorkflowByFilter( WorkflowFilter filter );
