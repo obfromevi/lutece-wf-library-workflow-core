@@ -91,13 +91,13 @@ public class ActionService implements IActionService
     {
         Action action = findByPrimaryKey( nIdAction );
 
-        //remove all task associated with the action
+        // remove all task associated with the action
         List<ITask> listTask = _taskService.getListTaskByIdAction( nIdAction, Locale.FRENCH );
 
         for ( ITask task : listTask )
         {
-            task.doRemoveConfig(  );
-            _taskService.remove( task.getId(  ) );
+            task.doRemoveConfig( );
+            _taskService.remove( task.getId( ) );
         }
 
         if ( action != null )
