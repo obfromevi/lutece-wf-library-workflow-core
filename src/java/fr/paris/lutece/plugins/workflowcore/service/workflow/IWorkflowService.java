@@ -96,7 +96,8 @@ public interface IWorkflowService
     List<Workflow> getListWorkflowsByFilter( WorkflowFilter filter );
 
     /**
-     * returns a list of actions possible for a given resource based on the status of the resource in the workflow and the user role
+     * returns a list of actions possible for a given resource based on the status of the resource in the workflow, the user role
+     * and if the prerequisites are satisfied.
      * 
      * @param nIdResource
      *            the resource id

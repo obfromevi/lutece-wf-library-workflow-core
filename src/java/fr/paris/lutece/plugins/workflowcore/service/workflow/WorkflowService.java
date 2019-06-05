@@ -55,6 +55,7 @@ import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskFactory;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -206,8 +208,15 @@ public class WorkflowService implements IWorkflowService
             filter.setIdWorkflow( nIdWorkflow );
             listAction = _actionService.getListActionByFilter( filter );
         }
+        
+        if ( CollectionUtils.isEmpty( listAction ) )
+        {
+        	return listAction;
+        }
 
-        return listAction;
+        return listAction.stream( )
+            	.filter( action -> canAutomaticActionBeProcessed( nIdResource, strResourceType, action.getId( ) ) )
+            	.collect( Collectors.toList( ) );
     }
 
     /**
