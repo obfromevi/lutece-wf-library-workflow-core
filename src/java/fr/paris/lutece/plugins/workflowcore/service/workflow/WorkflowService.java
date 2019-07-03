@@ -33,6 +33,19 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.workflow;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.action.ActionFilter;
 import fr.paris.lutece.plugins.workflowcore.business.prerequisite.Prerequisite;
@@ -54,22 +67,6 @@ import fr.paris.lutece.plugins.workflowcore.service.state.IStateService;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskFactory;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -209,14 +206,7 @@ public class WorkflowService implements IWorkflowService
             listAction = _actionService.getListActionByFilter( filter );
         }
         
-        if ( CollectionUtils.isEmpty( listAction ) )
-        {
-        	return listAction;
-        }
-
-        return listAction.stream( )
-            	.filter( action -> canAutomaticActionBeProcessed( nIdResource, strResourceType, action.getId( ) ) )
-            	.collect( Collectors.toList( ) );
+        return listAction;
     }
 
     /**
