@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.workflow;
 
+import fr.paris.lutece.api.user.User;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflow;
 import fr.paris.lutece.plugins.workflowcore.business.state.State;
@@ -231,8 +232,37 @@ public interface IWorkflowService
      * @param strUserAccessCode
      *            the user access code
      */
+    @Deprecated
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
             boolean bIsAutomatic, String strUserAccessCode );
+    
+
+    /**
+     * Proceed action given in parameter
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdAction
+     *            the action id
+     * @param nExternalParentId
+     *            the external parent id*
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
+     * @param bIsAutomatic
+     *            true if action is automatic
+     * @param strUserAccessCode
+     *            the user access code
+     * @param the user the user
+     */
+    default void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
+            boolean bIsAutomatic,String strUserAccessCode,User user )
+    {
+       doProcessAction(nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic,strUserAccessCode, user);    	
+    }
 
     /**
      * Proceed automatic reflexive actions of state given in parameter
@@ -248,8 +278,28 @@ public interface IWorkflowService
      * @param locale
      *            locale
      */
+    @Deprecated
     void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale );
 
+    /**
+     * Proceed automatic reflexive actions of state given in parameter
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdState
+     *            the state id
+     * @param nIdExternalParent
+     *            the external parent id*
+     * @param locale
+     *            locale
+     * @param user the user           
+     */
+    default void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale, User user )
+    {
+    	doProcessAutomaticReflexiveActions(nIdResource, strResourceType, nIdState, nIdExternalParent, locale);
+    }
     /**
      * Remove in every workflows the resource specified in parameter
      * 
@@ -296,8 +346,26 @@ public interface IWorkflowService
      * @param nExternalParentId
      *            the external parent id
      */
+    @Deprecated
     void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId );
-
+    /**
+     * Execute action automatic
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdWorkflow
+     *            the workflow id
+     * @param nExternalParentId
+     *            the external parent id
+     *            
+     * @param user the user
+     */
+    default void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId, User user )
+    {
+    	executeActionAutomatic(nIdResource, strResourceType, nIdWorkflow, nExternalParentId);
+    }
     /**
      * Check if an automatic action can be processed or not
      * 

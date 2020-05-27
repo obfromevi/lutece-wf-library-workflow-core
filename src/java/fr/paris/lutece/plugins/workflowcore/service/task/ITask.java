@@ -33,13 +33,14 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.task;
 
-import fr.paris.lutece.plugins.workflowcore.business.action.Action;
-import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
-
 import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import fr.paris.lutece.api.user.User;
+import fr.paris.lutece.plugins.workflowcore.business.action.Action;
+import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
 
 /**
  *
@@ -91,8 +92,25 @@ public interface ITask
      * @param locale
      *            locale
      */
+    @Deprecated
     void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale );
+    /**
+     * Process the task
+     * 
+     * @param nIdResourceHistory
+     *            the resource history id
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
+     * @param  user the user          
+     */
+    default void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
+    {
+    	processTask(nIdResourceHistory, request, locale);
+    }
 
+    
     /**
      * returns the task title
      * 

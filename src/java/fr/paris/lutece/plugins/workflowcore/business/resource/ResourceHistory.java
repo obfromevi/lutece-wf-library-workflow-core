@@ -52,6 +52,7 @@ public class ResourceHistory
     private Action _action;
     private Timestamp _tCreationDate;
     private String _strUserAccessCode;
+    private ResourceUserHistory _resourceUserHistory;
 
     /**
      * return the id of the resource history
@@ -197,4 +198,18 @@ public class ResourceHistory
     {
         _strUserAccessCode = strEventUser;
     }
+    /**
+     * return the user history object
+     * @return resource user history object
+     */
+	public ResourceUserHistory getResourceUserHistory() {
+		return _resourceUserHistory;
+	}
+	/**
+	 * set the resource user history object
+	 * @param resourceUserHistory the resource user history object 
+	 */
+	public void setResourceUserHistory(ResourceUserHistory resourceUserHistory) {
+		this._resourceUserHistory = resourceUserHistory;
+	}
 }

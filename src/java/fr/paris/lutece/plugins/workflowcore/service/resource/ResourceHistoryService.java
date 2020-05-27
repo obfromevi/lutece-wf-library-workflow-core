@@ -33,13 +33,14 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.resource;
 
-import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceHistoryDAO;
-import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
-import fr.paris.lutece.plugins.workflowcore.service.action.IActionService;
-
 import java.util.List;
 
 import javax.inject.Inject;
+
+import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceHistoryDAO;
+import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceUserHistoryDAO;
+import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
+import fr.paris.lutece.plugins.workflowcore.service.action.IActionService;
 
 /**
  *
@@ -52,6 +53,8 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Inject
     private IResourceHistoryDAO _resourceHistoryDAO;
     @Inject
+    private IResourceUserHistoryDAO _resourceUserHistoryDAO;
+    @Inject
     private IActionService _actionService;
 
     /**
@@ -61,6 +64,12 @@ public class ResourceHistoryService implements IResourceHistoryService
     public void create( ResourceHistory resourceHistory )
     {
         _resourceHistoryDAO.insert( resourceHistory );
+         if(resourceHistory.getResourceUserHistory()!=null)
+         {
+        	 //insert new Resource User History
+        	  resourceHistory.getResourceUserHistory().setIdHistory(resourceHistory.getId());
+        	 _resourceUserHistoryDAO.insert(resourceHistory.getResourceUserHistory());
+         }
     }
 
     /**
@@ -69,7 +78,8 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public void remove( int nIdHistory )
     {
-        _resourceHistoryDAO.delete( nIdHistory );
+        _resourceUserHistoryDAO.delete(nIdHistory);
+    	_resourceHistoryDAO.delete( nIdHistory );
     }
 
     /**
@@ -78,6 +88,10 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public void removeByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow )
     {
+    	//delete user history before delete hisory resource
+        List<Integer>  listRessourceHistoryToDelete=_resourceHistoryDAO.getListHistoryIdByListIdResourceId(listIdResource, strResourceType, nIdWorflow);
+        listRessourceHistoryToDelete.forEach(x->_resourceUserHistoryDAO.delete(x));
+    	
         _resourceHistoryDAO.deleteByListIdResource( listIdResource, strResourceType, nIdWorflow );
     }
 
@@ -94,6 +108,7 @@ public class ResourceHistoryService implements IResourceHistoryService
         if ( resourceHistory != null )
         {
             resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
+            resourceHistory.setResourceUserHistory(_resourceUserHistoryDAO.load(resourceHistory.getId()));
         }
 
         return resourceHistory;
@@ -119,6 +134,7 @@ public class ResourceHistoryService implements IResourceHistoryService
         for ( ResourceHistory resourceHistory : listResourceHistory )
         {
             resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
+            resourceHistory.setResourceUserHistory( _resourceUserHistoryDAO.load( resourceHistory.getId( ) ) );
         }
 
         return listResourceHistory;
@@ -151,6 +167,7 @@ public class ResourceHistoryService implements IResourceHistoryService
         for ( ResourceHistory resourceHistory : listResourceHistory )
         {
             resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
+            resourceHistory.setResourceUserHistory( _resourceUserHistoryDAO.load( resourceHistory.getId( ) ) );
         }
 
         return ( listResourceHistory.size( ) > 0 ) ? listResourceHistory.get( 0 ) : null;

@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.resource;
 
+import fr.paris.lutece.api.user.User;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 
 /**
@@ -57,5 +58,27 @@ public interface IResourceHistoryFactory
      *            true if the action is executed automatically, false otherwise
      * @return a new instance of {@link ResourceHistory}
      */
+	@Deprecated
     ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic );
+    /**
+     * Instanciate a new {@link ResourceHistory}
+     * 
+     * @param nIdResource
+     *            the id resource
+     * @param strResourceType
+     *            the resource type
+     * @param action
+     *            the action
+     * @param strUserAccessCode
+     *            the user access code
+     * @param isAutomatic
+     *            true if the action is executed automatically, false otherwise
+     * @param  user the User          
+     * @return a new instance of {@link ResourceHistory}
+     */
+   default  ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic, User user )
+   {
+	   return newResourceHistory(nIdResource, strResourceType, action, strUserAccessCode, isAutomatic);
+   }
+    
 }

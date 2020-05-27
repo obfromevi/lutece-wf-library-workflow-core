@@ -46,6 +46,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+import fr.paris.lutece.api.user.User;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
 import fr.paris.lutece.plugins.workflowcore.business.action.ActionFilter;
 import fr.paris.lutece.plugins.workflowcore.business.prerequisite.Prerequisite;
@@ -433,7 +434,7 @@ public class WorkflowService implements IWorkflowService
      */
     @Override
     public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent, HttpServletRequest request, Locale locale,
-            boolean bIsAutomatic, String strUserAccessCode )
+            boolean bIsAutomatic, String strUserAccessCode, User user )
     {
         Action action = _actionService.findByPrimaryKey( nIdAction );
 
@@ -453,7 +454,7 @@ public class WorkflowService implements IWorkflowService
 
             // Create ResourceHistory
             ResourceHistory resourceHistory = _resourceHistoryFactory
-                    .newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, bIsAutomatic );
+                    .newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, bIsAutomatic, user );
             _resourceHistoryService.create( resourceHistory );
 
             List<ITask> listActionTasks = _taskService.getListTaskByIdAction( nIdAction, locale );
@@ -498,17 +499,26 @@ public class WorkflowService implements IWorkflowService
 
                 if ( ( listAction != null ) && !listAction.isEmpty( ) && ( listAction.get( 0 ) != null ) )
                 {
-                    doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null );
+                    doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null, user );
                 }
             }
         }
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent, HttpServletRequest request, Locale locale,
+            boolean bIsAutomatic, String strUserAccessCode)
+    {
+    	doProcessAction(nIdResource, strResourceType, nIdAction, nIdExternalParent, request, locale, bIsAutomatic, strUserAccessCode, null);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale )
+    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale, User user )
     {
         State state = _stateService.findByPrimaryKey( nIdState );
         ActionFilter actionFilter = new ActionFilter( );
@@ -522,10 +532,19 @@ public class WorkflowService implements IWorkflowService
         {
             for ( Action action : listAction )
             {
-                doProcessAction( nIdResource, strResourceType, action.getId( ), nIdExternalParent, null, locale, true, null );
+                doProcessAction( nIdResource, strResourceType, action.getId( ), nIdExternalParent, null, locale, true, null,user );
             }
         }
     }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale )
+    {
+    	doProcessAutomaticReflexiveActions(nIdResource, strResourceType, nIdState, nIdExternalParent, locale, null); 
+    }
+
 
     /**
      * {@inheritDoc}
@@ -621,7 +640,7 @@ public class WorkflowService implements IWorkflowService
      * {@inheritDoc}
      */
     @Override
-    public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId )
+    public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId, User user )
     {
         ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType, nIdWorkflow );
 
@@ -639,9 +658,17 @@ public class WorkflowService implements IWorkflowService
 
             if ( ( listAction != null ) && !listAction.isEmpty( ) && ( listAction.get( 0 ) != null ) )
             {
-                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nExternalParentId, null, null, true, null );
+                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nExternalParentId, null, null, true, null, user );
             }
         }
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId )
+    {
+         executeActionAutomatic(nIdResource, strResourceType, nIdWorkflow, nExternalParentId, null);
     }
 
     /**
