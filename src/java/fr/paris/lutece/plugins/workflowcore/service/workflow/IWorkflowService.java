@@ -159,6 +159,15 @@ public interface IWorkflowService
     List<Action> getMassActions( int nIdWorkflow );
 
     /**
+     * Get the list of mass actions following a state from a given id workflow
+     * 
+     * @param nIdWorkflow the workflow id
+     * @param stateId the state id
+     * @return the mass actions
+     */
+    List<Action> getMassActions( int nIdWorkflow, int stateId );
+
+    /**
      * Return a map which contains the task types
      * 
      * @param locale

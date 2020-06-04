@@ -308,6 +308,20 @@ public class WorkflowService implements IWorkflowService
      * {@inheritDoc}
      */
     @Override
+    public List<Action> getMassActions( int nIdWorkflow, int stateId )
+    {
+        ActionFilter aFilter = new ActionFilter( );
+        aFilter.setIdWorkflow( nIdWorkflow );
+        aFilter.setIsMassAction( true );
+        aFilter.setIdStateBefore( stateId );
+
+        return  _actionService.getListActionByFilter( aFilter );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public State getState( int nIdResource, String strResourceType, int nIdWorkflow, Integer nIdExternalParent )
     {
         State resourceState = _stateService.findByResource( nIdResource, strResourceType, nIdWorkflow );
