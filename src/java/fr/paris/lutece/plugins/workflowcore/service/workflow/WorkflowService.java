@@ -465,7 +465,7 @@ public class WorkflowService implements IWorkflowService
 
                 try
                 {
-                    task.processTask( resourceHistory.getId( ), request, locale );
+                    task.processTask( resourceHistory.getId( ), request, locale, user );
                 }
                 catch( Exception e )
                 {
