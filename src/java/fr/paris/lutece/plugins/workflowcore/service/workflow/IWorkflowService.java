@@ -261,7 +261,7 @@ public interface IWorkflowService
     default void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
             boolean bIsAutomatic,String strUserAccessCode,User user )
     {
-       doProcessAction(nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic,strUserAccessCode, user);    	
+       doProcessAction(nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic,strUserAccessCode);
     }
 
     /**
