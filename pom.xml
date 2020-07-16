@@ -15,7 +15,6 @@
     <properties>
         <jiraProjectName>LIBRARYWORKFLOWCORE</jiraProjectName>
         <jiraComponentId>10674</jiraComponentId>
-        <sonar.host.url>http://dev.lutece.paris.fr/sonar</sonar.host.url>
         <commons.lang.version>2.3</commons.lang.version>
         <javax.inject.version>1</javax.inject.version>
         <javax.servlet.version>2.5</javax.servlet.version>
@@ -23,6 +22,8 @@
         <common.beanutils.version>1.9.3</common.beanutils.version>
         <log4j.version>1.2.17</log4j.version>
         <jackson.version>2.8.4</jackson.version>
+        <sonar.sources>pom.xml,src/java</sonar.sources>
+        <sonar.tests></sonar.tests>
     </properties>
 	
     <repositories>
@@ -49,7 +50,7 @@
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>library-user-api</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>[1.0.1,)</version>
             <type>jar</type> 
         </dependency>
         <dependency>
