@@ -65,6 +65,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      */
     public static void init( )
     {
+        // Nothing to do
     }
 
     /**

@@ -242,6 +242,7 @@ public interface IWorkflowService
      *            true if action is automatic
      * @param strUserAccessCode
      *            the user access code
+     * @deprecated use {@link IWorkflowService#doProcessAction(int, String, int, Integer, HttpServletRequest, Locale, boolean, String, User)}
      */
     @Deprecated
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
@@ -288,6 +289,7 @@ public interface IWorkflowService
      *            the external parent id*
      * @param locale
      *            locale
+     * @deprecated use {@link IWorkflowService#doProcessAutomaticReflexiveActions(int, String, int, Integer, Locale, User)
      */
     @Deprecated
     void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale );
@@ -359,6 +361,7 @@ public interface IWorkflowService
      *            the workflow id
      * @param nExternalParentId
      *            the external parent id
+     * @deprecated use {@link IWorkflowService#executeActionAutomatic(int, String, int, Integer, User)
      */
     @Deprecated
     void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId );

@@ -37,6 +37,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceHistoryDAO;
 import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceUserHistoryDAO;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
@@ -170,6 +172,6 @@ public class ResourceHistoryService implements IResourceHistoryService
             resourceHistory.setResourceUserHistory( _resourceUserHistoryDAO.load( resourceHistory.getId( ) ) );
         }
 
-        return ( listResourceHistory.size( ) > 0 ) ? listResourceHistory.get( 0 ) : null;
+        return CollectionUtils.isNotEmpty( listResourceHistory ) ? listResourceHistory.get( 0 ) : null;
     }
 }

@@ -33,15 +33,17 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.state;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.commons.collections.CollectionUtils;
+
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflow;
 import fr.paris.lutece.plugins.workflowcore.business.state.IStateDAO;
 import fr.paris.lutece.plugins.workflowcore.business.state.State;
 import fr.paris.lutece.plugins.workflowcore.business.state.StateFilter;
 import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceWorkflowService;
-
-import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  *
@@ -138,12 +140,7 @@ public class StateService implements IStateService
 
         List<State> listState = getListStateByFilter( filter );
 
-        if ( listState.size( ) != 0 )
-        {
-            return listState.get( 0 );
-        }
-
-        return null;
+        return CollectionUtils.isNotEmpty( listState ) ? listState.get( 0 ) : null;
     }
 
     /**

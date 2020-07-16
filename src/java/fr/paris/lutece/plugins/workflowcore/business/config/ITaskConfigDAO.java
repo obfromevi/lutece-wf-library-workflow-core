@@ -37,11 +37,11 @@ package fr.paris.lutece.plugins.workflowcore.business.config;
  *
  * ITaskConfigDAO
  * 
- * @param <GTaskConfig>
+ * @param <C>
  *            the generic class of {@link ITaskConfig}
  *
  */
-public interface ITaskConfigDAO<GTaskConfig extends ITaskConfig>
+public interface ITaskConfigDAO<C extends ITaskConfig>
 {
     /**
      * Insert a new task config
@@ -49,7 +49,7 @@ public interface ITaskConfigDAO<GTaskConfig extends ITaskConfig>
      * @param config
      *            the task config
      */
-    void insert( GTaskConfig config );
+    void insert( C config );
 
     /**
      * Update a task config
@@ -57,7 +57,7 @@ public interface ITaskConfigDAO<GTaskConfig extends ITaskConfig>
      * @param config
      *            the task config
      */
-    void store( GTaskConfig config );
+    void store( C config );
 
     /**
      * Load a task config
@@ -66,7 +66,7 @@ public interface ITaskConfigDAO<GTaskConfig extends ITaskConfig>
      *            the task id
      * @return the task config
      */
-    GTaskConfig load( int nIdTask );
+    C load( int nIdTask );
 
     /**
      * Delete the task config

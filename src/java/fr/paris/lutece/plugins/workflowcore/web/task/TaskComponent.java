@@ -128,11 +128,7 @@ public abstract class TaskComponent implements ITaskComponent
                     _taskConfigService.update( config );
                 }
             }
-            catch( IllegalAccessException e )
-            {
-                _logger.error( e.getMessage( ), e );
-            }
-            catch( InvocationTargetException e )
+            catch( InvocationTargetException | IllegalAccessException e )
             {
                 _logger.error( e.getMessage( ), e );
             }
