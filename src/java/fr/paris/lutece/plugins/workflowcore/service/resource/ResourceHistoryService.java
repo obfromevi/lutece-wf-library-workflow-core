@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,12 +64,12 @@ public class ResourceHistoryService implements IResourceHistoryService
     public void create( ResourceHistory resourceHistory )
     {
         _resourceHistoryDAO.insert( resourceHistory );
-         if(resourceHistory.getResourceUserHistory()!=null)
-         {
-        	 //insert new Resource User History
-        	  resourceHistory.getResourceUserHistory().setIdHistory(resourceHistory.getId());
-        	 _resourceUserHistoryDAO.insert(resourceHistory.getResourceUserHistory());
-         }
+        if ( resourceHistory.getResourceUserHistory( ) != null )
+        {
+            // insert new Resource User History
+            resourceHistory.getResourceUserHistory( ).setIdHistory( resourceHistory.getId( ) );
+            _resourceUserHistoryDAO.insert( resourceHistory.getResourceUserHistory( ) );
+        }
     }
 
     /**
@@ -78,8 +78,8 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public void remove( int nIdHistory )
     {
-        _resourceUserHistoryDAO.delete(nIdHistory);
-    	_resourceHistoryDAO.delete( nIdHistory );
+        _resourceUserHistoryDAO.delete( nIdHistory );
+        _resourceHistoryDAO.delete( nIdHistory );
     }
 
     /**
@@ -88,10 +88,10 @@ public class ResourceHistoryService implements IResourceHistoryService
     @Override
     public void removeByListIdResource( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow )
     {
-    	//delete user history before delete hisory resource
-        List<Integer>  listRessourceHistoryToDelete=_resourceHistoryDAO.getListHistoryIdByListIdResourceId(listIdResource, strResourceType, nIdWorflow);
-        listRessourceHistoryToDelete.forEach(x->_resourceUserHistoryDAO.delete(x));
-    	
+        // delete user history before delete hisory resource
+        List<Integer> listRessourceHistoryToDelete = _resourceHistoryDAO.getListHistoryIdByListIdResourceId( listIdResource, strResourceType, nIdWorflow );
+        listRessourceHistoryToDelete.forEach( x -> _resourceUserHistoryDAO.delete( x ) );
+
         _resourceHistoryDAO.deleteByListIdResource( listIdResource, strResourceType, nIdWorflow );
     }
 
@@ -108,7 +108,7 @@ public class ResourceHistoryService implements IResourceHistoryService
         if ( resourceHistory != null )
         {
             resourceHistory.setAction( _actionService.findByPrimaryKey( resourceHistory.getAction( ).getId( ) ) );
-            resourceHistory.setResourceUserHistory(_resourceUserHistoryDAO.load(resourceHistory.getId()));
+            resourceHistory.setResourceUserHistory( _resourceUserHistoryDAO.load( resourceHistory.getId( ) ) );
         }
 
         return resourceHistory;

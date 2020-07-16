@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -198,18 +198,25 @@ public class ResourceHistory
     {
         _strUserAccessCode = strEventUser;
     }
+
     /**
      * return the user history object
+     * 
      * @return resource user history object
      */
-	public ResourceUserHistory getResourceUserHistory() {
-		return _resourceUserHistory;
-	}
-	/**
-	 * set the resource user history object
-	 * @param resourceUserHistory the resource user history object 
-	 */
-	public void setResourceUserHistory(ResourceUserHistory resourceUserHistory) {
-		this._resourceUserHistory = resourceUserHistory;
-	}
+    public ResourceUserHistory getResourceUserHistory( )
+    {
+        return _resourceUserHistory;
+    }
+
+    /**
+     * set the resource user history object
+     * 
+     * @param resourceUserHistory
+     *            the resource user history object
+     */
+    public void setResourceUserHistory( ResourceUserHistory resourceUserHistory )
+    {
+        this._resourceUserHistory = resourceUserHistory;
+    }
 }

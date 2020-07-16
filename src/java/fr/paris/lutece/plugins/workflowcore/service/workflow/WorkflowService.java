@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -206,7 +206,7 @@ public class WorkflowService implements IWorkflowService
             filter.setIdWorkflow( nIdWorkflow );
             listAction = _actionService.getListActionByFilter( filter );
         }
-        
+
         return listAction;
     }
 
@@ -231,8 +231,8 @@ public class WorkflowService implements IWorkflowService
             initialState = listState.get( 0 );
         }
 
-        Map<Integer, Integer> listIdsState = _resourceWorkflowService
-                .getListIdStateByListId( listIdResource, nIdWorkflow, strResourceType, nIdExternalParentId );
+        Map<Integer, Integer> listIdsState = _resourceWorkflowService.getListIdStateByListId( listIdResource, nIdWorkflow, strResourceType,
+                nIdExternalParentId );
 
         listIdResource.removeAll( listIdsState.keySet( ) );
 
@@ -315,7 +315,7 @@ public class WorkflowService implements IWorkflowService
         aFilter.setIsMassAction( true );
         aFilter.setIdStateBefore( stateId );
 
-        return  _actionService.getListActionByFilter( aFilter );
+        return _actionService.getListActionByFilter( aFilter );
     }
 
     /**
@@ -467,8 +467,8 @@ public class WorkflowService implements IWorkflowService
             }
 
             // Create ResourceHistory
-            ResourceHistory resourceHistory = _resourceHistoryFactory
-                    .newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, bIsAutomatic, user );
+            ResourceHistory resourceHistory = _resourceHistoryFactory.newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, bIsAutomatic,
+                    user );
             _resourceHistoryService.create( resourceHistory );
 
             List<ITask> listActionTasks = _taskService.getListTaskByIdAction( nIdAction, locale );
@@ -518,14 +518,15 @@ public class WorkflowService implements IWorkflowService
             }
         }
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent, HttpServletRequest request, Locale locale,
-            boolean bIsAutomatic, String strUserAccessCode)
+            boolean bIsAutomatic, String strUserAccessCode )
     {
-    	doProcessAction(nIdResource, strResourceType, nIdAction, nIdExternalParent, request, locale, bIsAutomatic, strUserAccessCode, null);
+        doProcessAction( nIdResource, strResourceType, nIdAction, nIdExternalParent, request, locale, bIsAutomatic, strUserAccessCode, null );
     }
 
     /**
@@ -546,19 +547,19 @@ public class WorkflowService implements IWorkflowService
         {
             for ( Action action : listAction )
             {
-                doProcessAction( nIdResource, strResourceType, action.getId( ), nIdExternalParent, null, locale, true, null,user );
+                doProcessAction( nIdResource, strResourceType, action.getId( ), nIdExternalParent, null, locale, true, null, user );
             }
         }
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale )
     {
-    	doProcessAutomaticReflexiveActions(nIdResource, strResourceType, nIdState, nIdExternalParent, locale, null); 
+        doProcessAutomaticReflexiveActions( nIdResource, strResourceType, nIdState, nIdExternalParent, locale, null );
     }
-
 
     /**
      * {@inheritDoc}
@@ -676,13 +677,14 @@ public class WorkflowService implements IWorkflowService
             }
         }
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId )
     {
-         executeActionAutomatic(nIdResource, strResourceType, nIdWorkflow, nExternalParentId, null);
+        executeActionAutomatic( nIdResource, strResourceType, nIdWorkflow, nExternalParentId, null );
     }
 
     /**

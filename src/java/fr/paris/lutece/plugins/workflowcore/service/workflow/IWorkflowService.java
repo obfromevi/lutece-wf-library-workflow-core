@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,8 +97,8 @@ public interface IWorkflowService
     List<Workflow> getListWorkflowsByFilter( WorkflowFilter filter );
 
     /**
-     * returns a list of actions possible for a given resource based on the status of the resource in the workflow, the user role
-     * and if the prerequisites are satisfied.
+     * returns a list of actions possible for a given resource based on the status of the resource in the workflow, the user role and if the prerequisites are
+     * satisfied.
      * 
      * @param nIdResource
      *            the resource id
@@ -161,8 +161,10 @@ public interface IWorkflowService
     /**
      * Get the list of mass actions following a state from a given id workflow
      * 
-     * @param nIdWorkflow the workflow id
-     * @param stateId the state id
+     * @param nIdWorkflow
+     *            the workflow id
+     * @param stateId
+     *            the state id
      * @return the mass actions
      */
     List<Action> getMassActions( int nIdWorkflow, int stateId );
@@ -244,7 +246,6 @@ public interface IWorkflowService
     @Deprecated
     void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
             boolean bIsAutomatic, String strUserAccessCode );
-    
 
     /**
      * Proceed action given in parameter
@@ -265,12 +266,13 @@ public interface IWorkflowService
      *            true if action is automatic
      * @param strUserAccessCode
      *            the user access code
-     * @param the user the user
+     * @param the
+     *            user the user
      */
     default void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
-            boolean bIsAutomatic,String strUserAccessCode,User user )
+            boolean bIsAutomatic, String strUserAccessCode, User user )
     {
-       doProcessAction(nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic,strUserAccessCode);
+        doProcessAction( nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic, strUserAccessCode );
     }
 
     /**
@@ -303,12 +305,15 @@ public interface IWorkflowService
      *            the external parent id*
      * @param locale
      *            locale
-     * @param user the user           
+     * @param user
+     *            the user
      */
-    default void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale, User user )
+    default void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale,
+            User user )
     {
-    	doProcessAutomaticReflexiveActions(nIdResource, strResourceType, nIdState, nIdExternalParent, locale);
+        doProcessAutomaticReflexiveActions( nIdResource, strResourceType, nIdState, nIdExternalParent, locale );
     }
+
     /**
      * Remove in every workflows the resource specified in parameter
      * 
@@ -357,6 +362,7 @@ public interface IWorkflowService
      */
     @Deprecated
     void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId );
+
     /**
      * Execute action automatic
      * 
@@ -368,13 +374,15 @@ public interface IWorkflowService
      *            the workflow id
      * @param nExternalParentId
      *            the external parent id
-     *            
-     * @param user the user
+     * 
+     * @param user
+     *            the user
      */
     default void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId, User user )
     {
-    	executeActionAutomatic(nIdResource, strResourceType, nIdWorkflow, nExternalParentId);
+        executeActionAutomatic( nIdResource, strResourceType, nIdWorkflow, nExternalParentId );
     }
+
     /**
      * Check if an automatic action can be processed or not
      * 

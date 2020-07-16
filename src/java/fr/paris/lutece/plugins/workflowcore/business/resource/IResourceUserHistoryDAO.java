@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,6 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.workflowcore.business.resource;
 
 /**
@@ -41,26 +40,30 @@ public interface IResourceUserHistoryDAO
 {
     /**
      * Insert a new record in the table.
-     * @param resourceUserHistory instance of the ResourceUserHistory object to insert
+     * 
+     * @param resourceUserHistory
+     *            instance of the ResourceUserHistory object to insert
      */
-    void insert( ResourceUserHistory resourceUserHistory);
-
+    void insert( ResourceUserHistory resourceUserHistory );
 
     /**
      * Delete a record from the table
-     * @param nKey The identifier of the ResourceUserHistory to delete
+     * 
+     * @param nKey
+     *            The identifier of the ResourceUserHistory to delete
      */
-    void delete( int nKey);
+    void delete( int nKey );
 
     ///////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Load the data from the table
-     * @param nKey The identifier of the resourceUserHistory
+     * 
+     * @param nKey
+     *            The identifier of the resourceUserHistory
      * @return The instance of the resourceUserHistory
      */
     ResourceUserHistory load( int nKey );
-
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2017, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,8 +35,8 @@ package fr.paris.lutece.plugins.workflowcore.service.provider;
 
 /**
  * <p>
- * This class represents a marker for passing values to other tasks. In the Notify task configuration, some fields can contains markers which are replaced by the actual value of
- * the resource when the {@link fr.paris.lutece.plugins.grubusiness.business.notification.Notification} is send.
+ * This class represents a marker for passing values to other tasks. In the Notify task configuration, some fields can contains markers which are replaced by
+ * the actual value of the resource when the {@link fr.paris.lutece.plugins.grubusiness.business.notification.Notification} is send.
  * </p>
  * <p>
  * This class has two goals:

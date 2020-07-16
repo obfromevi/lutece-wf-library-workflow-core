@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,12 +37,12 @@ import java.io.Serializable;
 
 /**
  * This is the business class for the object ResourceUserHistory
- */ 
+ */
 public class ResourceUserHistory implements Serializable
 {
-    
-	private static final long serialVersionUID = 1L;
-    
+
+    private static final long serialVersionUID = 1L;
+
     private int _nIdHistory;
     private String _strUserAccessCode;
     private String _strEmail;
@@ -53,33 +53,38 @@ public class ResourceUserHistory implements Serializable
     /**
      * ResourceUserHistory constructor
      */
-    public ResourceUserHistory() {
-	
-	}
-  
-    
+    public ResourceUserHistory( )
+    {
+
+    }
+
     /**
      * ResourceUserHistory constructor
-     * @param strUserAccessCode  the user access code
-     * @param strEmail the user email
-     * @param strFirstname the user first name
-     * @param strLastname the user last name
-     * @param strRealm the user realm
+     * 
+     * @param strUserAccessCode
+     *            the user access code
+     * @param strEmail
+     *            the user email
+     * @param strFirstname
+     *            the user first name
+     * @param strLastname
+     *            the user last name
+     * @param strRealm
+     *            the user realm
      */
-    public ResourceUserHistory( String strUserAccessCode, String strEmail, String strFirstname,
-			String strLastname, String strRealm) {
-		super();
-    	this._strUserAccessCode = strUserAccessCode;
-		this._strEmail = strEmail;
-		this._strFirstname = strFirstname;
-		this._strLastname = strLastname;
-		this._strRealm = strRealm;
-	}
+    public ResourceUserHistory( String strUserAccessCode, String strEmail, String strFirstname, String strLastname, String strRealm )
+    {
+        super( );
+        this._strUserAccessCode = strUserAccessCode;
+        this._strEmail = strEmail;
+        this._strFirstname = strFirstname;
+        this._strLastname = strLastname;
+        this._strRealm = strRealm;
+    }
 
-
-    
     /**
      * Returns the IdHistory
+     * 
      * @return The IdHistory
      */
     public int getIdHistory( )
@@ -89,15 +94,18 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the IdHistory
-     * @param nIdHistory The IdHistory
-     */ 
+     * 
+     * @param nIdHistory
+     *            The IdHistory
+     */
     public void setIdHistory( int nIdHistory )
     {
         _nIdHistory = nIdHistory;
     }
-    
+
     /**
      * Returns the UserAccessCode
+     * 
      * @return The UserAccessCode
      */
     public String getUserAccessCode( )
@@ -107,15 +115,18 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the UserAccessCode
-     * @param strUserAccessCode The UserAccessCode
-     */ 
+     * 
+     * @param strUserAccessCode
+     *            The UserAccessCode
+     */
     public void setUserAccessCode( String strUserAccessCode )
     {
         _strUserAccessCode = strUserAccessCode;
     }
-    
+
     /**
      * Returns the Email
+     * 
      * @return The Email
      */
     public String getEmail( )
@@ -125,15 +136,18 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the Email
-     * @param strEmail The Email
-     */ 
+     * 
+     * @param strEmail
+     *            The Email
+     */
     public void setEmail( String strEmail )
     {
         _strEmail = strEmail;
     }
-    
+
     /**
      * Returns the Firstname
+     * 
      * @return The Firstname
      */
     public String getFirstName( )
@@ -143,15 +157,18 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the Firstname
-     * @param strFirstname The Firstname
-     */ 
+     * 
+     * @param strFirstname
+     *            The Firstname
+     */
     public void setFirstName( String strFirstname )
     {
         _strFirstname = strFirstname;
     }
-    
+
     /**
      * Returns the Lastname
+     * 
      * @return The Lastname
      */
     public String getLastName( )
@@ -161,15 +178,18 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the Lastname
-     * @param strLastname The Lastname
-     */ 
+     * 
+     * @param strLastname
+     *            The Lastname
+     */
     public void setLastName( String strLastname )
     {
         _strLastname = strLastname;
     }
-    
+
     /**
      * Returns the Realm
+     * 
      * @return The Realm
      */
     public String getRealm( )
@@ -179,8 +199,10 @@ public class ResourceUserHistory implements Serializable
 
     /**
      * Sets the Realm
-     * @param strRealm The Realm
-     */ 
+     * 
+     * @param strRealm
+     *            The Realm
+     */
     public void setRealm( String strRealm )
     {
         _strRealm = strRealm;

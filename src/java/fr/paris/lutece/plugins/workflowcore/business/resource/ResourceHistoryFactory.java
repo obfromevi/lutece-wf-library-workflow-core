@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,8 @@ public class ResourceHistoryFactory implements IResourceHistoryFactory
      * {@inheritDoc}
      */
     @Override
-    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic, User user )
+    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic,
+            User user )
     {
         ResourceHistory resourceHistory = new ResourceHistory( );
         resourceHistory.setIdResource( nIdResource );
@@ -70,20 +71,22 @@ public class ResourceHistoryFactory implements IResourceHistoryFactory
         {
             resourceHistory.setUserAccessCode( strUserAccessCode );
         }
-        if( user!=null )
+        if ( user != null )
         {
-        	resourceHistory.setResourceUserHistory(new ResourceUserHistory( user.getAccessCode(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getRealm()));
+            resourceHistory.setResourceUserHistory(
+                    new ResourceUserHistory( user.getAccessCode( ), user.getEmail( ), user.getFirstName( ), user.getLastName( ), user.getRealm( ) ) );
         }
 
         return resourceHistory;
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
-    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic)
+    public ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic )
     {
-    	return  newResourceHistory(nIdResource, strResourceType, action, strUserAccessCode, isAutomatic,null);
-    	
+        return newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, isAutomatic, null );
+
     }
 }

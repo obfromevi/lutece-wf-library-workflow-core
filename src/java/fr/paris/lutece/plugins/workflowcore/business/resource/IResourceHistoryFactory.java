@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,8 +58,9 @@ public interface IResourceHistoryFactory
      *            true if the action is executed automatically, false otherwise
      * @return a new instance of {@link ResourceHistory}
      */
-	@Deprecated
+    @Deprecated
     ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic );
+
     /**
      * Instanciate a new {@link ResourceHistory}
      * 
@@ -73,12 +74,14 @@ public interface IResourceHistoryFactory
      *            the user access code
      * @param isAutomatic
      *            true if the action is executed automatically, false otherwise
-     * @param  user the User          
+     * @param user
+     *            the User
      * @return a new instance of {@link ResourceHistory}
      */
-   default  ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic, User user )
-   {
-	   return newResourceHistory(nIdResource, strResourceType, action, strUserAccessCode, isAutomatic);
-   }
-    
+    default ResourceHistory newResourceHistory( int nIdResource, String strResourceType, Action action, String strUserAccessCode, boolean isAutomatic,
+            User user )
+    {
+        return newResourceHistory( nIdResource, strResourceType, action, strUserAccessCode, isAutomatic );
+    }
+
 }
