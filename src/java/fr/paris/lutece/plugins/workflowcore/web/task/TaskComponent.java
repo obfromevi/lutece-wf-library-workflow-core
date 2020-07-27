@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -128,11 +128,7 @@ public abstract class TaskComponent implements ITaskComponent
                     _taskConfigService.update( config );
                 }
             }
-            catch( IllegalAccessException e )
-            {
-                _logger.error( e.getMessage( ), e );
-            }
-            catch( InvocationTargetException e )
+            catch( InvocationTargetException | IllegalAccessException e )
             {
                 _logger.error( e.getMessage( ), e );
             }

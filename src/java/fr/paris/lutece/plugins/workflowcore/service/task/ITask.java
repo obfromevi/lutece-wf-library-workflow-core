@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -91,9 +91,11 @@ public interface ITask
      *            the request
      * @param locale
      *            locale
+     * @deprecated use {@link ITask#processTask(int, HttpServletRequest, Locale, User)}
      */
     @Deprecated
     void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale );
+
     /**
      * Process the task
      * 
@@ -103,14 +105,14 @@ public interface ITask
      *            the request
      * @param locale
      *            locale
-     * @param  user the user          
+     * @param user
+     *            the user
      */
     default void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
     {
-    	processTask(nIdResourceHistory, request, locale);
+        processTask( nIdResourceHistory, request, locale );
     }
 
-    
     /**
      * returns the task title
      * 

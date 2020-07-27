@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2020, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.commons.collections.CollectionUtils;
+
 /**
  *
  * ResourceWorkflowService
@@ -59,7 +61,7 @@ public class ResourceWorkflowService implements IResourceWorkflowService
     public void create( ResourceWorkflow resourceWorkflow )
     {
         List<String> listWorkgroup = resourceWorkflow.getWorkgroups( );
-        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size( ) > 0 ) );
+        resourceWorkflow.setAssociatedWithWorkgroup( CollectionUtils.isNotEmpty( listWorkgroup ) );
 
         _resourceWorkflowDAO.insert( resourceWorkflow );
 
@@ -79,7 +81,7 @@ public class ResourceWorkflowService implements IResourceWorkflowService
     public void update( ResourceWorkflow resourceWorkflow )
     {
         List<String> listWorkgroup = resourceWorkflow.getWorkgroups( );
-        resourceWorkflow.setAssociatedWithWorkgroup( ( listWorkgroup != null ) && ( listWorkgroup.size( ) > 0 ) );
+        resourceWorkflow.setAssociatedWithWorkgroup( CollectionUtils.isNotEmpty( listWorkgroup ) );
         _resourceWorkflowDAO.store( resourceWorkflow );
         // update workgroups list
         _resourceWorkflowDAO.deleteWorkgroups( resourceWorkflow );
