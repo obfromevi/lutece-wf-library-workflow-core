@@ -129,6 +129,15 @@ public class ResourceHistoryService implements IResourceHistoryService
      * {@inheritDoc}
      */
     @Override
+    public List<ResourceHistory> getAllHistoryByResource(  List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
+    {
+        return _resourceHistoryDAO.selectByListIdResource( listIdResource, strResourceType, nIdWorkflow );      
+
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<ResourceHistory> getAllHistoryByResource( int nIdResource, String strResourceType, int nIdWorkflow )
     {
         List<ResourceHistory> listResourceHistory = _resourceHistoryDAO.selectByResource( nIdResource, strResourceType, nIdWorkflow );
