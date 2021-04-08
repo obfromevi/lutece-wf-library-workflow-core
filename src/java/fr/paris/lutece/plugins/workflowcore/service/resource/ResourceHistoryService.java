@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -129,11 +129,12 @@ public class ResourceHistoryService implements IResourceHistoryService
      * {@inheritDoc}
      */
     @Override
-    public List<ResourceHistory> getAllHistoryByResource(  List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
+    public List<ResourceHistory> getAllHistoryByResource( List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
     {
-        return _resourceHistoryDAO.selectByListIdResource( listIdResource, strResourceType, nIdWorkflow );      
+        return _resourceHistoryDAO.selectByListIdResource( listIdResource, strResourceType, nIdWorkflow );
 
     }
+
     /**
      * {@inheritDoc}
      */

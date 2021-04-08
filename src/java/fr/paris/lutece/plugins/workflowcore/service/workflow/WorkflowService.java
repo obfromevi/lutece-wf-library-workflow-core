@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -140,7 +140,7 @@ public class WorkflowService implements IWorkflowService
         {
             _actionService.remove( actionToRemove.getId( ) );
         }
-        
+
         actionFilter.setAutomaticReflexiveAction( true );
         for ( Action actionToRemove : _actionService.getListActionByFilter( actionFilter ) )
         {

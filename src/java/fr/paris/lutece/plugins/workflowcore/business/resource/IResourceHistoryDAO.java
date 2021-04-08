@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -115,7 +115,7 @@ public interface IResourceHistoryDAO
      * @return list of history id
      */
     List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
-    
+
     /**
      * Load all ResourceHistory Object for a given list id resource
      * 
@@ -129,11 +129,12 @@ public interface IResourceHistoryDAO
      */
     default List<ResourceHistory> selectByListIdResource( List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
     {
-    	List<ResourceHistory> listResourceHistory= new ArrayList<>();
-    	for(int nIdResource: listIdResource) {
-    		
-    		listResourceHistory.addAll( selectByResource(  nIdResource,  strResourceType,  nIdWorkflow ));
-    	}
-    	return listResourceHistory;
+        List<ResourceHistory> listResourceHistory = new ArrayList<>( );
+        for ( int nIdResource : listIdResource )
+        {
+
+            listResourceHistory.addAll( selectByResource( nIdResource, strResourceType, nIdWorkflow ) );
+        }
+        return listResourceHistory;
     }
 }
