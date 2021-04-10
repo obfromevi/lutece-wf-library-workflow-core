@@ -34,14 +34,12 @@
 package fr.paris.lutece.plugins.workflowcore.service.resource;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.apache.commons.collections.CollectionUtils;
-
 import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceHistoryDAO;
 import fr.paris.lutece.plugins.workflowcore.business.resource.IResourceUserHistoryDAO;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
+import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistoryFilter;
 import fr.paris.lutece.plugins.workflowcore.service.action.IActionService;
 
 /**
@@ -124,17 +122,6 @@ public class ResourceHistoryService implements IResourceHistoryService
     {
         return _resourceHistoryDAO.getListHistoryIdByListIdResourceId( listIdResource, strResourceType, nIdWorflow );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<ResourceHistory> getAllHistoryByResource( List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
-    {
-        return _resourceHistoryDAO.selectByListIdResource( listIdResource, strResourceType, nIdWorkflow );
-
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -183,5 +170,29 @@ public class ResourceHistoryService implements IResourceHistoryService
         }
 
         return CollectionUtils.isNotEmpty( listResourceHistory ) ? listResourceHistory.get( 0 ) : null;
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Integer> getListHistoryIdByFilter( ResourceHistoryFilter filter )
+    {
+    	return _resourceHistoryDAO.selectListHistoryIdByFilter( filter );
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ResourceHistory> getAllHistoryByFilter( ResourceHistoryFilter filter )
+    {
+    	return _resourceHistoryDAO.selectByFilter( filter );
+    } 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ResourceHistory> getAllHistoryByPrimaryKeyList( List<Integer> listIdHistory )
+    {
+    	return _resourceHistoryDAO.selectByPrimaryKeyList( listIdHistory );
     }
 }

@@ -33,8 +33,8 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.resource;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  *
@@ -115,26 +115,40 @@ public interface IResourceHistoryDAO
      * @return list of history id
      */
     List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
-
+   
     /**
-     * Load all ResourceHistory Object for a given list id resource
+     * Load list history id by filter
      * 
-     * @param listIdResource
-     *            the resource list id
-     * @param strResourceType
-     *            the resource type
-     * @param nIdWorkflow
-     *            the workflow id
-     * @return the list of ResourceHistory
+     * @param filter
+     * 			 the resource workflow history filter
+     * @return list of ResourceHistory id
      */
-    default List<ResourceHistory> selectByListIdResource( List<Integer> listIdResource, String strResourceType, int nIdWorkflow )
+    default List<Integer> selectListHistoryIdByFilter( ResourceHistoryFilter filter )
     {
-        List<ResourceHistory> listResourceHistory = new ArrayList<>( );
-        for ( int nIdResource : listIdResource )
-        {
-
-            listResourceHistory.addAll( selectByResource( nIdResource, strResourceType, nIdWorkflow ) );
-        }
-        return listResourceHistory;
+    	throw new UnsupportedOperationException( "Not supported yet.");
     }
+    /**
+     * Load list ResourceHistory by filter
+     * 
+     * @param filter
+     * 			 the resource workflow history filter
+     * @return list of ResourceHistory objects
+     */
+    default List<ResourceHistory> selectByFilter( ResourceHistoryFilter filter )
+    {
+    	throw new UnsupportedOperationException( "Not supported yet.");
+    }
+   
+    /**
+     * Load all ResourceHistory Object for a given list id resourceHistory
+     * 
+     * @param listIdHistory 
+     * 				the resourceHistory list id
+     * @return list of ResourceHistory objects
+     */
+    default List<ResourceHistory> selectByPrimaryKeyList( List<Integer> listIdHistory )
+    {
+    	throw new UnsupportedOperationException( "Not supported yet.");
+    }       
+    
 }
