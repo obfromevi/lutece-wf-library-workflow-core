@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
@@ -9,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>library-workflow-core</artifactId>
-    <version>1.2.5-SNAPSHOT</version>
+    <version>1.2.5</version>
     <packaging>jar</packaging>
     <name>Library Workflow Core</name>
     <description>Workflow Core library</description>
@@ -25,7 +23,7 @@
         <log4j.version>1.2.17</log4j.version>
         <jackson.version>2.8.4</jackson.version>
         <sonar.sources>pom.xml,src/java</sonar.sources>
-        <sonar.tests></sonar.tests>
+        <sonar.tests />
     </properties>
 
     <repositories>
@@ -115,7 +113,7 @@
         <connection>scm:git:https://github.com/lutece-platform/lutece-wf-library-workflow-core.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-wf-library-workflow-core.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-wf-library-workflow-core.git</url>
-        <tag>HEAD</tag>
+        <tag>lutece-wf-library-workflow-core-1.2.5</tag>
     </scm>
 
 </project>
