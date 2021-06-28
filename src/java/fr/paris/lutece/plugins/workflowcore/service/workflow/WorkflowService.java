@@ -138,12 +138,14 @@ public class WorkflowService implements IWorkflowService
 
         for ( Action actionToRemove : _actionService.getListActionByFilter( actionFilter ) )
         {
+            _prerequisiteManagementService.deletePrerequisiteByAction( actionToRemove.getId( ) );
             _actionService.remove( actionToRemove.getId( ) );
         }
 
         actionFilter.setAutomaticReflexiveAction( true );
         for ( Action actionToRemove : _actionService.getListActionByFilter( actionFilter ) )
         {
+            _prerequisiteManagementService.deletePrerequisiteByAction( actionToRemove.getId( ) );
             _actionService.remove( actionToRemove.getId( ) );
         }
 
