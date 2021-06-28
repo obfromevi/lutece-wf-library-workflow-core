@@ -122,6 +122,7 @@ public class ResourceHistoryService implements IResourceHistoryService
     {
         return _resourceHistoryDAO.getListHistoryIdByListIdResourceId( listIdResource, strResourceType, nIdWorflow );
     }
+
     /**
      * {@inheritDoc}
      */
@@ -171,28 +172,31 @@ public class ResourceHistoryService implements IResourceHistoryService
 
         return CollectionUtils.isNotEmpty( listResourceHistory ) ? listResourceHistory.get( 0 ) : null;
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public List<Integer> getListHistoryIdByFilter( ResourceHistoryFilter filter )
     {
-    	return _resourceHistoryDAO.selectListHistoryIdByFilter( filter );
+        return _resourceHistoryDAO.selectListHistoryIdByFilter( filter );
     }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public List<ResourceHistory> getAllHistoryByFilter( ResourceHistoryFilter filter )
     {
-    	return _resourceHistoryDAO.selectByFilter( filter );
-    } 
+        return _resourceHistoryDAO.selectByFilter( filter );
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public List<ResourceHistory> getAllHistoryByPrimaryKeyList( List<Integer> listIdHistory )
     {
-    	return _resourceHistoryDAO.selectByPrimaryKeyList( listIdHistory );
+        return _resourceHistoryDAO.selectByPrimaryKeyList( listIdHistory );
     }
 }

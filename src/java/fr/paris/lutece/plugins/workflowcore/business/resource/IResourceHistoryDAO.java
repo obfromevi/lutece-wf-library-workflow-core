@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.business.resource;
 
 import java.util.List;
 
-
 /**
  *
  * IResourceHistoryDAO
@@ -115,40 +114,41 @@ public interface IResourceHistoryDAO
      * @return list of history id
      */
     List<Integer> getListHistoryIdByListIdResourceId( List<Integer> listIdResource, String strResourceType, Integer nIdWorflow );
-   
+
     /**
      * Load list history id by filter
      * 
      * @param filter
-     * 			 the resource workflow history filter
+     *            the resource workflow history filter
      * @return list of ResourceHistory id
      */
     default List<Integer> selectListHistoryIdByFilter( ResourceHistoryFilter filter )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
+        throw new UnsupportedOperationException( "Not supported yet." );
     }
+
     /**
      * Load list ResourceHistory by filter
      * 
      * @param filter
-     * 			 the resource workflow history filter
+     *            the resource workflow history filter
      * @return list of ResourceHistory objects
      */
     default List<ResourceHistory> selectByFilter( ResourceHistoryFilter filter )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
+        throw new UnsupportedOperationException( "Not supported yet." );
     }
-   
+
     /**
      * Load all ResourceHistory Object for a given list id resourceHistory
      * 
-     * @param listIdHistory 
-     * 				the resourceHistory list id
+     * @param listIdHistory
+     *            the resourceHistory list id
      * @return list of ResourceHistory objects
      */
     default List<ResourceHistory> selectByPrimaryKeyList( List<Integer> listIdHistory )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
-    }       
-    
+        throw new UnsupportedOperationException( "Not supported yet." );
+    }
+
 }

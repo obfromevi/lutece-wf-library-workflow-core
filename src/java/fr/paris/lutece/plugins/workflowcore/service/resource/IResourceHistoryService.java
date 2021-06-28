@@ -136,31 +136,35 @@ public interface IResourceHistoryService
      * Load list history id by filter
      * 
      * @param filter
-     * 			 the resource workflow history filter
+     *            the resource workflow history filter
      * @return list of ResourceHistory id
      */
     default List<Integer> getListHistoryIdByFilter( ResourceHistoryFilter filter )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
+        throw new UnsupportedOperationException( "Not supported yet." );
     }
+
     /**
      * Load list ResourceHistory by filter
      * 
      * @param filter
-     * 			 the resource workflow history filter
+     *            the resource workflow history filter
      * @return list of ResourceHistory objects
      */
     default List<ResourceHistory> getAllHistoryByFilter( ResourceHistoryFilter filter )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
-    } 
+        throw new UnsupportedOperationException( "Not supported yet." );
+    }
+
     /**
      * Load all ResourceHistory Object for a given list id resourceHistory
-     * @param listIdHistory the resourceHistory list id
+     * 
+     * @param listIdHistory
+     *            the resourceHistory list id
      * @return list of ResourceHistory objects
      */
     default List<ResourceHistory> getAllHistoryByPrimaryKeyList( List<Integer> listIdHistory )
     {
-    	throw new UnsupportedOperationException( "Not supported yet.");
+        throw new UnsupportedOperationException( "Not supported yet." );
     }
 }
