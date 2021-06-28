@@ -88,6 +88,7 @@ public interface IPrerequisiteManagementService
      */
     default Prerequisite findPrerequisite( int nIdPrerequisite )
     {
+        return null;
     };
 
     /**
