@@ -78,4 +78,91 @@ public interface IPrerequisiteManagementService
      * @return The configuration, or null if the prerequisite has no configuration
      */
     IPrerequisiteConfig getPrerequisiteConfiguration( int nIdPrerequisite, IAutomaticActionPrerequisiteService prerequisiteService );
+
+    /**
+     * Get a prerequisite by its primary key
+     * 
+     * @param nIdPrerequisite
+     *            the id of the prerequisite
+     * @return The prerequisite, or null if no prerequisite was found
+     */
+    default Prerequisite findPrerequisite( int nIdPrerequisite )
+    {
+    };
+
+    /**
+     * Create a prerequisite configuration
+     * 
+     * @param config
+     *            The configuration to insert
+     * @param prerequisiteService
+     *            the prerequisite service
+     */
+    default void createPrerequisiteConfiguration( IPrerequisiteConfig config, IAutomaticActionPrerequisiteService prerequisiteService )
+    {
+    };
+
+    /**
+     * Update a prerequisite configuration
+     * 
+     * @param config
+     *            The configuration to insert
+     * @param prerequisiteService
+     *            the prerequisite service
+     */
+    default void updatePrerequisiteConfiguration( IPrerequisiteConfig config, IAutomaticActionPrerequisiteService prerequisiteService )
+    {
+    };
+
+    /**
+     * Create a new prerequisite
+     * 
+     * @param prerequisite
+     *            the prerequisite to create
+     */
+    default void createPrerequisite( Prerequisite prerequisite )
+    {
+    };
+
+    /**
+     * Modify a prerequisite
+     * 
+     * @param prerequisite
+     *            the prerequisite to update
+     */
+    default void modifyPrerequisite( Prerequisite prerequisite )
+    {
+    };
+
+    /**
+     * Delete a prerequisite and the underlying prerequisite configuration
+     * 
+     * @param nIdPrerequisite
+     *            The id of the prerequisite to remove
+     */
+    default void deletePrerequisite( int nIdPrerequisite )
+    {
+    };
+
+    /**
+     * Delete all the prerequisites of an action.
+     * 
+     * @param nIdAction
+     *            id of the action
+     */
+    default void deletePrerequisiteByAction( int nIdAction )
+    {
+    };
+
+    /**
+     * Copy the prerequisites from an action to another.
+     * 
+     * @param nIdActionSource
+     *            the id of the source action
+     * @param nIdActionTarget
+     *            the id of the targetr action
+     */
+    default void copyPrerequisite( int nIdActionSource, int nIdActionTarget )
+    {
+    };
 }
