@@ -66,4 +66,13 @@ public interface IResourceUserHistoryDAO
      */
     ResourceUserHistory load( int nKey );
 
+    /**
+     * Update the ResourceUserHistory
+     * 
+     * @param resourceUserHistory
+     */
+    default void store( ResourceUserHistory resourceUserHistory )
+    {
+        throw new UnsupportedOperationException( "Not supported yet." );
+    }
 }

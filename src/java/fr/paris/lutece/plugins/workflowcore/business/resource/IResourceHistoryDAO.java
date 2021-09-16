@@ -151,4 +151,14 @@ public interface IResourceHistoryDAO
         throw new UnsupportedOperationException( "Not supported yet." );
     }
 
+    /**
+     * Update the ResourceHistory
+     * 
+     * @param resourceHistory
+     */
+    default void store( ResourceHistory resourceHistory )
+    {
+        throw new UnsupportedOperationException( "Not supported yet." );
+    }
+
 }

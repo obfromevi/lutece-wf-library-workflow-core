@@ -199,4 +199,14 @@ public class ResourceHistoryService implements IResourceHistoryService
     {
         return _resourceHistoryDAO.selectByPrimaryKeyList( listIdHistory );
     }
+
+    @Override
+    public void update( ResourceHistory resourceHistory )
+    {
+        if ( resourceHistory.getResourceUserHistory( ) != null )
+        {
+            _resourceUserHistoryDAO.store( resourceHistory.getResourceUserHistory( ) );
+        }
+        _resourceHistoryDAO.store( resourceHistory );
+    }
 }

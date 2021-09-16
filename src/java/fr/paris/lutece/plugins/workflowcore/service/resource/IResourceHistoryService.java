@@ -167,4 +167,16 @@ public interface IResourceHistoryService
     {
         throw new UnsupportedOperationException( "Not supported yet." );
     }
+
+    /**
+     * Update ResourceHistory Object
+     * 
+     * @param resourceHistory
+     *            the resourceHistory
+     * @return
+     */
+    default void update( ResourceHistory resourceHistory )
+    {
+        throw new UnsupportedOperationException( "Not supported yet." );
+    }
 }
