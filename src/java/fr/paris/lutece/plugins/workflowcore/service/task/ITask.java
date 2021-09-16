@@ -163,4 +163,15 @@ public interface ITask
      *            the order
      */
     void setOrder( int nOrder );
+
+    /**
+     * Anonymize taskInformation associate to the history
+     * 
+     * @param nIdHistory
+     *            the document id
+     */
+    default void doAnonymizeTaskInformation( int nIdHistory )
+    {
+        doRemoveTaskInformation( nIdHistory );
+    }
 }
