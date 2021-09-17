@@ -89,7 +89,7 @@ public interface IPrerequisiteManagementService
     default Prerequisite findPrerequisite( int nIdPrerequisite )
     {
         return null;
-    };
+    }
 
     /**
      * Create a prerequisite configuration
@@ -101,7 +101,7 @@ public interface IPrerequisiteManagementService
      */
     default void createPrerequisiteConfiguration( IPrerequisiteConfig config, IAutomaticActionPrerequisiteService prerequisiteService )
     {
-    };
+    }
 
     /**
      * Update a prerequisite configuration
@@ -113,7 +113,7 @@ public interface IPrerequisiteManagementService
      */
     default void updatePrerequisiteConfiguration( IPrerequisiteConfig config, IAutomaticActionPrerequisiteService prerequisiteService )
     {
-    };
+    }
 
     /**
      * Create a new prerequisite
@@ -123,7 +123,7 @@ public interface IPrerequisiteManagementService
      */
     default void createPrerequisite( Prerequisite prerequisite )
     {
-    };
+    }
 
     /**
      * Modify a prerequisite
@@ -133,7 +133,7 @@ public interface IPrerequisiteManagementService
      */
     default void modifyPrerequisite( Prerequisite prerequisite )
     {
-    };
+    }
 
     /**
      * Delete a prerequisite and the underlying prerequisite configuration
@@ -143,7 +143,7 @@ public interface IPrerequisiteManagementService
      */
     default void deletePrerequisite( int nIdPrerequisite )
     {
-    };
+    }
 
     /**
      * Delete all the prerequisites of an action.
@@ -153,7 +153,7 @@ public interface IPrerequisiteManagementService
      */
     default void deletePrerequisiteByAction( int nIdAction )
     {
-    };
+    }
 
     /**
      * Copy the prerequisites from an action to another.
@@ -165,5 +165,5 @@ public interface IPrerequisiteManagementService
      */
     default void copyPrerequisite( int nIdActionSource, int nIdActionTarget )
     {
-    };
+    }
 }
