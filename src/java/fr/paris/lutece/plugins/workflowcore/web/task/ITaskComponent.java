@@ -112,21 +112,6 @@ public interface ITaskComponent extends InitializingBean
     String getDisplayTaskInformation( int nIdHistory, HttpServletRequest request, Locale locale, ITask task );
 
     /**
-     * Return a xml which contains for a document the informations store during processing task
-     * 
-     * @param nIdHistory
-     *            the document id
-     * @param request
-     *            the request
-     * @param locale
-     *            locale
-     * @param task
-     *            the task
-     * @return the informations store during processing task
-     */
-    String getTaskInformationXml( int nIdHistory, HttpServletRequest request, Locale locale, ITask task );
-
-    /**
      * validates the user input associated to the task
      * 
      * @param nIdResource
