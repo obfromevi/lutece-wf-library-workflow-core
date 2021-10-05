@@ -49,7 +49,7 @@ public class ActionFilter
     private int _nIdIcon = ALL_INT;
     private int _nIsAutomaticState = ALL_INT;
     private int _nIsMassAction = ALL_INT;
-    private boolean _bIsAutomaticReflexiveAction;
+    private int _nIsAutomaticReflexiveAction = ALL_INT;
 
     /**
      *
@@ -226,15 +226,24 @@ public class ActionFilter
     {
         return ( _nIsMassAction != ALL_INT );
     }
+    
+    /**
+    *
+    * @return true if the filter contain automatic reflexive action
+    */
+   public boolean containsIsAutomaticReflexiveAction( )
+   {
+       return ( _nIsAutomaticReflexiveAction != ALL_INT );
+   }
 
     /**
      * Check if actions must be automatic reflexive actions, or regular actions
      * 
      * @return True if actions must be automatic reflexive actions, false otherwise. If no value is specified, then only regular actions are returned
      */
-    public boolean isAutomaticReflexiveAction( )
+    public int isAutomaticReflexiveAction( )
     {
-        return _bIsAutomaticReflexiveAction;
+        return _nIsAutomaticReflexiveAction;
     }
 
     /**
@@ -245,6 +254,6 @@ public class ActionFilter
      */
     public void setAutomaticReflexiveAction( boolean bAutomaticReflexiveAction )
     {
-        _bIsAutomaticReflexiveAction = bAutomaticReflexiveAction;
+        _nIsAutomaticReflexiveAction = bAutomaticReflexiveAction ? TRUE : FALSE;
     }
 }
