@@ -41,9 +41,8 @@ import fr.paris.lutece.plugins.workflowcore.service.task.ITaskFactory;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
-
-import org.apache.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.InvocationTargetException;
@@ -62,7 +61,7 @@ import javax.servlet.http.HttpServletRequest;
 public abstract class TaskComponent implements ITaskComponent
 {
     private static final String PARAMETER_APPLY = "apply";
-    private static Logger _logger = Logger.getLogger( "lutece.workflow" );
+    private static Logger _logger = LogManager.getLogger( "lutece.workflow" );
     private ITaskType _taskType;
     private ITaskConfigService _taskConfigService;
     @Inject

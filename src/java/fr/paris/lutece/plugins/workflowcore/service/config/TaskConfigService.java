@@ -33,10 +33,13 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.config;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfig;
 import fr.paris.lutece.plugins.workflowcore.business.config.ITaskConfigDAO;
 
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -45,7 +48,7 @@ import org.apache.log4j.Logger;
  */
 public class TaskConfigService implements ITaskConfigService
 {
-    private static Logger _logger = Logger.getLogger( "lutece.workflow" );
+    private static Logger _logger = LogManager.getLogger( "lutece.workflow" );
     private ITaskConfigDAO<ITaskConfig> _taskConfigDAO;
 
     /**
