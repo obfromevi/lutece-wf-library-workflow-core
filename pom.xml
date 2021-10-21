@@ -15,7 +15,7 @@
     <properties>
         <jiraProjectName>LIBRARYWORKFLOWCORE</jiraProjectName>
         <jiraComponentId>10674</jiraComponentId>
-        <commons.lang.version>2.3</commons.lang.version>
+        <commons.lang.version>3.12.0</commons.lang.version>
         <javax.inject.version>1</javax.inject.version>
         <springVersion>4.3.3.RELEASE</springVersion>
         <common.beanutils.version>1.9.4</common.beanutils.version>
@@ -66,8 +66,8 @@
         </dependency>
         <!-- Commons -->
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
             <version>${commons.lang.version}</version>
         </dependency>
         <!-- @Inject API -->
