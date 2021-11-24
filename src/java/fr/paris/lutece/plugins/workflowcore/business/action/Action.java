@@ -42,6 +42,8 @@ import fr.paris.lutece.portal.service.rbac.RBACResource;
 import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
+import java.util.List;
 
 /**
  * Action Object
@@ -62,6 +64,7 @@ public class Action implements RBACResource, IReferenceItem
     private boolean _bAutomaticState;
     private boolean _bIsMassAction;
     private Collection<Integer> _listIdsLinkedAction;
+    private List<ITask> _listTasks;
     private int _nOrder;
     private boolean _bAutomaticReflexiveAction;
 
@@ -328,5 +331,27 @@ public class Action implements RBACResource, IReferenceItem
     public void setAutomaticReflexiveAction( boolean bAutomaticReflexiveAction )
     {
         _bAutomaticReflexiveAction = bAutomaticReflexiveAction;
+    }
+    
+    /**
+     * set the list of all tasks associated to the action
+     * 
+     * @param listTasks
+     *            the list of all tasks
+     */
+    public void setAllTasks( List<ITask> listTasks )
+    {
+        _listTasks = listTasks;
+    }
+    
+    /**
+     * get the list of all tasks associated to the action
+     * 
+     * @return 
+     *         the list of all tasks associated to the action
+     */
+    public List<ITask> getAllTasks( )
+    {
+        return _listTasks ;
     }
 }
