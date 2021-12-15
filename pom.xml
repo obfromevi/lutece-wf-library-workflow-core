@@ -19,7 +19,7 @@
         <javax.inject.version>1</javax.inject.version>
         <springVersion>4.3.3.RELEASE</springVersion>
         <common.beanutils.version>1.9.4</common.beanutils.version>
-        <log4j.version>2.15.0</log4j.version>
+        <log4j.version>2.16.0</log4j.version>
         <jackson.version>2.8.4</jackson.version>
         <sonar.sources>pom.xml,src/java</sonar.sources>
         <sonar.tests />
