@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.workflowcore.business.resource;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,6 +51,7 @@ public class ResourceWorkflowFilter
     private int _nIdState = ALL_INT;
     private Integer _nIdExternalParent;
     private Map<String, String> _workgroupKeyList;
+    private List<Integer> _listIdStateBefore;
 
     /**
      *
@@ -199,5 +201,33 @@ public class ResourceWorkflowFilter
     public void setExternalParentId( Integer nIdExternalParent )
     {
         _nIdExternalParent = nIdExternalParent;
+    }
+
+    /**
+    *
+    * @return the list of id state before in the filter
+    */
+    public List<Integer> getListIdStateBefore() {
+	    return _listIdStateBefore;
+    }
+	
+   /**
+    * set the id of Action in the filter
+    * 
+    * @param nIdAction
+    *            the action id to insert in the filter
+    */
+	public void setListIdStateBefore(List<Integer> listIdStateBefore) {
+	   this._listIdStateBefore = listIdStateBefore;
+	}
+	
+	/**
+     * Test if filter contains a list of id state before
+     * 
+     * @return true if contains a list of id state before
+     */
+    public boolean containsListIdStateBefore( )
+    {
+        return ( _listIdStateBefore != null && !_listIdStateBefore.isEmpty( ) );
     }
 }

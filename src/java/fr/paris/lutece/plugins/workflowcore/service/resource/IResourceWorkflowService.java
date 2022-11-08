@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.workflowcore.service.resource;
 
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflow;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflowFilter;
-
 import java.util.List;
 import java.util.Map;
 
@@ -178,4 +177,13 @@ public interface IResourceWorkflowService
      * @return a map of <id_resource, id_state>
      */
     Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId );
+
+    /**
+     * Select All resourceWorkflow Object associated to the list state
+     * 
+     * @param listIdStateBefore
+     *            list of id state
+     * @return List of resourceWorkflow Object
+     */
+	List<ResourceWorkflow> getAllResourceWorkflowByListState(List<Integer> listIdStateBefore);
 }

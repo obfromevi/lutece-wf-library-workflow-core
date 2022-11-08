@@ -61,6 +61,8 @@ public class ActionService implements IActionService
     private IResourceHistoryService _resourceHistoryService;
     @Inject
     private ITaskService _taskService;
+    @Inject
+    private IActionStateService _actionStateService;
 
     /**
      * {@inheritDoc}
@@ -69,6 +71,7 @@ public class ActionService implements IActionService
     public void create( Action action )
     {
         _actionDAO.insert( action );
+        _actionStateService.create( action.getId( ), action.getListIdStateBefore( ) );
         createLinkedActions( action );
     }
 
@@ -81,6 +84,8 @@ public class ActionService implements IActionService
         _actionDAO.store( action );
         removeLinkedActions( action.getId( ) );
         createLinkedActions( action );
+        
+        _actionStateService.update( action.getId( ), action.getListIdStateBefore( ) );
     }
 
     /**
@@ -112,6 +117,7 @@ public class ActionService implements IActionService
         }
 
         removeLinkedActions( nIdAction );
+        _actionStateService.remove( nIdAction );
 
         _actionDAO.delete( nIdAction );
     }
@@ -129,6 +135,7 @@ public class ActionService implements IActionService
         {
             action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
         }
+        action.setListIdStateBefore( _actionStateService.findByIdAction( nIdAction ) );
         return action;
     }
 
@@ -143,6 +150,7 @@ public class ActionService implements IActionService
         {
             action.setListIdsLinkedAction( getListIdsLinkedAction( nIdAction ) );
         }
+        action.setListIdStateBefore( _actionStateService.findByIdAction( nIdAction ) );
         return action;
     }
 
@@ -159,6 +167,7 @@ public class ActionService implements IActionService
             for ( Action action : listActions )
             {
                 action.setListIdsLinkedAction( getListIdsLinkedAction( action.getId( ) ) );
+                action.setListIdStateBefore( _actionStateService.findByIdAction( action.getId( ) ) );
             }
         }
 

@@ -415,7 +415,7 @@ public class WorkflowService implements IWorkflowService
         {
             ResourceWorkflow resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType, action.getWorkflow( ).getId( ) );
 
-            if ( ( resourceWorkflow != null ) && ( resourceWorkflow.getState( ).getId( ) == action.getStateBefore( ).getId( ) ) )
+            if ( ( resourceWorkflow != null ) && ( action.getListIdStateBefore( ).stream( ).anyMatch(x -> x ==  resourceWorkflow.getState( ).getId( ) ) ) )
             {
                 if ( action.isAutomaticState( ) )
                 {
@@ -508,7 +508,7 @@ public class WorkflowService implements IWorkflowService
 
         if ( ( action.getStateAfter( ) != null ) && !action.isAutomaticReflexiveAction( ) )
         {
-            if ( action.getStateBefore( ).getId( ) != action.getStateAfter( ).getId( ) )
+        	if ( !action.getListIdStateBefore( ).stream( ).anyMatch(x -> x ==  action.getStateAfter( ).getId( ) ) )
             {
                 doProcessAutomaticReflexiveActions( nIdResource, strResourceType, action.getStateAfter( ).getId( ), nIdExternalParent, locale );
             }

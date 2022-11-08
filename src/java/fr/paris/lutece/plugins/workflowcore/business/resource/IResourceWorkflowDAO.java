@@ -36,6 +36,8 @@ package fr.paris.lutece.plugins.workflowcore.business.resource;
 import java.util.List;
 import java.util.Map;
 
+import fr.paris.lutece.plugins.workflowcore.business.state.State;
+
 /**
  *
  * IResourceWorkflowDAO
@@ -202,6 +204,7 @@ public interface IResourceWorkflowDAO
      */
     Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId );
 
+
      /**
      * Select All resourceWorkflow associated to a state and an external parent id
      *
@@ -210,4 +213,14 @@ public interface IResourceWorkflowDAO
      * @return  List of resourceWorkflow Object
      */
     List<ResourceWorkflow> selectResourceWorkflowByState(int nIdState, int nIdParent);
+
+    /**
+     * Select All resourceWorkflow associated to the list of states
+     *
+     * @param listStateBefore
+     *            list of workflow state
+     * @return List of resourceWorkflow Object
+     */
+	List<ResourceWorkflow> selectResourceWorkflowByListState(List<Integer> listIdStateBefore);
+
 }
