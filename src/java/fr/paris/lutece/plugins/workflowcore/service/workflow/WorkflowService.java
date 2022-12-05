@@ -706,7 +706,16 @@ public class WorkflowService implements IWorkflowService
     @Override
     public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType )
     {
-        List<ResourceWorkflow> listResourceWorkflow = _resourceWorkflowService.getAllResourceWorkflowByState( nIdState );
+    	return getResourceIdListByIdState( nIdState, strResourceType, -1 );
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Integer> getResourceIdListByIdState( int nIdState, String strResourceType, int nExternalParentId  )
+    {
+        List<ResourceWorkflow> listResourceWorkflow = _resourceWorkflowService.getAllResourceWorkflowByState( nIdState, nExternalParentId );
 
         if ( CollectionUtils.isEmpty( listResourceWorkflow ) )
         {

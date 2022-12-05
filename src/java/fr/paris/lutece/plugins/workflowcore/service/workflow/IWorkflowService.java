@@ -398,4 +398,9 @@ public interface IWorkflowService
      * @return True if the action can be processed, false otherwise
      */
     boolean canAutomaticActionBeProcessed( int nIdResource, String strResourceType, int nIdAction );
+
+	/**
+	 * {@inheritDoc}
+	 */
+	List<Integer> getResourceIdListByIdState(int nIdState, String strResourceType, int nExternalParentId);
 }

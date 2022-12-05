@@ -125,6 +125,17 @@ public interface IResourceWorkflowService
     List<ResourceWorkflow> getAllResourceWorkflowByState( int nIdState );
 
     /**
+     * Select All resourceWorkflow Object associated to the state and the external parent id
+     * 
+     * @param nIdState
+     *            state     
+     * @param nIdParent
+     *            the external parent id
+     * @return List of resourceWorkflow Object
+     */
+    List<ResourceWorkflow> getAllResourceWorkflowByState( int nIdState, int nIdParent );
+
+    /**
      * Select ResourceWorkflow by filter
      * 
      * @param resourceWorkflowFilter

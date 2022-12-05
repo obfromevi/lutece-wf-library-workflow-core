@@ -45,7 +45,7 @@ public interface IResourceWorkflowDAO
 {
     /**
      * Insert a new record in the table.
-     * 
+     *
      * @param resourceWorkflow
      *            instance of the ResourceWorkflow object to insert
      */
@@ -53,7 +53,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * update record in the table.
-     * 
+     *
      * @param resourceWorkflow
      *            instance of the ResourceWorkflow object to update
      */
@@ -61,7 +61,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Load the Resource workflow Object
-     * 
+     *
      * @param nIdResource
      *            the resource Id
      * @param strResourceType
@@ -74,7 +74,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Delete resourceWorkflow Object
-     * 
+     *
      * @param resourceWorkflow
      *            resourceWorkflow object
      */
@@ -82,7 +82,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Delete Workgroups list by list of id resource
-     * 
+     *
      * @param listIdResource
      *            the resource list id
      * @param strResourceType
@@ -94,7 +94,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Delete resource list by list of id resource
-     * 
+     *
      * @param listIdResource
      *            the resource list id
      * @param strResourceType
@@ -106,7 +106,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select All resourceWorkflow associated to the workflow
-     * 
+     *
      * @param nIdWorkflow
      *            workflow id
      * @return List of resourceWorkflow Object
@@ -115,7 +115,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select All resourceWorkflow associated to the workflow
-     * 
+     *
      * @param nIdWorkflow
      *            workflow id
      * @return List of Id resource
@@ -124,7 +124,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select All resourceWorkflow associated to the state
-     * 
+     *
      * @param nIdState
      *            workflow state
      * @return List of resourceWorkflow Object
@@ -133,7 +133,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * select the resource entity owner
-     * 
+     *
      * @param resourceWorkflow
      *            the resource
      * @return a list of entities Owner
@@ -142,7 +142,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * delete all resource entities owner
-     * 
+     *
      * @param resourceWorkflow
      *            the resource
      */
@@ -150,7 +150,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * insert a new entities owner
-     * 
+     *
      * @param resourceWorkflow
      *            the resource
      * @param strWorkgroup
@@ -160,7 +160,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select ResourceWorkflow by filter
-     * 
+     *
      * @param filter
      *            the ResourceWorkflow filter
      * @return ResourceWorkflow List
@@ -169,7 +169,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select ResourceWorkflow id by filter
-     * 
+     *
      * @param filter
      *            the ResourceWorkflow filter
      * @return ResourceWorkflow id list
@@ -178,7 +178,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select ResourceWorkflow by filter
-     * 
+     *
      * @param filter
      *            the ResourceWorkflow filter
      * @param lListIdWorkflowState
@@ -189,7 +189,7 @@ public interface IResourceWorkflowDAO
 
     /**
      * Select id state by list id resource
-     * 
+     *
      * @param lListIdResource
      *            the resource list id
      * @param nIdWorflow
@@ -201,4 +201,13 @@ public interface IResourceWorkflowDAO
      * @return a map of <id_resource, id_state>
      */
     Map<Integer, Integer> getListIdStateByListId( List<Integer> lListIdResource, int nIdWorflow, String strResourceType, Integer nIdExternalParentId );
+
+     /**
+     * Select All resourceWorkflow associated to a state and an external parent id
+     *
+     	 * @param nIdState
+     * @param nIdParent
+     * @return  List of resourceWorkflow Object
+     */
+    List<ResourceWorkflow> selectResourceWorkflowByState(int nIdState, int nIdParent);
 }
