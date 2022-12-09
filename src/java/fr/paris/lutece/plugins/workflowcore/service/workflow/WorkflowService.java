@@ -459,6 +459,7 @@ public class WorkflowService implements IWorkflowService
     {
         Action action = _actionService.findByPrimaryKey( nIdAction );
 
+        // test prerequisites
         if ( action == null || !canProcessAction( nIdResource, strResourceType, nIdAction, nIdExternalParent ) )
         {
             return;
@@ -482,16 +483,22 @@ public class WorkflowService implements IWorkflowService
         _resourceHistoryService.create( resourceHistory );
 
         List<ITask> listActionTasks = _taskService.getListTaskByIdAction( nIdAction, locale );
-
+        boolean isSuccess = true;
+        
         for ( ITask task : listActionTasks )
         {
             task.setAction( action );
 
             try
             {
-                task.processTask( resourceHistory.getId( ), request, locale, user );
+                if ( !task.processTaskWithResult( resourceHistory.getId( ), request, locale, user ) )
+                {
+                	// stop processing the tasks if a task returns a failure
+                	isSuccess = false;
+                	break;
+                }
             }
-            catch( Exception e )
+            catch ( Exception e )
             {
                 // Revert the creation of the resource history
                 _resourceHistoryService.remove( resourceHistory.getId( ) );
@@ -502,21 +509,33 @@ public class WorkflowService implements IWorkflowService
 
         // Reload the resource workflow in case a task had modified it
         resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType, action.getWorkflow( ).getId( ) );
-        resourceWorkflow.setState( action.getStateAfter( ) );
+        
+        if ( isSuccess )
+        {
+        	// next state if action is successful
+        	resourceWorkflow.setState( action.getStateAfter( ) );
+        }
+        else
+        {
+        	// next state if not
+        	resourceWorkflow.setState( action.getAlternativeStateAfter( ) );
+        }
+        
         resourceWorkflow.setExternalParentId( nIdExternalParent );
         _resourceWorkflowService.update( resourceWorkflow );
 
-        if ( ( action.getStateAfter( ) != null ) && !action.isAutomaticReflexiveAction( ) )
+        if ( ( resourceWorkflow.getState( ) != null ) && !action.isAutomaticReflexiveAction( ) )
         {
-        	if ( !action.getListIdStateBefore( ).stream( ).anyMatch(x -> x ==  action.getStateAfter( ).getId( ) ) )
+        	final  State nextState = resourceWorkflow.getState( );
+            
+        	if ( !action.getListIdStateBefore( ).stream( ).anyMatch(x -> x ==  nextState.getId( ) ) )
             {
-                doProcessAutomaticReflexiveActions( nIdResource, strResourceType, action.getStateAfter( ).getId( ), nIdExternalParent, locale );
+                doProcessAutomaticReflexiveActions( nIdResource, strResourceType, nextState.getId( ), nIdExternalParent, locale );
             }
 
-            State state = action.getStateAfter( );
             ActionFilter actionFilter = new ActionFilter( );
             actionFilter.setIdWorkflow( action.getWorkflow( ).getId( ) );
-            actionFilter.setIdStateBefore( state.getId( ) );
+            actionFilter.setIdStateBefore( nextState.getId( ) );
             actionFilter.setIsAutomaticState( 1 );
             actionFilter.setAutomaticReflexiveAction( false );
 
@@ -527,6 +546,7 @@ public class WorkflowService implements IWorkflowService
                 doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null, user );
             }
         }
+        
     }
 
     /**

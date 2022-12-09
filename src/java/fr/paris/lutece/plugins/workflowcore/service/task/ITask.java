@@ -113,6 +113,12 @@ public interface ITask
         processTask( nIdResourceHistory, request, locale );
     }
 
+    default boolean processTaskWithResult( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
+    {
+        processTask( nIdResourceHistory, request, locale, user );
+        return true;
+    }
+    
     /**
      * returns the task title
      * 

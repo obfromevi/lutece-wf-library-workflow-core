@@ -59,6 +59,7 @@ public class Action implements RBACResource, IReferenceItem
     private String _strDescription;
     private Icon _icon;
     private State _stateAfter;
+    private State _alternativeStateAfter;
     private Workflow _workflow;
     private boolean _bAutomaticState;
     private boolean _bIsMassAction;
@@ -162,7 +163,7 @@ public class Action implements RBACResource, IReferenceItem
     }
 
     /**
-     * Set the State of the document after processing the action
+     * Set the State to set after processing the action
      * 
      * @param stateAfter
      *            The StateAfter
@@ -172,6 +173,28 @@ public class Action implements RBACResource, IReferenceItem
         _stateAfter = stateAfter;
     }
 
+    /**
+     * Returns the alternative State to set when a task returns false
+     * 
+     * @return The StateAfterFailure
+     */
+    public State getAlternativeStateAfter( )
+    {
+        return _alternativeStateAfter;
+    }
+
+    /**
+     * Set the State to set after processing the action (when the action returns false)
+     * 
+     * @param alternativeStateAfter
+     *            The alternative StateAfter
+     */
+    public void setAlternativeStateAfter( State alternativeStateAfter )
+    {
+        _alternativeStateAfter = alternativeStateAfter;
+    }
+
+    
     /**
      * RBAC resource implementation
      * 

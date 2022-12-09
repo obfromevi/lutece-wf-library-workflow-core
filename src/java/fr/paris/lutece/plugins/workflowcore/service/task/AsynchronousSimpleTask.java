@@ -56,17 +56,13 @@ public abstract class AsynchronousSimpleTask extends SimpleTask
      *            the locale
      */
     @Override
-    public void processTask(int nIdResourceHistory, HttpServletRequest request, Locale locale, User user) 
+    public boolean processTaskWithResult( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user)
     {
-    	new Thread( ( ) -> processAsynchronousTask( nIdResourceHistory, request, locale, user ) ).start( );
+        new Thread( ( ) -> processAsynchronousTask( nIdResourceHistory, request, locale, user ) ).start( );
+        return true;
     }
-    
-    @Override
-    public void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale )
-    {
-    	processTask(nIdResourceHistory, request, locale, null);
-    }
-    
+
+  
     /**
      * Process asynchronous task.
      *
