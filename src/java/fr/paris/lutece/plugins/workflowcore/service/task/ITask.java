@@ -94,7 +94,10 @@ public interface ITask
      * @deprecated use {@link ITask#processTask(int, HttpServletRequest, Locale, User)}
      */
     @Deprecated
-    void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale );
+    default void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale )
+    {
+    	// nothing to do by default
+    }
 
     /**
      * Process the task
@@ -110,11 +113,24 @@ public interface ITask
      */
     default void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
     {
+    	// call deprecated method for compatibility
         processTask( nIdResourceHistory, request, locale );
     }
 
+    /**
+     * Process the task and send a boolean result : 
+     *  - if true : next resource state will be the default "state_after"
+     *  - if false : next resource state will be the alternative "state_after"
+     *  
+     * @param nIdResourceHistory
+     * @param request
+     * @param locale
+     * @param user
+     * @return true by default, false to set the alternative state
+     */
     default boolean processTaskWithResult( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
     {
+    	// call default method if this one is not overriden, and return true by default
         processTask( nIdResourceHistory, request, locale, user );
         return true;
     }
