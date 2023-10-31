@@ -87,6 +87,14 @@ public class ActionService implements IActionService
         
         _actionStateService.update( action.getId( ), action.getListIdStateBefore( ) );
     }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void updateActionWithoutStates( Action action )
+    {
+        _actionDAO.store( action );
+    }
 
     /**
      * {@inheritDoc}
@@ -231,7 +239,7 @@ public class ActionService implements IActionService
     @Override
     public List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow )
     {
-        return _actionDAO.findStatesBetweenOrders( nOrder1, nOrder2, nIdWorkflow );
+        return _actionDAO.findActionsBetweenOrders( nOrder1, nOrder2, nIdWorkflow );
     }
 
     /**
@@ -240,7 +248,7 @@ public class ActionService implements IActionService
     @Override
     public List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow )
     {
-        return _actionDAO.findStatesAfterOrder( nOrder, nIdWorkflow );
+        return _actionDAO.findActionsAfterOrder( nOrder, nIdWorkflow );
     }
 
     /**
@@ -259,4 +267,16 @@ public class ActionService implements IActionService
             nOrder++;
         }
     }
+
+	@Override
+	public List<Action> findActionsBetweenOrders(int nOrder1, int nOrder2, int nIdWorkflow) {
+
+		return  _actionDAO.findActionsBetweenOrders( nOrder1, nOrder2, nIdWorkflow );       
+	}
+
+	@Override
+	public List<Action> findActionsAfterOrder(int nOrder, int nIdWorkflow) {
+
+		return  _actionDAO.findActionsAfterOrder( nOrder, nIdWorkflow );
+	}
 }

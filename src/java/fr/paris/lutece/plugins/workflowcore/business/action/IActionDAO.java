@@ -141,18 +141,42 @@ public interface IActionDAO
     /**
      * Finds all the actions which have an order lower to a given order
      * 
+     * @deprecated
+     * This method will be replaced by method {@link #findActionsBetweenOrders(int, int, int))
+     *
      * @param nOrder1
      *            the order 1
      * @param nOrder2
      *            the order 2
      * @param nIdWorkflow
      *            the workflow id
-     * @return List<State> the list of all the actions
+     * @return List<Action> the list of all the actions
      */
-    List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
+     @Deprecated
+     List<Action> findStatesBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow );
+     
+     /**
+      * Finds all the actions which have an order lower to a given order
+      * 
+      * @param nOrder1
+      *            the order 1
+      * @param nOrder2
+      *            the order 2
+      * @param nIdWorkflow
+      *            the workflow id
+      * @return List<Action> the list of all the actions
+      */
+      
+      default List<Action> findActionsBetweenOrders( int nOrder1, int nOrder2, int nIdWorkflow ){
+    	  
+    	  return findStatesBetweenOrders( nOrder1, nOrder2, nIdWorkflow );
+      }
 
     /**
      * Finds all the actions which have an order greater to a given order
+     * 
+     * @deprecated
+     * This method will be replaced by method {@link #findActionsAfterOrder(int, int)}
      * 
      * @param nOrder
      *            the order
@@ -160,7 +184,22 @@ public interface IActionDAO
      *            the workflow id
      * @return List<Action> the list of all the actions.
      */
-    List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+     @Deprecated
+     List<Action> findStatesAfterOrder( int nOrder, int nIdWorkflow );
+     
+     /**
+      * Finds all the actions which have an order greater to a given order
+      * 
+      * @param nOrder
+      *            the order
+      * @param nIdWorkflow
+      *            the workflow id
+      * @return List<Action> the list of all the actions.
+      */
+      default List<Action> findActionsAfterOrder( int nOrder, int nIdWorkflow ){
+    	 
+    	  return findStatesAfterOrder( nOrder, nIdWorkflow );
+      }
 
     /**
      * Finds all the actions for the given workflow ordered by id
