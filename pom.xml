@@ -2,7 +2,7 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>6.0.0</version>
+        <version>6.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
@@ -16,11 +16,10 @@
         <jiraProjectName>LIBRARYWORKFLOWCORE</jiraProjectName>
         <jiraComponentId>10674</jiraComponentId>
         <commons.lang.version>3.12.0</commons.lang.version>
-        <javax.inject.version>1</javax.inject.version>
-        <springVersion>5.3.18</springVersion>
+        <springVersion>5.3.30</springVersion>
         <common.beanutils.version>1.9.4</common.beanutils.version>
         <log4j.version>2.17.1</log4j.version>
-        <jackson.version>2.13.1</jackson.version>
+        <jackson.version>2.15.3</jackson.version>
         <sonar.sources>pom.xml,src/java</sonar.sources>
         <sonar.tests />
     </properties>
@@ -46,7 +45,7 @@
 
     <dependencies>
         <!-- Lutece API -->
-        <dependency>
+	    <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>library-user-api</artifactId>
             <version>[1.0.1,)</version>
@@ -69,13 +68,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang.version}</version>
-        </dependency>
-        <!-- @Inject API -->
+        </dependency>        
+    	<!-- @Inject API -->
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>${javax.inject.version}</version>
-        </dependency>
+	      <groupId>jakarta.inject</groupId>
+	      <artifactId>jakarta.inject-api</artifactId>
+	      <version>1.0.5</version>
+	</dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
