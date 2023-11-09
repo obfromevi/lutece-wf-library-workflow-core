@@ -517,10 +517,15 @@ public class WorkflowService implements IWorkflowService
         }
         else
         {
-        	// next state if not
-        	resourceWorkflow.setState( action.getAlternativeStateAfter( ) );
+        	State alternativeState = action.getAlternativeStateAfter();
+            if (alternativeState != null && alternativeState.getId() > 0) {
+                // next state if not successful
+                resourceWorkflow.setState(alternativeState);
+            }
+        	
         }
         
+        resourceWorkflow.setWorkFlow( action.getWorkflow( ));
         resourceWorkflow.setExternalParentId( nIdExternalParent );
         _resourceWorkflowService.update( resourceWorkflow );
 
