@@ -72,6 +72,7 @@ public class ActionService implements IActionService
     {
         _actionDAO.insert( action );
         _actionStateService.create( action.getId( ), action.getListIdStateBefore( ) );
+        
         createLinkedActions( action );
     }
 
@@ -146,7 +147,7 @@ public class ActionService implements IActionService
         action.setListIdStateBefore( _actionStateService.findByIdAction( nIdAction ) );
         return action;
     }
-
+    
     /**
      * {@inheritDoc}
      */
@@ -176,6 +177,9 @@ public class ActionService implements IActionService
             {
                 action.setListIdsLinkedAction( getListIdsLinkedAction( action.getId( ) ) );
                 action.setListIdStateBefore( _actionStateService.findByIdAction( action.getId( ) ) );
+                
+                action.setListUidsLinkedAction( getListUidsLinkedAction( action.getId( ) ) );
+                action.setListUidStateBefore( _actionStateService.findByUidAction( action.getUid( ) ) );
             }
         }
 
@@ -204,6 +208,15 @@ public class ActionService implements IActionService
     public Collection<Integer> getListIdsLinkedAction( int nIdAction )
     {
         return _actionDAO.selectListIdsLinkedAction( nIdAction );
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Collection<String> getListUidsLinkedAction( int nIdAction )
+    {
+        return _actionDAO.selectListUidsLinkedAction( nIdAction );
     }
 
     /**

@@ -214,4 +214,13 @@ public interface IActionService
      *            the workflow id
      */
     void initializeActionOrder( int nIdWorkflow );
+
+    /**
+     * Load the list of IDs linked to the given ID action.
+     * 
+     * @param strUidAction
+     *            the ID action
+     * @return a list of IDs
+     */
+	Collection<String> getListUidsLinkedAction( int nIdAction );
 }

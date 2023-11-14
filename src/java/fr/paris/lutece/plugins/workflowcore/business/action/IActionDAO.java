@@ -118,6 +118,15 @@ public interface IActionDAO
      * @return a list of IDs
      */
     Collection<Integer> selectListIdsLinkedAction( int nIdAction );
+    
+    /**
+     * Load the list of Uids linked to the given Uid action.
+     * 
+     * @param strUidAction
+     *            the ID action
+     * @return a list of Uids
+     */
+    Collection<String> selectListUidsLinkedAction( int nIdAction );
 
     /**
      * return the maximum order number of that states in a given workflow

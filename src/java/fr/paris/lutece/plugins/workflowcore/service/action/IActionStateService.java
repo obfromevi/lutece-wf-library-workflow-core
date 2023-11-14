@@ -42,4 +42,13 @@ public interface IActionStateService {
      */
     List<Integer> findByIdAction( int nIdAction );
 
+    /**
+     * Load the Action Object
+     * 
+     * @param nIdAction
+     *            the action id
+     * @return the Action Object
+     */
+	List<String> findByUidAction( String _strUidAction );
+
 }

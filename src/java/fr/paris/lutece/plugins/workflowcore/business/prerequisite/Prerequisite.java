@@ -33,20 +33,26 @@
  */
 package fr.paris.lutece.plugins.workflowcore.business.prerequisite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Business class of prerequisites
  */
 public class Prerequisite
 {
+	@JsonIgnore
     private int _nPrerequisiteId;
+    private String _strPrerequisiteUid;
     private String _strPrerequisiteType;
     private int _nIdAction;
+    private String _strUidAction;
 
     /**
      * Get the id of this prerequisite
      * 
      * @return The id of this prerequisite
      */
+    @JsonIgnore
     public int getIdPrerequisite( )
     {
         return _nPrerequisiteId;
@@ -58,9 +64,31 @@ public class Prerequisite
      * @param nIdPrerequisite
      *            The id of this prerequisite
      */
+    @JsonIgnore
     public void setIdPrerequisite( int nIdPrerequisite )
     {
         this._nPrerequisiteId = nIdPrerequisite;
+    }
+    
+    /**
+     * Get the id of this prerequisite
+     * 
+     * @return The id of this prerequisite
+     */
+    public String getUidPrerequisite( )
+    {
+        return _strPrerequisiteUid;
+    }
+
+    /**
+     * Set the id of this prerequisite
+     * 
+     * @param nIdPrerequisite
+     *            The id of this prerequisite
+     */
+    public void setUidPrerequisite( String strPrerequisiteUid )
+    {
+        this._strPrerequisiteUid = strPrerequisiteUid;
     }
 
     /**
@@ -83,12 +111,34 @@ public class Prerequisite
     {
         this._strPrerequisiteType = strPrerequisiteType;
     }
+    
+    /**
+     * Get the id of the action associated with this prerequisite
+     * 
+     * @return The id of the action associated with this prerequisite
+     */
+    public String getUidAction( )
+    {
+        return _strUidAction;
+    }
+
+    /**
+     * Set the id of the action associated with this prerequisite
+     * 
+     * @param nIdAction
+     *            The id of the action associated with this prerequisite
+     */
+    public void setUidAction( String strUidAction )
+    {
+        this._strUidAction = strUidAction;
+    }
 
     /**
      * Get the id of the action associated with this prerequisite
      * 
      * @return The id of the action associated with this prerequisite
      */
+    @JsonIgnore
     public int getIdAction( )
     {
         return _nIdAction;
@@ -100,6 +150,7 @@ public class Prerequisite
      * @param nIdAction
      *            The id of the action associated with this prerequisite
      */
+    @JsonIgnore
     public void setIdAction( int nIdAction )
     {
         this._nIdAction = nIdAction;

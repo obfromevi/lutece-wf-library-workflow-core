@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.plugins.workflowcore.service.task;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
@@ -43,18 +44,23 @@ import fr.paris.lutece.plugins.workflowcore.business.task.ITaskType;
  * Task
  *
  */
+
 @JsonIgnoreProperties( ignoreUnknown = true )
 public abstract class Task implements ITask
 {
+    @JsonIgnore
     private int _nId;
+    private String _strUid;
     private ITaskType _taskType;
+    @JsonIgnore
     private Action _action;
+    private String _strActionUid;
     private int _nOrder;
 
     /**
      * {@inheritDoc}
      */
-    @Override
+    @JsonIgnore
     public int getId( )
     {
         return _nId;
@@ -63,10 +69,28 @@ public abstract class Task implements ITask
     /**
      * {@inheritDoc}
      */
-    @Override
+    @JsonIgnore
     public void setId( int nId )
     {
         _nId = nId;
+    }
+    
+  /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getUid( )
+    {  
+        return _strUid;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setUid( String strUid )
+    {
+    	_strUid = strUid;
     }
 
     /**
@@ -90,7 +114,7 @@ public abstract class Task implements ITask
     /**
      * {@inheritDoc}
      */
-    @Override
+    @JsonIgnore
     public Action getAction( )
     {
         return _action;
@@ -99,7 +123,7 @@ public abstract class Task implements ITask
     /**
      * {@inheritDoc}
      */
-    @Override
+    @JsonIgnore
     public void setAction( Action action )
     {
         _action = action;
@@ -124,5 +148,23 @@ public abstract class Task implements ITask
     public void setOrder( int nOrder )
     {
         this._nOrder = nOrder;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getActionUid( )
+    {  
+        return _strActionUid;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setActionUid( String strActionUid )
+    {
+    	_strActionUid = strActionUid;
     }
 }

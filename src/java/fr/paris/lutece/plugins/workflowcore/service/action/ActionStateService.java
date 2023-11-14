@@ -44,7 +44,12 @@ public class ActionStateService implements IActionStateService {
 	public List<Integer> findByIdAction(int nIdAction) {
 		return _actionStateDAO.load( nIdAction ) ;
 	}
-	
-	
 
+	/**
+     * {@inheritDoc}
+    */
+	@Override
+	public List<String> findByUidAction( String _strUidAction ) {
+		return _actionStateDAO.load( _strUidAction ) ;
+	}
 }

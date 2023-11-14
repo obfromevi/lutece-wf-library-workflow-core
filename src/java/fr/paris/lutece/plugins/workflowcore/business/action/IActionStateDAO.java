@@ -24,6 +24,15 @@ public interface IActionStateDAO {
     List<Integer> load( int nIdAction );
     
     /**
+     * Load the the list of id stateBefore linked to an action
+     * 
+     * @param nIdAction
+     *            the state id
+     * @return the List of id state before
+     */
+    List<String> load( String strUidAction );
+    
+    /**
      * Delete the action Object
      * 
      * @param nIdAction

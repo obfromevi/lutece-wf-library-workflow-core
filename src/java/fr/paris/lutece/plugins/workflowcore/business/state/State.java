@@ -41,6 +41,7 @@ import fr.paris.lutece.portal.service.rbac.RBACResource;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -53,11 +54,15 @@ public class State implements IReferenceItem, RBACResource
     public static final String RESOURCE_TYPE = "WORKFLOW_STATE_TYPE";
 
     // Variables declarations
+    @JsonIgnore
     private int _nId;
+    private String _strUid;
+    @JsonIgnore
     private Workflow _workflow;
     private String _strName;
     private String _strDescription;
     private Icon _icon;
+    @JsonIgnore
     private List<Action> _listActions;
     private Boolean _bInitialState;
     private Boolean _bRequiredWorkgroupAssigned;
@@ -67,6 +72,7 @@ public class State implements IReferenceItem, RBACResource
      *
      * @return the id of the workflow state
      */
+    @JsonIgnore
     public int getId( )
     {
         return _nId;
@@ -78,15 +84,39 @@ public class State implements IReferenceItem, RBACResource
      * @param idState
      *            the id of the workflow state
      */
+    @JsonIgnore
     public void setId( int idState )
     {
         _nId = idState;
+    }
+    
+    /**
+   * Returns the Uid
+   *
+   * @return The Uid
+   */
+    public String getUid( )
+    {
+    	return _strUid;
+    }
+
+  /**
+   * Sets the Uid
+   *
+   * @param strUid
+   *            The Uid
+
+   */
+    public void setUid( String strUid )
+    {
+    	_strUid = strUid;
     }
 
     /**
      *
      * @return the workflow associated
      */
+    @JsonIgnore
     public Workflow getWorkflow( )
     {
         return _workflow;
@@ -98,6 +128,7 @@ public class State implements IReferenceItem, RBACResource
      * @param workflow
      *            the workflow associated
      */
+    @JsonIgnore
     public void setWorkflow( Workflow workflow )
     {
         _workflow = workflow;
@@ -171,6 +202,7 @@ public class State implements IReferenceItem, RBACResource
      * 
      * @return the list of all actions associated to the state
      */
+    @JsonIgnore
     public List<Action> getAllActions( )
     {
         return _listActions;
@@ -182,6 +214,7 @@ public class State implements IReferenceItem, RBACResource
      * @param listActions
      *            the list of all actions associated to the state
      */
+    @JsonIgnore
     public void setAllActions( List<Action> listActions )
     {
         _listActions = listActions;

@@ -70,6 +70,28 @@ public interface ITask
      *            the task type object
      */
     void setTaskType( ITaskType taskType );
+    
+    /**
+     * @return the task Uid
+     */
+	String getUid();
+
+    /**
+     * @param strUid
+     *            the task uid
+     */
+	void setUid( String strUid );
+	
+    /**
+     * @return the action Uid linked to the task
+     */
+	public String getActionUid( );
+	
+    /**
+     * @param strActionUid
+     *            the action Uid linked to the task
+     */
+    public void setActionUid( String strActionUid );
 
     /**
      * @return the action associate to the task

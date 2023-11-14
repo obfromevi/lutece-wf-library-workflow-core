@@ -41,6 +41,7 @@ import fr.paris.lutece.portal.service.rbac.RBACResource;
 
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import java.util.List;
@@ -54,25 +55,38 @@ public class Action implements RBACResource, IReferenceItem
     public static final String RESOURCE_TYPE = "WORKFLOW_ACTION_TYPE";
 
     // Variables declarations
+    @JsonIgnore
     private int _nId;
+    private String _strUid;
     private String _strName;
     private String _strDescription;
     private Icon _icon;
+    @JsonIgnore
     private State _stateAfter;
+    @JsonIgnore
     private State _alternativeStateAfter;
+    @JsonIgnore
     private Workflow _workflow;
     private boolean _bAutomaticState;
     private boolean _bIsMassAction;
+    @JsonIgnore
     private Collection<Integer> _listIdsLinkedAction;
+    private Collection<String> _listUidsLinkedAction;
+    private String _strUidStateAfter;
+    private String _strUidAlternativeStateAfter;
+    @JsonIgnore
     private List<ITask> _listTasks;
     private int _nOrder;
     private boolean _bAutomaticReflexiveAction;
+    @JsonIgnore
     private List<Integer> _listIdStateBefore;
+    private List<String> _listUidStateBefore;
 
     /**
      *
      * @return the id of the workflow action
      */
+    @JsonIgnore
     public int getId( )
     {
         return _nId;
@@ -84,10 +98,31 @@ public class Action implements RBACResource, IReferenceItem
      * @param idAction
      *            the id of the workflow action
      */
+    @JsonIgnore
     public void setId( int idAction )
     {
         _nId = idAction;
     }
+    
+    /**
+    *
+    * @return the uid of the workflow action
+    */
+   public String getUid( )
+   {
+       return _strUid;
+   }
+
+   /**
+    * set the uid of the workflow action
+    * 
+    * @param uidAction
+    *            the uid of the workflow action
+    */
+   public void setUid( String strUid )
+   {
+	   _strUid = strUid;
+   }
 
     /**
      * Returns the action name
@@ -157,6 +192,7 @@ public class Action implements RBACResource, IReferenceItem
      * 
      * @return The StateAfter
      */
+    @JsonIgnore
     public State getStateAfter( )
     {
         return _stateAfter;
@@ -168,6 +204,7 @@ public class Action implements RBACResource, IReferenceItem
      * @param stateAfter
      *            The StateAfter
      */
+    @JsonIgnore
     public void setStateAfter( State stateAfter )
     {
         _stateAfter = stateAfter;
@@ -178,6 +215,7 @@ public class Action implements RBACResource, IReferenceItem
      * 
      * @return The StateAfterFailure
      */
+    @JsonIgnore
     public State getAlternativeStateAfter( )
     {
         return _alternativeStateAfter;
@@ -189,6 +227,7 @@ public class Action implements RBACResource, IReferenceItem
      * @param alternativeStateAfter
      *            The alternative StateAfter
      */
+    @JsonIgnore
     public void setAlternativeStateAfter( State alternativeStateAfter )
     {
         _alternativeStateAfter = alternativeStateAfter;
@@ -210,6 +249,7 @@ public class Action implements RBACResource, IReferenceItem
      * 
      * @return The resourceId
      */
+    @JsonIgnore
     public String getResourceId( )
     {
         return Integer.toString( _nId );
@@ -219,6 +259,7 @@ public class Action implements RBACResource, IReferenceItem
      *
      * @return the workflow associated
      */
+    @JsonIgnore
     public Workflow getWorkflow( )
     {
         return _workflow;
@@ -230,6 +271,7 @@ public class Action implements RBACResource, IReferenceItem
      * @param workflow
      *            the workflow associated
      */
+    @JsonIgnore
     public void setWorkflow( Workflow workflow )
     {
         _workflow = workflow;
@@ -280,6 +322,7 @@ public class Action implements RBACResource, IReferenceItem
      * @param listIdsLinkedAction
      *            the _listIdsLinkedAction to set
      */
+    @JsonIgnore
     public void setListIdsLinkedAction( Collection<Integer> listIdsLinkedAction )
     {
         _listIdsLinkedAction = listIdsLinkedAction;
@@ -288,10 +331,63 @@ public class Action implements RBACResource, IReferenceItem
     /**
      * @return the _listIdsLinkedAction
      */
+    @JsonIgnore
     public Collection<Integer> getListIdsLinkedAction( )
     {
         return _listIdsLinkedAction;
     }
+    
+    /**
+     * @param listUidsLinkedAction
+     *            the _listUidsLinkedAction to set
+     */
+    public void setListUidsLinkedAction( Collection<String> listUidsLinkedAction )
+    {
+        _listUidsLinkedAction = listUidsLinkedAction;
+    }
+
+    /**
+     * @return the _listUidsLinkedAction
+     */
+    public Collection<String> getListUidsLinkedAction( )
+    {
+        return _listUidsLinkedAction;
+    }
+    
+
+	/**
+	 * @return the _strUidStateAfter
+	 */
+	public String getStrUidStateAfter() {
+		return _strUidStateAfter;
+	}
+
+    /**
+     * set the uid of the state after associated to the action
+     * 
+     * @param listStateBefore
+     *            the list of all state before
+     */
+	public void setStrUidStateAfter(String strUidStateAfter) {
+		_strUidStateAfter = strUidStateAfter;
+	}
+
+	/**
+	 * @return the _strUidAlternativeStateAfter
+	 */
+	public String getStrUidAlternativeStateAfter() {
+		return _strUidAlternativeStateAfter;
+	}
+
+    /**
+     * set the uid of the alternative state after associated to the action
+     * 
+     * @param listStateBefore
+     *            the list of all state before
+     */
+	public void setStrUidAlternativeStateAfter(String strUidAlternativeStateAfter) {
+		_strUidAlternativeStateAfter = strUidAlternativeStateAfter;
+	}
 
     /**
      * get the order of an action
@@ -341,6 +437,7 @@ public class Action implements RBACResource, IReferenceItem
      * @param listTasks
      *            the list of all tasks
      */
+    @JsonIgnore
     public void setAllTasks( List<ITask> listTasks )
     {
         _listTasks = listTasks;
@@ -352,6 +449,7 @@ public class Action implements RBACResource, IReferenceItem
      * @return 
      *         the list of all tasks associated to the action
      */
+    @JsonIgnore
     public List<ITask> getAllTasks( )
     {
         return _listTasks ;
@@ -363,6 +461,7 @@ public class Action implements RBACResource, IReferenceItem
      * @return 
      *         the list of all state before associated to the action
      */
+    @JsonIgnore
     public List<Integer> getListIdStateBefore() {
 		return _listIdStateBefore;
 	}
@@ -373,7 +472,28 @@ public class Action implements RBACResource, IReferenceItem
      * @param listStateBefore
      *            the list of all state before
      */
+    @JsonIgnore
 	public void setListIdStateBefore(List<Integer> listIdStateBefore) {
 		this._listIdStateBefore = listIdStateBefore;
+	}
+	
+    /**
+     * get the list of all state before associated to the action
+     * 
+     * @return 
+     *         the list of all state before associated to the action
+     */
+    public List<String> getListUidStateBefore() {
+		return _listUidStateBefore;
+	}
+
+    /**
+     * set the list of all state before associated to the action
+     * 
+     * @param listStateBefore
+     *            the list of all state before
+     */
+	public void setListUidStateBefore(List<String> listUidStateBefore) {
+		this._listUidStateBefore = listUidStateBefore;
 	}
 }

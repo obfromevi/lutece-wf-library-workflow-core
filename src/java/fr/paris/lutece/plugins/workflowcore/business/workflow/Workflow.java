@@ -42,6 +42,7 @@ import java.sql.Timestamp;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -51,10 +52,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Workflow implements AdminWorkgroupResource, IReferenceItem
 {
     // Variables declarations
+    @JsonIgnore
     private int _nId;
+    private String _strUid;
     private String _strName;
     private String _strDescription;
+    @JsonIgnore
     private List<Action> _listActions;
+    @JsonIgnore
     private List<State> _listStates;
     private Timestamp _tCreationDate;
     private String _strWorkgroupKey;
@@ -73,6 +78,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * 
      * @return The IdWorkflow
      */
+    @JsonIgnore
     public int getId( )
     {
         return _nId;
@@ -84,10 +90,34 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * @param nIdWorkflow
      *            The IdWorkflow
      */
+    @JsonIgnore
     public void setId( int nIdWorkflow )
     {
         _nId = nIdWorkflow;
     }
+    
+    /**
+     * Returns the Uid
+     *
+     * @return The Uid
+     */
+    public String getUid( )
+    {
+        return _strUid;
+    }
+
+    /**
+     * Sets the Uid
+     *
+     * @param strUid
+     *            The Uid
+
+     */
+    public void setUid( String strUid )
+    {
+        _strUid = strUid;
+    }
+
 
     /**
      * Returns the Name
@@ -136,6 +166,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * 
      * @return the list of all actions associated to the workflow
      */
+    @JsonIgnore
     public List<Action> getAllActions( )
     {
         return _listActions;
@@ -147,6 +178,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * @param listActions
      *            the list of all actions associated to the workflow
      */
+    @JsonIgnore
     public void setAllActions( List<Action> listActions )
     {
         _listActions = listActions;
@@ -157,6 +189,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * 
      * @return the list of all states associated to the workflow
      */
+    @JsonIgnore
     public List<State> getAllStates( )
     {
         return _listStates;
@@ -168,6 +201,7 @@ public class Workflow implements AdminWorkgroupResource, IReferenceItem
      * @param listStates
      *            the list of all states associated to the workflow
      */
+    @JsonIgnore
     public void setAllStates( List<State> listStates )
     {
         _listStates = listStates;
