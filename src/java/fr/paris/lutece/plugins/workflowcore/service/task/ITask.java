@@ -133,9 +133,10 @@ public interface ITask
      * @param user
      *            the user
      */
+    @Deprecated
     default void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
     {
-    	// call deprecated method for compatibility
+    	// call deprecated method for compatibility by default if not overriden
         processTask( nIdResourceHistory, request, locale );
     }
 
@@ -150,12 +151,36 @@ public interface ITask
      * @param user
      * @return true by default, false to set the alternative state
      */
+    @Deprecated
     default boolean processTaskWithResult( int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
     {
-    	// call default method if this one is not overriden, and return true by default
+    	// if not overriden : call deprecated processTask method by default for backward compatibility,
+    	// and return true by default
         processTask( nIdResourceHistory, request, locale, user );
         return true;
     }
+    
+    /**
+     * Process the task and send a boolean result : 
+     *  - if true : next resource state will be the default "state_after"
+     *  - if false : next resource state will be the alternative "state_after"
+     *  
+     * @param nIdResource
+     * @param strResourceType
+     * @param nIdResourceHistory
+     * @param request
+     * @param locale
+     * @param user
+     * @return true by default, false to set the alternative state
+     */
+    default boolean processTaskWithResult( int nIdResource, String strResourceType, int nIdResourceHistory, HttpServletRequest request, Locale locale, User user )
+    {
+    	// if not overriden : call deprecated processTaskWithResult method by default for backward compatibility
+        return processTaskWithResult( nIdResourceHistory, request, locale, user );
+    }
+    
+    
+    
     
     /**
      * returns the task title

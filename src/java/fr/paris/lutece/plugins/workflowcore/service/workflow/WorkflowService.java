@@ -254,7 +254,7 @@ public class WorkflowService implements IWorkflowService
             actionfilter.setIdStateBefore( state.getId( ) );
             actionfilter.setIdWorkflow( nIdWorkflow );
             actionfilter.setAutomaticReflexiveAction( false );
-            
+
             List<Action> listAction = _actionService.getListActionByFilter( actionfilter );
             listActionByStateId.put( state.getId( ), listAction );
         }
@@ -306,7 +306,7 @@ public class WorkflowService implements IWorkflowService
         aFilter.setIdWorkflow( nIdWorkflow );
         aFilter.setIsMassAction( true );
         aFilter.setAutomaticReflexiveAction( false );
-        
+
         return _actionService.getListActionByFilter( aFilter );
     }
 
@@ -321,7 +321,7 @@ public class WorkflowService implements IWorkflowService
         aFilter.setIsMassAction( true );
         aFilter.setIdStateBefore( stateId );
         aFilter.setAutomaticReflexiveAction( false );
-        
+
         return _actionService.getListActionByFilter( aFilter );
     }
 
@@ -484,14 +484,15 @@ public class WorkflowService implements IWorkflowService
 
         List<ITask> listActionTasks = _taskService.getListTaskByIdAction( nIdAction, locale );
         boolean isSuccess = true;
-        
+
         for ( ITask task : listActionTasks )
         {
             task.setAction( action );
 
             try
             {
-                if ( !task.processTaskWithResult( resourceHistory.getId( ), request, locale, user ) )
+            	// warning : if the task is asynchronous, the resourceHistory might be not yet committed in database
+                if ( !task.processTaskWithResult( nIdResource, strResourceType, resourceHistory.getId( ), request, locale, user ) )
                 {
                 	// stop processing the tasks if a task returns a failure
                 	isSuccess = false;
@@ -509,7 +510,7 @@ public class WorkflowService implements IWorkflowService
 
         // Reload the resource workflow in case a task had modified it
         resourceWorkflow = _resourceWorkflowService.findByPrimaryKey( nIdResource, strResourceType, action.getWorkflow( ).getId( ) );
-        
+
         if ( isSuccess )
         {
         	// next state if action is successful
@@ -522,9 +523,9 @@ public class WorkflowService implements IWorkflowService
                 // next state if not successful
                 resourceWorkflow.setState(alternativeState);
             }
-        	
+
         }
-        
+
         resourceWorkflow.setWorkFlow( action.getWorkflow( ));
         resourceWorkflow.setExternalParentId( nIdExternalParent );
         _resourceWorkflowService.update( resourceWorkflow );
@@ -532,7 +533,7 @@ public class WorkflowService implements IWorkflowService
         if ( ( resourceWorkflow.getState( ) != null ) && !action.isAutomaticReflexiveAction( ) )
         {
         	final  State nextState = resourceWorkflow.getState( );
-            
+
         	if ( !action.getListIdStateBefore( ).stream( ).anyMatch(x -> x ==  nextState.getId( ) ) )
             {
                 doProcessAutomaticReflexiveActions( nIdResource, strResourceType, nextState.getId( ), nIdExternalParent, locale );
@@ -551,7 +552,7 @@ public class WorkflowService implements IWorkflowService
                 doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null, user );
             }
         }
-        
+
     }
 
     /**
@@ -610,7 +611,7 @@ public class WorkflowService implements IWorkflowService
 
     /**
      * Remove in the workflow the resource specified in parameter
-     * 
+     *
      * @param nIdResource
      *            the resource id
      * @param strResourceType
@@ -733,7 +734,7 @@ public class WorkflowService implements IWorkflowService
     {
     	return getResourceIdListByIdState( nIdState, strResourceType, -1 );
     }
-    
+
     /**
      * {@inheritDoc}
      */
