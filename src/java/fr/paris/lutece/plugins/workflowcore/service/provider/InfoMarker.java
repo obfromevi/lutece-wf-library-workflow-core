@@ -53,11 +53,11 @@ public class InfoMarker
 
     private String _strDescription;
 
-    private String _strValue;
+    private Object _strValue;
 
     /**
      * Constructor
-     * 
+     *
      * @param strMarker
      *            the marker
      */
@@ -68,7 +68,7 @@ public class InfoMarker
 
     /**
      * Gives the marker
-     * 
+     *
      * @return the marker
      */
     public String getMarker( )
@@ -83,7 +83,7 @@ public class InfoMarker
      * <p>
      * Used in the task configuration page
      * </p>
-     * 
+     *
      * @return the description
      */
     public String getDescription( )
@@ -93,7 +93,7 @@ public class InfoMarker
 
     /**
      * Sets the description of the marker
-     * 
+     *
      * @param strDescription
      *            the description to set
      */
@@ -109,21 +109,21 @@ public class InfoMarker
      * <p>
      * Used when the notification is sent
      * </p>
-     * 
+     *
      * @return the value
      */
-    public String getValue( )
+    public Object getValue( )
     {
         return _strValue;
     }
 
     /**
      * Sets the value of the marker
-     * 
+     *
      * @param strValue
      *            the value to set
      */
-    public void setValue( String strValue )
+    public void setValue( Object strValue )
     {
         _strValue = strValue;
     }
