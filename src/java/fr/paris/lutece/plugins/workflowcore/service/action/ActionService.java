@@ -41,6 +41,7 @@ import fr.paris.lutece.plugins.workflowcore.service.resource.IResourceHistorySer
 import fr.paris.lutece.plugins.workflowcore.service.task.ITask;
 import fr.paris.lutece.plugins.workflowcore.service.task.ITaskService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -86,7 +87,7 @@ public class ActionService implements IActionService
         removeLinkedActions( action.getId( ) );
         createLinkedActions( action );
         
-        _actionStateService.update( action.getId( ), action.getListIdStateBefore( ) );
+        _actionStateService.update( action.getId( ), action.getListIdStateBefore( ) != null ? action.getListIdStateBefore( ) : new ArrayList<>());
     }
     /**
      * {@inheritDoc}
