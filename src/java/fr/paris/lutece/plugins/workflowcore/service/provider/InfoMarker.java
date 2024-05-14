@@ -49,11 +49,24 @@ package fr.paris.lutece.plugins.workflowcore.service.provider;
  */
 public class InfoMarker
 {
-    private final String _strMarker;
+    private String _strMarker;
 
     private String _strDescription;
 
-    private Object _strValue;
+    private Object _data;
+
+    /**
+     * Constructor
+     *
+     * @param marker
+     *            the name of the marker
+     * @param data
+     *            the value
+     */
+     public InfoMarker (String marker, Object data) {
+        _strMarker = marker;
+        _data = data;
+     }
 
     /**
      * Constructor
@@ -103,6 +116,27 @@ public class InfoMarker
     }
 
     /**
+        * Gives the value of the marker. The value is the actual value of the resource.
+        * Used when the notification is sent
+        *
+        * @return the value
+        */
+    public Object getData( )
+    {
+        return _data;
+    }
+
+    /**
+        * Sets the value of the marker
+        *
+        * @param data
+        *  the value to set
+        */
+    public void setData( Object data )
+    {
+        _data = data ;
+    }
+    /**
      * <p>
      * Gives the value of the marker. The value is the actual value of the resource.
      * </p>
@@ -112,20 +146,22 @@ public class InfoMarker
      *
      * @return the value
      */
-    public Object getValue( )
+    @Deprecated
+    public String getValue( )
     {
-        return _strValue;
+        return ( _data != null ? _data.toString( ) : null );
     }
 
     /**
      * Sets the value of the marker
      *
-     * @param strValue
+     * @param data
      *            the value to set
      */
-    public void setValue( Object strValue )
+    @Deprecated
+    public void setValue( String strData )
     {
-        _strValue = strValue;
+        _data = strData;
     }
 
 }
