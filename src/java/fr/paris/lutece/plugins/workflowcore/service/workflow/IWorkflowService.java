@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.workflowcore.service.workflow;
 
 import fr.paris.lutece.api.user.User;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
+import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceHistory;
 import fr.paris.lutece.plugins.workflowcore.business.resource.ResourceWorkflow;
 import fr.paris.lutece.plugins.workflowcore.business.state.State;
 import fr.paris.lutece.plugins.workflowcore.business.workflow.Workflow;
@@ -270,8 +271,39 @@ public interface IWorkflowService
      * @param the
      *            user the user
      */
+    @Deprecated
     default void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
             boolean bIsAutomatic, String strUserAccessCode, User user )
+    {
+        doProcessAction( nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic, strUserAccessCode );
+    }
+    
+    /**
+     * Proceed action given in parameter
+     * 
+     * @param nIdResource
+     *            the resource id
+     * @param strResourceType
+     *            the resource type
+     * @param nIdAction
+     *            the action id
+     * @param nExternalParentId
+     *            the external parent id*
+     * @param request
+     *            the request
+     * @param locale
+     *            locale
+     * @param bIsAutomatic
+     *            true if action is automatic
+     * @param strUserAccessCode
+     *            the user access code
+     * @param user
+     *            the user
+     * @param actionHistoryResourceList
+     *            the history of action performed on a resource
+     */
+    default void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
+            boolean bIsAutomatic, String strUserAccessCode, User user, List<ResourceHistory> actionHistoryResourceList )
     {
         doProcessAction( nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic, strUserAccessCode );
     }

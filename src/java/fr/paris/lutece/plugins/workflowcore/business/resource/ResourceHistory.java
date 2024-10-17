@@ -53,6 +53,7 @@ public class ResourceHistory
     private Timestamp _tCreationDate;
     private String _strUserAccessCode;
     private ResourceUserHistory _resourceUserHistory;
+    private int status;
 
     /**
      * return the id of the resource history
@@ -219,4 +220,25 @@ public class ResourceHistory
     {
         this._resourceUserHistory = resourceUserHistory;
     }
+
+	/**
+	 * return the status
+	 * 
+	 * @return the status
+	 */
+	public int getStatus( ) 
+	{
+	    return status;
+	}
+
+	/**
+	 * Sets the status
+	 * 
+	 * @param status 
+	 *             the status to set
+	 */
+	public void setStatus( int status ) 
+	{
+	    this.status = status;
+	}
 }

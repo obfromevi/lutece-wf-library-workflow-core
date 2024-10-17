@@ -46,6 +46,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import fr.paris.lutece.api.user.User;
 import fr.paris.lutece.plugins.workflowcore.business.action.Action;
@@ -455,7 +456,7 @@ public class WorkflowService implements IWorkflowService
      */
     @Override
     public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent, HttpServletRequest request, Locale locale,
-            boolean bIsAutomatic, String strUserAccessCode, User user )
+            boolean bIsAutomatic, String strUserAccessCode, User user, List<ResourceHistory> actionHistoryResourceList )
     {
         Action action = _actionService.findByPrimaryKey( nIdAction );
 
@@ -530,6 +531,15 @@ public class WorkflowService implements IWorkflowService
         resourceWorkflow.setExternalParentId( nIdExternalParent );
         _resourceWorkflowService.update( resourceWorkflow );
 
+        if ( actionHistoryResourceList != null )
+        {
+        	if ( !isSuccess )
+        	{
+        		resourceHistory.setStatus( NumberUtils.INTEGER_MINUS_ONE );
+        	}
+            actionHistoryResourceList.add( resourceHistory );
+        }
+
         if ( ( resourceWorkflow.getState( ) != null ) && !action.isAutomaticReflexiveAction( ) )
         {
         	final  State nextState = resourceWorkflow.getState( );
@@ -549,10 +559,20 @@ public class WorkflowService implements IWorkflowService
 
             if ( CollectionUtils.isNotEmpty( listAction ) && ( listAction.get( 0 ) != null ) )
             {
-                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null, user );
+                doProcessAction( nIdResource, strResourceType, listAction.get( 0 ).getId( ), nIdExternalParent, request, locale, true, null, user, actionHistoryResourceList );
             }
         }
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nIdExternalParent, HttpServletRequest request, Locale locale,
+            boolean bIsAutomatic, String strUserAccessCode, User user )
+    {
+        doProcessAction( nIdResource, strResourceType, nIdAction, nIdExternalParent, request, locale, bIsAutomatic, strUserAccessCode, null, null );
     }
 
     /**
